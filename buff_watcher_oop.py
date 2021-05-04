@@ -113,15 +113,15 @@ class MainFrame(tk.Frame):
         self.debugging_label.grid(column=0, row=10)
         self.button1 = ttk.Button(self.debugging_buttons_frame)
         self.button1['text'] = "Simulate frame list appended True Strike"
-        self.button1['command'] = lambda: self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "arelith_ui\graphics\p_true.png"])
+        self.button1['command'] = lambda: self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "NWN-Buff-Watcher\graphics\p_true.png"])
         self.button1.grid(column=0, row=11)
         self.button2 = ttk.Button(self.debugging_buttons_frame)
         self.button2['text'] = "Simulate frame list appended Bulls"
-        self.button2['command'] = lambda: self.buffs_frame_list_is_appended(["Bulls", time.time() + 1080, "arelith_ui\graphics\p_bulls.png"])
+        self.button2['command'] = lambda: self.buffs_frame_list_is_appended(["Bulls", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_bulls.png"])
         self.button2.grid(column=0, row=12)
         self.button0 = ttk.Button(self.debugging_buttons_frame)
         self.button0['text'] = "Simulate frame list appended Endurance"
-        self.button0['command'] = lambda: self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "arelith_ui\graphics\p_endu.png"])
+        self.button0['command'] = lambda: self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_endu.png"])
         self.button0.grid(column=0, row=13)
         # the simulated looping doesn't work with the logfile stuff activated...
         self.button4 = ttk.Button(self.debugging_buttons_frame)
@@ -150,47 +150,47 @@ class MainFrame(tk.Frame):
         print(buffs) # debugging
 
         if self.name_stringvar.get() + " uses Potion of Endurance" in str(buffs):
-            self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "arelith_ui\graphics\p_endu.png"])
+            self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_endu.png"])
 
         elif self.name_stringvar.get() + " uses Potion of Cat\\'s Grace" in str(buffs):
-            self.buffs_frame_list_is_appended(["Cat's Grace", time.time() + 1080, "arelith_ui\graphics\p_cats.png"])
+            self.buffs_frame_list_is_appended(["Cat's Grace", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_cats.png"])
 
         elif self.name_stringvar.get() + " uses Potion of Bull\\'s Strength" in str(buffs):
-            self.buffs_frame_list_is_appended(["Bull's Strength", time.time() + 1080, "arelith_ui\graphics\p_bulls.png"])
+            self.buffs_frame_list_is_appended(["Bull's Strength", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_bulls.png"])
         
         elif self.name_stringvar.get() + " uses Potion of Owl\\'s Wisdom" in str(buffs):
-            self.buffs_frame_list_is_appended(["Owl's Wisdom", time.time() + 1080, "arelith_ui\graphics\p_owls.png"])
+            self.buffs_frame_list_is_appended(["Owl's Wisdom", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_owls.png"])
         
         elif self.name_stringvar.get() + " uses Potion of Fox\\'s Cunning" in str(buffs):
-            self.buffs_frame_list_is_appended(["Fox's Cunning", time.time() + 1080, "arelith_ui\graphics\p_foxs.png"])
+            self.buffs_frame_list_is_appended(["Fox's Cunning", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_foxs.png"])
         
         elif self.name_stringvar.get() + " uses Potion of Clarity" in str(buffs):
-            self.buffs_frame_list_is_appended(["Clarity", time.time() + 48, "arelith_ui\graphics\p_clar.png"])
-            self.buffs_frame_list_is_appended(["Clarity Cooldown", time.time() + 72, "arelith_ui\graphics\p_clar_cooldown.png"])
+            self.buffs_frame_list_is_appended(["Clarity", time.time() + 48, "NWN-Buff-Watcher\graphics\p_clar.png"])
+            self.buffs_frame_list_is_appended(["Clarity Cooldown", time.time() + 72, "NWN-Buff-Watcher\graphics\p_clar_cooldown.png"])
 
         elif self.name_stringvar.get() + " uses Potion of Eagle\\'s Splendor" in str(buffs): # not firing, because of \'s... investigate further
-            self.buffs_frame_list_is_appended(["Eagle's Splendor", time.time() + 1080, "arelith_ui\graphics\p_eagle.png"])
+            self.buffs_frame_list_is_appended(["Eagle's Splendor", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_eagle.png"])
 
         elif self.name_stringvar.get() + " uses Potion of Barkskin" in str(buffs):
-            self.buffs_frame_list_is_appended(["Barkskin", time.time() + 4320, "arelith_ui\graphics\p_bark.png"])
+            self.buffs_frame_list_is_appended(["Barkskin", time.time() + 4320, "NWN-Buff-Watcher\graphics\p_bark.png"])
 
         elif self.name_stringvar.get() + " uses Potion of True Strike" in str(buffs):
-            self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "arelith_ui\graphics\p_true.png"])
+            self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "NWN-Buff-Watcher\graphics\p_true.png"])
 
         elif self.name_stringvar.get() + " uses Potion of Freedom" in str(buffs):
-            self.buffs_frame_list_is_appended(["Freedom", time.time() + 2520, "arelith_ui\graphics\p_freedom.png"])
+            self.buffs_frame_list_is_appended(["Freedom", time.time() + 2520, "NWN-Buff-Watcher\graphics\p_freedom.png"])
 
         elif self.name_stringvar.get() + " uses Potion of Speed" in str(buffs):
-            self.buffs_frame_list_is_appended(["Haste", time.time() + 30, "arelith_ui\graphics\p_freedom.png"])
+            self.buffs_frame_list_is_appended(["Haste", time.time() + 30, "NWN-Buff-Watcher\graphics\p_freedom.png"])
 
         elif self.name_stringvar.get() + " uses Shield" in str(buffs):
-            self.buffs_frame_list_is_appended(["Shield", time.time() + 300, "arelith_ui\graphics\p_shield.png"])
+            self.buffs_frame_list_is_appended(["Shield", time.time() + 300, "NWN-Buff-Watcher\graphics\p_shield.png"])
 
         elif self.name_stringvar.get() + " uses Shadow Shield" in str(buffs):
-            self.buffs_frame_list_is_appended(["Shadow Shield", time.time() + 780, "arelith_ui\graphics\p_shadow_shield.png"])
+            self.buffs_frame_list_is_appended(["Shadow Shield", time.time() + 780, "NWN-Buff-Watcher\graphics\p_shadow_shield.png"])
 
         elif "Hex has a timer of 30 second(s)." in str(buffs):
-            self.buffs_frame_list_is_appended(["Hex", time.time() + 30, "arelith_ui\graphics\p_hex.png"])
+            self.buffs_frame_list_is_appended(["Hex", time.time() + 30, "NWN-Buff-Watcher\graphics\p_hex.png"])
 
         """ TODO: only calculate all the time() countdowns in one place, but move and
         display them in more if needed, process savings?
