@@ -13,6 +13,7 @@ from tkinter import ttk, Menu
 from PIL import ImageTk, Image
 import time
 from tkinter.filedialog import askopenfile
+from get_friends_list import friends_list
 
 class MainFrame(tk.Frame):
     def __init__(self, container):
@@ -41,7 +42,8 @@ class MainFrame(tk.Frame):
         self.menu_button.menu = Menu(self.menu_button, tearoff=0)
         self.menu_button["menu"] = self.menu_button.menu
         self.menu_button.menu.add_command(label='Name', command=lambda: main_frame.character_name())
-        self.menu_button.menu.add_command(label='Open...', command=lambda: main_frame.open_file())
+        self.menu_button.menu.add_command(label='Open log...', command=lambda: main_frame.open_file())
+        self.menu_button.menu.add_command(label='Friends', command=lambda: main_frame.friends_list_window())
         self.menu_button.menu.add_command(label='Testing', command=lambda: main_frame.testing_buttons())
         self.menu_button.menu.add_separator()
         self.menu_button.menu.add_command(label='Exit', command=lambda: app.destroy())
@@ -265,6 +267,29 @@ class MainFrame(tk.Frame):
             x.destroy()
         self.buffs_list_frames.clear()
         self.buff_holding_frame['width'] = "1"
+
+    def friends_list_window(self):
+
+        self.friends_window = tk.Toplevel(self)
+        self.friends_window.title("Friends")
+        self.friends_stringvar = tk.StringVar()
+        self.directions_label = ttk.Label(self.friends_window, text="Enter friends in the friends.csv")
+        self.directions_label.pack()
+        self.refresh_button = ttk.Button(self.friends_window, text="Refresh", command=lambda: self.button_friends())
+        self.refresh_button.pack()
+        self.friends_printout = tk.Label(self.friends_window, textvariable=self.friends_stringvar, font=("Courier", 8), justify='left')
+        self.friends_printout.pack()
+        self.friends_window.attributes("-topmost", True)
+
+    def button_friends(self):
+        self.friends_stringvar.set(friends_list.scrape_portal())
+        """
+        TODO: learn threading and/or async to remove the window freeze while urllib is getting the portal page
+        https://stackoverflow.com/questions/47895765/use-asyncio-and-tkinter-or-another-gui-lib-together-without-freezing-the-gui
+        https://www.oreilly.com/library/view/python-cookbook/0596001673/ch09s07.html
+        https://stackoverflow.com/questions/48254837/python-async-await-downloading-a-list-of-urls?rq=1  --- this one looks promising, async.Semaphore?
+        """
+
 
 class App(tk.Tk): # creating a tk window object and using it for overall constructor, but otherwise not good practice to do much more with it, instead you build stuff in the "window" inside of a Frame widget that makes up the whole interior of the window
     def __init__(self):

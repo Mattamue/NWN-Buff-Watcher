@@ -1,0 +1,1 @@
+from .friends_list import scrape_portal
