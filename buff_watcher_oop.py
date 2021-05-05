@@ -1,3 +1,13 @@
+"""
+Author: Mattamue
+Program: buff_watcher_oop.py
+Last updated: 05/04/2021
+
+Watches chat log of the Neverwinter Nights video game
+and extends the UI by overlaying a window with more
+information than is usually in the game
+"""
+
 import tkinter as tk
 from tkinter import ttk, Menu
 from PIL import ImageTk, Image
@@ -12,7 +22,6 @@ class MainFrame(tk.Frame):
 
         self.columnconfigure(0, weight=1) # allows the main_frame *in its frame* to grow side to side in the column when the window is resized, since it doesn't share with other widgets it gets 100% of the 1 weight
         self.rowconfigure(0, weight=1) # allows the main_frame *in its frame* to grow up and down in the row when the window is resized, since it doesn't share with other widgets it gets 100% of the 1 weight
-        # self.rowconfigure(1, weight=1) # setting the cell for the scrollbar, we don't want this active because we want the scrollbar to just stretch in its column 1, not grow up and down in the row its in
 
         self.buffs_list_frames = [] # setting this to be used later
 
@@ -23,7 +32,7 @@ class MainFrame(tk.Frame):
         self.buttons_frame.grid(column=1, row=0)
 
         # resting removes all buffs
-        self.rest_button = ttk.Button(self.buttons_frame, text="Rest")
+        self.rest_button = ttk.Button(self.buttons_frame, text="Rest", command=lambda: self.rest_off_buffs())
         self.rest_button.grid(column=0, row=0, sticky='ew')
 
         # putting all the "normal" menus into this button to reduce the height of the window since the traditional file menu adds like another 20 pixels of heigth that do nothing
@@ -35,7 +44,7 @@ class MainFrame(tk.Frame):
         self.menu_button.menu.add_command(label='Open...', command=lambda: main_frame.open_file())
         self.menu_button.menu.add_command(label='Testing', command=lambda: main_frame.testing_buttons())
         self.menu_button.menu.add_separator()
-        self.menu_button.menu.add_command(label='Exit', command=app.destroy)
+        self.menu_button.menu.add_command(label='Exit', command=lambda: app.destroy())
 
         # creating the canvas that will be scrollable and have the buff_frame built into it as a window so it'll be scrollable
         self.canvas_test = tk.Canvas(self, height=75, width=500)
@@ -45,15 +54,16 @@ class MainFrame(tk.Frame):
         self.buff_holding_frame = tk.Frame(self.canvas_test, bd=1, relief='solid')
         self.buff_holding_frame.pack(side="left")
 
+        # canvas "window" inside the canvas, how its called for things like bbox
         self.buff_window_id = self.canvas_test.create_window(500, 0, anchor='ne', window=self.buff_holding_frame)
 
+        # calls the resize function when the window size is adjusted by user
         self.bind('<Configure>', self.resize_set_buff_window)
-        # self.after(100, lambda: self.canvas_test.moveto(1, 500, 0)) # for whatever reason, setting the bind moves the frame off of the canvas when first booting, this moves it back
 
+        # creating the scroll bar for the canvas that'll ultimately allow resizing of the buff_frame by being the container
         self.hsb = tk.Scrollbar(self, orient="horizontal", command=self.canvas_test.xview)
         self.canvas_test.configure(xscrollcommand=self.hsb.set)
         self.hsb.grid(column=0, row=1, sticky='ew')
-        # self.bind('<Configure>', self.resize_scroll_bar, add='+')
 
 
     def resize_set_buff_window(self, event):
@@ -61,7 +71,7 @@ class MainFrame(tk.Frame):
         self.canvas_test.moveto(1, self.re_size_move, 0)
         self.canvas_test.configure(scrollregion=self.canvas_test.bbox("all"))
 
-        # debugging
+        # debugging --- getting the buffs to sit at the right and move correctly with window resizes was HARD ^ that small bit of code doesn't reflect everything that was tried
         # print("-" * 30)
         # print(event)
         # print(f"self.canvas_test.coords(1): {self.canvas_test.coords(1)}")
@@ -69,7 +79,7 @@ class MainFrame(tk.Frame):
         # print(f"self.canvas_test.bbox(1) calc width: {self.canvas_test.bbox(1)[2] - self.canvas_test.bbox(1)[0]}")
         # print(f"canvas_test.winfo_width: {self.canvas_test.winfo_width()}")
         # print(f"re-size move: {self.re_size_move}")
-        # print(f"self.canvas_test.canvasx(0): {self.canvas_test.canvasx(0)}")
+        # print(f"self.canvas_test.canvasx(0): {self.canvas_test.canvasx(0)}") # this was the key to everything, took a while to find, allows me to track the "drift" on the canvas coordinates and the widget window coordinates when the window is resized down
         # print(f"self.canvas_test.xview(): {self.canvas_test.xview()}")
         # print(dir(self.canvas_test))
         # print(f"buff_frame.winfo_width: {self.buff_frame.winfo_width()}") # errors out if a buff is deleted, using bbox instead
@@ -82,11 +92,7 @@ class MainFrame(tk.Frame):
         # print(f'self.canvas_test.configure("confine"): {self.canvas_test.configure("confine")}')
 
 
-    # def resize_scroll_bar(self, event):
-    #     '''Reset the scroll region to encompass the inner frame'''
-    #     self.canvas_test.configure(scrollregion=self.canvas_test.bbox("all"))
-
-    def character_name(self):
+    def character_name(self): # lets user set their character name so only their buffs are captured from the chat log
         self.name_entry_window = tk.Toplevel(self)
         self.name_entry_window.title("Enter Character Name")
         self.name_stringvar = tk.StringVar()
@@ -123,7 +129,7 @@ class MainFrame(tk.Frame):
         self.button0['text'] = "Simulate frame list appended Endurance"
         self.button0['command'] = lambda: self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_endu.png"])
         self.button0.grid(column=0, row=13)
-        # the simulated looping doesn't work with the logfile stuff activated...
+        # the simulated looping doesn't work with the logfile stuff activated... need to make a nothing variable when click testing
         self.button4 = ttk.Button(self.debugging_buttons_frame)
         self.button4['text'] = "START loops of time passing"
         self.button4['command'] = lambda: self.buffs_loop_time_passing()
@@ -135,7 +141,7 @@ class MainFrame(tk.Frame):
         self.testing_buttons_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
 
 
-    def open_file(self): 
+    def open_file(self): # opens the game chat log file to watch, moves to the end so it doesn't scan potentially 1000s of lines, only want most recent
         self.logfile = askopenfile(mode ='r', filetypes =[('Logs', '*.txt'), ('Any', '*.*')]) 
         self.logfile_name = self.logfile.name
         open(self.logfile_name, 'r')
@@ -145,11 +151,11 @@ class MainFrame(tk.Frame):
 
     def buffs_loop_time_passing(self):
         
-        buffs = self.logfile.readlines()
+        buffs = self.logfile.readlines() # when readlines is called it gets the newlines that have been written in the file since their last update and puts them as seperate list items into a list
         
-        print(buffs) # debugging
+        # print(buffs) # debugging, shows the chat lot output from the game in the console
 
-        if self.name_stringvar.get() + " uses Potion of Endurance" in str(buffs):
+        if self.name_stringvar.get() + " uses Potion of Endurance" in str(buffs): # turning the list input from the chatlog into a string to search with "in" for the matching trigger for the buff
             self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_endu.png"])
 
         elif self.name_stringvar.get() + " uses Potion of Cat\\'s Grace" in str(buffs):
@@ -198,9 +204,11 @@ class MainFrame(tk.Frame):
         TODO: Have an entry for CHA modifier, to calculate things like divine shield and might
 
         TODO: Have a CL entry to calculate spells cast
+
+        TODO: make the buffs variable into a string instead of string-ifying it on each if statement... isn't slow right now though anyway
         """
 
-        for x in self.buffs_list_frames:
+        for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s TODO: let user set that threshold
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
             if x.buff_birthday < time.time() + 6:
                 x['background'] = 'red'
@@ -213,6 +221,8 @@ class MainFrame(tk.Frame):
 
     def buffs_frame_list_is_appended(self, added_buff):
         """ includes name, bday, duration
+        builds the labelframe for each buff and adds it to the list
+        of buffs that gets displayed
         """ 
 
         self.buff_frame = tk.LabelFrame(self.buff_holding_frame, borderwidth=1, text=added_buff[0][0:4], labelanchor="n")
@@ -239,9 +249,8 @@ class MainFrame(tk.Frame):
         self.buffs_display_nicely()
 
     def buffs_display_nicely(self):
-        """ used to put into string and format, now
-        want to show frame grid and graphic with
-        fancy for loop to make list of frames
+        """ takes all the buffs labelframe objects and sorts and displays them
+        nicely in the buff_frame in the canvas
         """
         # TODO let user choose how to sort, keeping alphabetical for reference
         # self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z['text'], reverse=True) # sort alphabetically
@@ -251,6 +260,11 @@ class MainFrame(tk.Frame):
             x.pack(side="right")
         self.resize_set_buff_window('buff display')
 
+    def rest_off_buffs(self): # removes all buffs and removes the frame border by re-drawing as 1 width when character rests
+        for x in self.buffs_list_frames:
+            x.destroy()
+        self.buffs_list_frames.clear()
+        self.buff_holding_frame['width'] = "1"
 
 class App(tk.Tk): # creating a tk window object and using it for overall constructor, but otherwise not good practice to do much more with it, instead you build stuff in the "window" inside of a Frame widget that makes up the whole interior of the window
     def __init__(self):
