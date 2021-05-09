@@ -1,12 +1,137 @@
 """
 Author: Mattamue
 Program: buff_watcher_oop.py
-Last updated: 05/04/2021
+Last updated: 05/08/2021
 
 Watches chat log of the Neverwinter Nights video game
 and extends the UI by overlaying a window with more
 information than is usually in the game
+
+
+TODO: organize TODOs...
+
+TODO: When except on "uses items speical power." see if IG and team let me into development to make that more verbose
+        if not, see if can tie that into idea for right-click power, would be a huge list of stuff?
+        weapon essences
+        poisons? I think those are more verbose...
+        Alchemist fire... also verbose?
+        innate abilites? having the invisilibty gift or duergar stuff, or drow darkness?
+
+TODO: in the name-setting window, have the cursor default to that field and have return be the same as clicking OK -- adjust that when making
+        new character settings window for the CL, CHA, player zoo and etc...
+
+TODO: only calculate all the time() countdowns in one place, but move and display them in more if needed, process savings?
+
+TODO: Have an entry for CHA modifier, to calculate things like divine shield and might
+
+TODO: Have a CL entry to calculate spells cast
+
+TODO: Have modifier for LM scrolls
+
+TODO: Have edge cases for clarity duration, non-"uses" stuff like hex cooldown, clarity cooldown
+
+TODO: All class ability cooldowns
+
+TODO: No way to capture magic alignment use form, just "potion/wand of alignment" -- arelith back-end access?
+        Assume shadow conj is Mage Armor for now
+        Have some kind of right-click dropdown if clicked inside the "shadow conj" frame and then user chooses sub-spell?
+        Called out in another TODO below to expand this right-click menu if possible to lots of stuff
+
+TODO: see if the hours/3 caster level for GMW is fucky or if its just 120s/level
+
+TODO: add triggers like the Dust of Disappearance and Dust of Appearance to the "uses" json and handling
+        uses Ranger armor (bark)
+        uses Inception nightmare (camo)
+        uses Desperado (fox)
+        uses armor immo (flame shield)
+        uses displacer cloak & armor (imp invis)
+        rogue leathers (rog cunning)
+        uses battlemed (moster regen)
+        uses infiltration belt (camo)
+        uses master elf chain (camo)
+        uses Sanc Plate (aid)
+        uses Blackguard helm (divine shield)
+        uses barb helm (bulls)
+        uses pot of dirt (camo)
+        uses fire beetle belly (summon V)
+        uses staff of life (regen)
+        uses Icon Hunt (aura vit)
+        uses Barcid Pipes (amplify)
+        uses Bardic Harp (apmlify, eagle)
+        uses ghostwalker ring (ghost vis)
+        uses Ioun Stone (do the colors show up in the log? track that too, or just that used one? & replace skleen?)
+        uses dust disap (imp invis)
+        uses dust appear (invis purge)
+        skleen (colors show up in log, right? track that too, or just that used one? & replace ioun?)
+        uses orcish blood mace (blood frenz)
+        uses orcish blood sword (blood frenz)
+        uses elder dream (bark) -- way to capture using bark vs natur balance?
+        uses DRagonbone spear (energy buff)
+        uses bracers (greensteel/ada flavors) (exped, shield, identify)
+        uses Penumd Vest (shadow shield)
+        uses Witchhunter's (dismissal)
+
+
+TODO: barkskin vendor CL3 vs player CL12 -- handle in the zoo vendor vs player created options?
+
+TODO: skip this for darkness? -- even have offensive spells like darkness or acid fog?
+        Done: have duplicates delete the old and place the new duration
+
+TODO: damage shields don't stack, but they do in the watcher -- solve by giving them the same "name" or some other way?
+
+TODO: let user set threshold for buff label turning red? is currently 6s
+
+TODO: let user choose how to sort the buffs, currently sorts "oldest" to the left and shows expiring buffs on the right
+
+TODO: learn threading and/or async to remove the window freeze while urllib is getting the portal page
+        Probably in the button_friends() function?
+
+        https://stackoverflow.com/questions/47895765/use-asyncio-and-tkinter-or-another-gui-lib-together-without-freezing-the-gui
+        https://www.oreilly.com/library/view/python-cookbook/0596001673/ch09s07.html
+        https://stackoverflow.com/questions/48254837/python-async-await-downloading-a-list-of-urls?rq=1  --- this one looks promising, async.Semaphore?
+
+TODO: Maybe have a blank buff create and a right-click dropdown for users to choose sub-menus for sub-spells like
+        Shadow Conjuration. Additional options on casting buffs for metamagic extended spells
+        and an option for removing specific buffs; like Summon IX when it gets killed or when you summon another...
+
+TODO: Write how to handle when you're breached/dispelled
+        Sort the buff list by the breach list, then apply breach remove?
+        Recognize how many to breach for mords/breach/lesser? -- hard to know if getting breached by AoE mords for 2 for example...
+        Grab the "dispelled" chatlog and remove those
+        Create a window that list the (likely) breached buffs and the for-sure dispelled?
+
+TODO: Let the user make changes to the buffs json from within the program
+        Maybe a listbox with a bunch of entry fields filled out from the json dict? -- would be a huge listbox...
+        Maybe try the fiendslist with this concept first
+        Let the user edit the current dict and give them option to save it back to the json?
+        Capture non-recognize "uses" or "casts" strings and add somewhere to be validated and put into the json later?
+
+TODO: Have a window that shows last few (3-5?) attackers and their (max) AB, guesses AC based on hits and misses?
+        Will need another way to loop readlines... capture characters in combat
+        Something to tracker last few attackers and attackees, maybe a pandas data frame
+        maybe have last saves for casters and casters VS you DCs
+        ... put it in a sql? ... make that sql networked? probly no
+
+TODO: Have a DPS tracker
+        Like the last attackers... will need some other way to loop the newlines or hook into it
+        Another data frame -- user sets who they're watching and when they start
+        Simple: Just calculate time since started tracking and divide by damage, IE whole dungeon
+            Or, button to stop counting and re-start, let user micro-manage if they want
+        Challange: Could calculate from initiative roll to X seconds after last attacked or attack and clip...
+            if want to get crazy and try to figure DPS over time actually in combat automatically
+
+TODO: Have a round tracker
+        Base off of flurry and guessing your own attack's AB
+        Maybe have user set their AB so system knows what flurry its in, adjust the round off of that
+        A little bar that shows a 6s timer when user in combat -- not just a straight countdown stopwatch...
+        Maybe something like a progress bar that fills and has extimated 2s flurries
+        Guess when you're able to act based off of last action, like use a potion then won't start flurry for 6s
+        unless use a 2nd potion right away, then 3s after that is flurry time...
+
 """
+
+
+# probably need to clean these up
 
 import tkinter as tk
 from tkinter import ttk, Menu
@@ -14,6 +139,13 @@ from PIL import ImageTk, Image
 import time
 from tkinter.filedialog import askopenfile
 from get_friends_list import friends_list
+import json
+
+"""
+the MainFrame class is the main object of the program, when the driver in the "if __main__" below runs, it instantiates an instance of this class
+as an object, and everything else runs from there -- this class has gotten very big and needs to be broken down, probably starting with
+making the buff_frame its own class and functions
+"""
 
 class MainFrame(tk.Frame):
     def __init__(self, container):
@@ -27,6 +159,9 @@ class MainFrame(tk.Frame):
         self.buffs_list_frames = [] # setting this to be used later
 
         self.name_stringvar = tk.StringVar() # setting in constructor so doesn't error when opening file when not set
+
+        # loading up the "use items" json in the constructor... probably a better way to do this
+        self.use_items_dict = json.load(open('NWN-Buff-Watcher/buffs_json/use_items.json','r'))
 
         # frame for the buttons on the right
         self.buttons_frame = tk.Frame(self)
@@ -49,7 +184,7 @@ class MainFrame(tk.Frame):
         self.menu_button.menu.add_command(label='Exit', command=lambda: app.destroy())
 
         # creating the canvas that will be scrollable and have the buff_frame built into it as a window so it'll be scrollable
-        self.canvas_test = tk.Canvas(self, height=75, width=500)
+        self.canvas_test = tk.Canvas(self, height=70, width=500)
         self.canvas_test.grid(column=0, row=0, sticky='nsew')
 
         # frame outside of the canvas
@@ -69,11 +204,13 @@ class MainFrame(tk.Frame):
 
 
     def resize_set_buff_window(self, event):
+        # draws a canvas widget that we're going to put a frame with the buffs into later
+        # these three lines were a lot more work than they seem
         self.re_size_move = (self.canvas_test.winfo_width() - ((self.canvas_test.bbox(1)[2] - self.canvas_test.bbox(1)[0]))) + self.canvas_test.canvasx(0)
         self.canvas_test.moveto(1, self.re_size_move, 0)
         self.canvas_test.configure(scrollregion=self.canvas_test.bbox("all"))
 
-        # debugging --- getting the buffs to sit at the right and move correctly with window resizes was HARD ^ that small bit of code doesn't reflect everything that was tried
+        # debugging --- getting the buffs to sit at the right and move correctly with window resizes was HARD
         # print("-" * 30)
         # print(event)
         # print(f"self.canvas_test.coords(1): {self.canvas_test.coords(1)}")
@@ -94,7 +231,9 @@ class MainFrame(tk.Frame):
         # print(f'self.canvas_test.configure("confine"): {self.canvas_test.configure("confine")}')
 
 
-    def character_name(self): # lets user set their character name so only their buffs are captured from the chat log
+    def character_name(self):
+        # lets user set their character name so only their buffs are captured from the chat log
+        # expand this out so that it can save settings, and has settings for caster level, LM, player-made zoo pots
         self.name_entry_window = tk.Toplevel(self)
         self.name_entry_window.title("Enter Character Name")
         self.name_stringvar = tk.StringVar()
@@ -111,39 +250,49 @@ class MainFrame(tk.Frame):
         self.name_entry_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
 
     def testing_buttons(self):
-        # seperate window for holding debugging stuff
+        # seperate window for holding debugging stuff, nice when not want to boot up NWN all the time
         self.testing_buttons_window = tk.Toplevel(self)
         self.testing_buttons_window.title("Buttons for testing")
-        # bebugging buttons, moved into its down toplevel
         self.debugging_buttons_frame = tk.Frame(self.testing_buttons_window)
         self.debugging_buttons_frame.grid(column=0, row=1)
         self.debugging_label = ttk.Label(self.debugging_buttons_frame, text="Only click if you know what\nyou're doing")
-        self.debugging_label.grid(column=0, row=10)
+        self.debugging_label.grid(column=0, row=9)
         self.button1 = ttk.Button(self.debugging_buttons_frame)
         self.button1['text'] = "Simulate frame list appended True Strike"
-        self.button1['command'] = lambda: self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "NWN-Buff-Watcher\graphics\p_true.png"])
+        self.button1['command'] = lambda: self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "NWN-Buff-Watcher/graphics/true.png"])
         self.button1.grid(column=0, row=11)
         self.button2 = ttk.Button(self.debugging_buttons_frame)
         self.button2['text'] = "Simulate frame list appended Bulls"
-        self.button2['command'] = lambda: self.buffs_frame_list_is_appended(["Bulls", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_bulls.png"])
+        self.button2['command'] = lambda: self.buffs_frame_list_is_appended(["Bulls", time.time() + 1080, "NWN-Buff-Watcher/graphics/bulls.png"])
         self.button2.grid(column=0, row=12)
         self.button0 = ttk.Button(self.debugging_buttons_frame)
         self.button0['text'] = "Simulate frame list appended Endurance"
-        self.button0['command'] = lambda: self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_endu.png"])
+        self.button0['command'] = lambda: self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher/graphics/endu.png"])
         self.button0.grid(column=0, row=13)
-        # the simulated looping doesn't work with the logfile stuff activated... need to make a nothing variable when click testing
+        self.button3 = ttk.Button(self.debugging_buttons_frame)
+        self.button3['text'] = "Simulate frame list appended Clarity"
+        self.button3['command'] = lambda: self.buffs_frame_list_is_appended(["Clarity", time.time() + 48, "NWN-Buff-Watcher/graphics/clar.png"])
+        self.button3.grid(column=0, row=10)
+
+        # don't run simulated looping with actual looping, or click more than once, causes two loops that get weird
         self.button4 = ttk.Button(self.debugging_buttons_frame)
         self.button4['text'] = "START loops of time passing"
-        self.button4['command'] = lambda: self.buffs_loop_time_passing()
+        self.button4['command'] = lambda: [self.testing_logloops(), self.buffs_loop_time_passing()]
         self.button4.grid(column=0, row=14)
+
         self.geo_blank = ttk.Button(self.debugging_buttons_frame, text="Set geo to ''", command=lambda: app.geometry(""))
         self.geo_blank.grid(column=0, row=15)
         self.resize_test = ttk.Button(self.debugging_buttons_frame, text="resize call", command=lambda: self.resize_set_buff_window("test"))
         self.resize_test.grid(column=0, row=16)
         self.testing_buttons_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
 
+    def testing_logloops(self):
+        # sets a dummy file when testing without actually opening an active NWN log file
+        self.logfile = open("dummy.tmp","w+")
 
-    def open_file(self): # opens the game chat log file to watch, moves to the end so it doesn't scan potentially 1000s of lines, only want most recent
+    def open_file(self):
+        # opens the game chat log file to watch
+        # when first runs, moves the pointer (where it reads from) to the end so it doesn't scan potentially 1000s of lines, only want most recent
         self.logfile = askopenfile(mode ='r', filetypes =[('Logs', '*.txt'), ('Any', '*.*')]) 
         self.logfile_name = self.logfile.name
         open(self.logfile_name, 'r')
@@ -152,65 +301,23 @@ class MainFrame(tk.Frame):
 
 
     def buffs_loop_time_passing(self):
+        # the main "loop" of the watcher, calls itself at the end to keep watching the chat log for new lines and updating timers
         
         buffs = self.logfile.readlines() # when readlines is called it gets the newlines that have been written in the file since their last update and puts them as seperate list items into a list
         
         # print(buffs) # debugging, shows the chat lot output from the game in the console
 
-        if self.name_stringvar.get() + " uses Potion of Endurance" in str(buffs): # turning the list input from the chatlog into a string to search with "in" for the matching trigger for the buff
-            self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_endu.png"])
+        for logline in buffs:
+            if self.name_stringvar.get() + " uses " in logline: # need a modifier for vendor vs player potions
+                start = logline.split(" ").index("uses")
+                stop = len(logline.split(" "))
+                output_string = ""
+                for x in range(start, stop):
+                    output_string = output_string + logline.strip().split(" ")[x] + " "
+                # print(output_string[:-1]) # testing
+                self.uses_call(output_string[:-1])
 
-        elif self.name_stringvar.get() + " uses Potion of Cat\\'s Grace" in str(buffs):
-            self.buffs_frame_list_is_appended(["Cat's Grace", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_cats.png"])
-
-        elif self.name_stringvar.get() + " uses Potion of Bull\\'s Strength" in str(buffs):
-            self.buffs_frame_list_is_appended(["Bull's Strength", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_bulls.png"])
-        
-        elif self.name_stringvar.get() + " uses Potion of Owl\\'s Wisdom" in str(buffs):
-            self.buffs_frame_list_is_appended(["Owl's Wisdom", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_owls.png"])
-        
-        elif self.name_stringvar.get() + " uses Potion of Fox\\'s Cunning" in str(buffs):
-            self.buffs_frame_list_is_appended(["Fox's Cunning", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_foxs.png"])
-        
-        elif self.name_stringvar.get() + " uses Potion of Clarity" in str(buffs):
-            self.buffs_frame_list_is_appended(["Clarity", time.time() + 48, "NWN-Buff-Watcher\graphics\p_clar.png"])
-            self.buffs_frame_list_is_appended(["Clarity Cooldown", time.time() + 72, "NWN-Buff-Watcher\graphics\p_clar_cooldown.png"])
-
-        elif self.name_stringvar.get() + " uses Potion of Eagle\\'s Splendor" in str(buffs): # not firing, because of \'s... investigate further
-            self.buffs_frame_list_is_appended(["Eagle's Splendor", time.time() + 1080, "NWN-Buff-Watcher\graphics\p_eagle.png"])
-
-        elif self.name_stringvar.get() + " uses Potion of Barkskin" in str(buffs):
-            self.buffs_frame_list_is_appended(["Barkskin", time.time() + 4320, "NWN-Buff-Watcher\graphics\p_bark.png"])
-
-        elif self.name_stringvar.get() + " uses Potion of True Strike" in str(buffs):
-            self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "NWN-Buff-Watcher\graphics\p_true.png"])
-
-        elif self.name_stringvar.get() + " uses Potion of Freedom" in str(buffs):
-            self.buffs_frame_list_is_appended(["Freedom", time.time() + 2520, "NWN-Buff-Watcher\graphics\p_freedom.png"])
-
-        elif self.name_stringvar.get() + " uses Potion of Speed" in str(buffs):
-            self.buffs_frame_list_is_appended(["Haste", time.time() + 30, "NWN-Buff-Watcher\graphics\p_freedom.png"])
-
-        elif self.name_stringvar.get() + " uses Shield" in str(buffs):
-            self.buffs_frame_list_is_appended(["Shield", time.time() + 300, "NWN-Buff-Watcher\graphics\p_shield.png"])
-
-        elif self.name_stringvar.get() + " uses Shadow Shield" in str(buffs):
-            self.buffs_frame_list_is_appended(["Shadow Shield", time.time() + 780, "NWN-Buff-Watcher\graphics\p_shadow_shield.png"])
-
-        elif "Hex has a timer of 30 second(s)." in str(buffs):
-            self.buffs_frame_list_is_appended(["Hex", time.time() + 30, "NWN-Buff-Watcher\graphics\p_hex.png"])
-
-        """ TODO: only calculate all the time() countdowns in one place, but move and
-        display them in more if needed, process savings?
-
-        TODO: Have an entry for CHA modifier, to calculate things like divine shield and might
-
-        TODO: Have a CL entry to calculate spells cast
-
-        TODO: make the buffs variable into a string instead of string-ifying it on each if statement... isn't slow right now though anyway
-        """
-
-        for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s TODO: let user set that threshold
+        for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
             if x.buff_birthday < time.time() + 6:
                 x['background'] = 'red'
@@ -219,18 +326,55 @@ class MainFrame(tk.Frame):
                 x.destroy()
                 self.resize_set_buff_window('buff destroy')
         
-        self.after(100, self.buffs_loop_time_passing)
+        self.after(100, self.buffs_loop_time_passing) # 1000 works... trying 100
+
+    def uses_call(self, buff_string):
+        # takes the string that comes back from the main loop and compares it to a dictionary of all possible "character uses X thing" responses
+        # that dictionary has the "char uses X" as the keys so it can easily return the values like duration and icon
+        # much faster (I think) than the if > elif > elif... I was using to prototype, easy to put in a json and potentially easy for
+        # users to add their own "unique" item uses into the json without having to know the code -- or not have access to the code
+        # if/when I make a PyInstaller .exe release
+        
+        adding_buff = []
+        
+        try: # handle "uses" lines that aren't defined in the json, otherwise they exception and stop the program
+            adding_buff.append(self.use_items_dict[f'{buff_string}']['name'])
+            adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) *
+                                            int(self.use_items_dict[f'{buff_string}']['caster_level'])))
+            adding_buff.append(self.use_items_dict[f'{buff_string}']['icon'])
+            # print(adding_buff) # testing
+            if self.use_items_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle -- gets wand and potion
+                adding_buff[1] = adding_buff[1] + 30
+                self.buffs_frame_list_is_appended(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+            if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF
+                self.buffs_frame_list_is_appended(["Invisibility", time.time() + 42, "NWN-Buff-Watcher/graphics/invisibility.png"])
+            self.buffs_frame_list_is_appended(adding_buff)
+        except:
+            print(f"EXCEPTED ON SOMETHING: {buff_string}") # for now just fart out that it was handled, maybe later add to a CSV and user can add to json with a buff-managing window?
+
 
     def buffs_frame_list_is_appended(self, added_buff):
-        """ includes name, bday, duration
+        """ includes name, bday, duration in a list
         builds the labelframe for each buff and adds it to the list
         of buffs that gets displayed
         """ 
 
-        self.buff_frame = tk.LabelFrame(self.buff_holding_frame, borderwidth=1, text=added_buff[0][0:4], labelanchor="n")
+        self.buff_frame = tk.LabelFrame(self.buff_holding_frame, width=44, height=70, borderwidth=1, text=added_buff[0][0:4], labelanchor="n")
 
-        # TODO width isn't getting through...
+        # REMINDER: was able to keep buff_label same size with grid_propagate(0)
+        # this keeps them from "jittering" when the seconds tick down from 5 digits to 4, etc
+        # watch and make sure it didn't fuck anything up
 
+        self.buff_frame.grid_propagate(0)
+
+        # keeps the icons and the countdown text centered in the buff_frame
+        # have to use since forcing the width -- to keep the icon and countdown label widgets
+        # centered in the buff_frame
+        self.buff_frame.columnconfigure(0, weight=1) 
+        self.buff_frame.rowconfigure(0, weight=1)
+        self.buff_frame.rowconfigure(1, weight=1)
+
+        self.buff_frame.buff_name = added_buff[0]
         self.buff_frame.buff_image_reference = ImageTk.PhotoImage(Image.open(added_buff[2]))
         self.buff_frame.buff_image_label = ttk.Label(self.buff_frame, image=self.buff_frame.buff_image_reference)
         self.buff_frame.buff_image_label.image_keep = self.buff_frame.buff_image_reference # keeping image in memory
@@ -254,9 +398,27 @@ class MainFrame(tk.Frame):
         """ takes all the buffs labelframe objects and sorts and displays them
         nicely in the buff_frame in the canvas
         """
-        # TODO let user choose how to sort, keeping alphabetical for reference
-        # self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z['text'], reverse=True) # sort alphabetically
-        self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z.buff_birthday - time.time(), reverse=False) # sort remaining time
+
+        # self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z['text'], reverse=True) # sort alphabetically instead... see TODO above
+
+        # remove duplicates
+
+        self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z.buff_birthday - time.time(), reverse=True) # sort remaining reverse so the old duplicates get removed
+
+        unique_buffs_set = set() # sets don't allow duplicates, we'll use this property in a few lines
+        non_duplicates = [] # empty set to re-build with the non-duplicates
+        for obj in self.buffs_list_frames: # looping through our buffs list
+            if obj.buff_name not in unique_buffs_set: # if the buff name is not in the list (will always be true 1st time)
+                non_duplicates.append(obj) # add the non-duplicate to the new list
+                unique_buffs_set.add(obj.buff_name) # add the "name" identifier to the set, logically we wouldn't be able to anyway in this loop, but helps be sure
+            else:
+                obj.destroy() # if it is a duplicate it isn't getting built into the new list, so we don't want it hanging around in the window, destroy it so there's no "ghost" of a buff
+
+        self.buffs_list_frames = non_duplicates # rebuild the buff list with just the non-duplicates
+
+        # sort the list before packing and displaying
+        self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z.buff_birthday - time.time(), reverse=False) # sort remaining time back to oldest to the left
+
         for x in self.buffs_list_frames:
             x.pack_forget()
             x.pack(side="right")
@@ -283,12 +445,7 @@ class MainFrame(tk.Frame):
 
     def button_friends(self):
         self.friends_stringvar.set(friends_list.scrape_portal())
-        """
-        TODO: learn threading and/or async to remove the window freeze while urllib is getting the portal page
-        https://stackoverflow.com/questions/47895765/use-asyncio-and-tkinter-or-another-gui-lib-together-without-freezing-the-gui
-        https://www.oreilly.com/library/view/python-cookbook/0596001673/ch09s07.html
-        https://stackoverflow.com/questions/48254837/python-async-await-downloading-a-list-of-urls?rq=1  --- this one looks promising, async.Semaphore?
-        """
+
 
 
 class App(tk.Tk): # creating a tk window object and using it for overall constructor, but otherwise not good practice to do much more with it, instead you build stuff in the "window" inside of a Frame widget that makes up the whole interior of the window
