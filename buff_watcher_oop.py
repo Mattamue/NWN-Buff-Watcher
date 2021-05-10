@@ -17,6 +17,12 @@ TODO: When except on "uses items speical power." see if IG and team let me into 
         Alchemist fire... also verbose?
         innate abilites? having the invisilibty gift or duergar stuff, or drow darkness?
 
+TODO: Potential location for the menu drop-down -- in the BuffLabelFrame class?
+        Have a bunch of if statatements to determine what menus are available for what types of buffs?
+        IE spell buffs get extended option
+        Sub-buffs like shadow conj and prot evil get their sub-spells
+        have it destroy the buff and make a call back to itself to create the sub-spell?
+
 TODO: in the name-setting window, have the cursor default to that field and have return be the same as clicking OK -- adjust that when making
         new character settings window for the CL, CHA, player zoo and etc...
 
@@ -174,6 +180,7 @@ class MainFrame(tk.Frame):
         # putting all the "normal" menus into this button to reduce the height of the window since the traditional file menu adds like another 20 pixels of heigth that do nothing
         self.menu_button = ttk.Menubutton(self.buttons_frame, text="Settings")
         self.menu_button.grid(column=0, row=1, sticky='ew')
+        # tearoff is an old unix (I think) thing that allows you to click and have the menu be its own window, we don't want that so its set to 0
         self.menu_button.menu = Menu(self.menu_button, tearoff=0)
         self.menu_button["menu"] = self.menu_button.menu
         self.menu_button.menu.add_command(label='Name', command=lambda: main_frame.character_name())
@@ -257,21 +264,22 @@ class MainFrame(tk.Frame):
         self.debugging_buttons_frame.grid(column=0, row=1)
         self.debugging_label = ttk.Label(self.debugging_buttons_frame, text="Only click if you know what\nyou're doing")
         self.debugging_label.grid(column=0, row=9)
+        # re-tooling for the BuffLabelFrame object
         self.button1 = ttk.Button(self.debugging_buttons_frame)
         self.button1['text'] = "Simulate frame list appended True Strike"
-        self.button1['command'] = lambda: self.buffs_frame_list_is_appended(["True Strike", time.time() + 9, "NWN-Buff-Watcher/graphics/true.png"])
+        self.button1['command'] = lambda: self.make_buff_labelframe(["True Strike", time.time() + 9, "NWN-Buff-Watcher/graphics/true.png"])
         self.button1.grid(column=0, row=11)
         self.button2 = ttk.Button(self.debugging_buttons_frame)
         self.button2['text'] = "Simulate frame list appended Bulls"
-        self.button2['command'] = lambda: self.buffs_frame_list_is_appended(["Bulls", time.time() + 1080, "NWN-Buff-Watcher/graphics/bulls.png"])
+        self.button2['command'] = lambda: self.make_buff_labelframe(["Bulls", time.time() + 1080, "NWN-Buff-Watcher/graphics/bulls.png"])
         self.button2.grid(column=0, row=12)
         self.button0 = ttk.Button(self.debugging_buttons_frame)
         self.button0['text'] = "Simulate frame list appended Endurance"
-        self.button0['command'] = lambda: self.buffs_frame_list_is_appended(["Endurance", time.time() + 1080, "NWN-Buff-Watcher/graphics/endu.png"])
+        self.button0['command'] = lambda: self.make_buff_labelframe(["Endurance", time.time() + 1080, "NWN-Buff-Watcher/graphics/endu.png"])
         self.button0.grid(column=0, row=13)
         self.button3 = ttk.Button(self.debugging_buttons_frame)
         self.button3['text'] = "Simulate frame list appended Clarity"
-        self.button3['command'] = lambda: self.buffs_frame_list_is_appended(["Clarity", time.time() + 48, "NWN-Buff-Watcher/graphics/clar.png"])
+        self.button3['command'] = lambda: self.make_buff_labelframe(["Clarity", time.time() + 48, "NWN-Buff-Watcher/graphics/clar.png"])
         self.button3.grid(column=0, row=10)
 
         # don't run simulated looping with actual looping, or click more than once, causes two loops that get weird
@@ -285,6 +293,15 @@ class MainFrame(tk.Frame):
         self.resize_test = ttk.Button(self.debugging_buttons_frame, text="resize call", command=lambda: self.resize_set_buff_window("test"))
         self.resize_test.grid(column=0, row=16)
         self.testing_buttons_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
+
+    def make_buff_labelframe(self, added_buff):
+        """ Makes a labelframe object with some special
+        buff parameters passed in a list
+        :param: list, expecting this type of format ["Clarity", time.time() + 48, "NWN-Buff-Watcher/graphics/clar.png"]
+        :return: also returns the object
+        """
+        self.buff_labelframe = BuffLabelFrame(self.buff_holding_frame, added_buff)
+        return self.buff_labelframe
 
     def testing_logloops(self):
         # sets a dummy file when testing without actually opening an active NWN log file
@@ -345,54 +362,12 @@ class MainFrame(tk.Frame):
             # print(adding_buff) # testing
             if self.use_items_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle -- gets wand and potion
                 adding_buff[1] = adding_buff[1] + 30
-                self.buffs_frame_list_is_appended(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+                self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
             if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF
-                self.buffs_frame_list_is_appended(["Invisibility", time.time() + 42, "NWN-Buff-Watcher/graphics/invisibility.png"])
-            self.buffs_frame_list_is_appended(adding_buff)
+                self.make_buff_labelframe(["Invisibility", time.time() + 42, "NWN-Buff-Watcher/graphics/invisibility.png"])
+            self.make_buff_labelframe(adding_buff)
         except:
             print(f"EXCEPTED ON SOMETHING: {buff_string}") # for now just fart out that it was handled, maybe later add to a CSV and user can add to json with a buff-managing window?
-
-
-    def buffs_frame_list_is_appended(self, added_buff):
-        """ includes name, bday, duration in a list
-        builds the labelframe for each buff and adds it to the list
-        of buffs that gets displayed
-        """ 
-
-        self.buff_frame = tk.LabelFrame(self.buff_holding_frame, width=44, height=70, borderwidth=1, text=added_buff[0][0:4], labelanchor="n")
-
-        # REMINDER: was able to keep buff_label same size with grid_propagate(0)
-        # this keeps them from "jittering" when the seconds tick down from 5 digits to 4, etc
-        # watch and make sure it didn't fuck anything up
-
-        self.buff_frame.grid_propagate(0)
-
-        # keeps the icons and the countdown text centered in the buff_frame
-        # have to use since forcing the width -- to keep the icon and countdown label widgets
-        # centered in the buff_frame
-        self.buff_frame.columnconfigure(0, weight=1) 
-        self.buff_frame.rowconfigure(0, weight=1)
-        self.buff_frame.rowconfigure(1, weight=1)
-
-        self.buff_frame.buff_name = added_buff[0]
-        self.buff_frame.buff_image_reference = ImageTk.PhotoImage(Image.open(added_buff[2]))
-        self.buff_frame.buff_image_label = ttk.Label(self.buff_frame, image=self.buff_frame.buff_image_reference)
-        self.buff_frame.buff_image_label.image_keep = self.buff_frame.buff_image_reference # keeping image in memory
-        self.buff_frame.buff_image_label.grid(column=0, row=0)
-        self.buff_frame.buff_birthday = added_buff[1]
-        self.buff_frame.buff_timer = tk.StringVar()
-        self.buff_frame.buff_timer.set(f"{self.buff_frame.buff_birthday - time.time():.1f}s")
-        self.buff_frame.buff_label = ttk.Label(self.buff_frame, textvariable=self.buff_frame.buff_timer)
-        self.buff_frame.buff_label.grid(column=0, row=1)
-        # Add the Frame to the list
-        self.buffs_list_frames.append(self.buff_frame)
-
-        # debugging
-        # print(self.buffs_list_frames)
-        # print(self.buff_frame.buff_timer.get())
-        # print(f"buff_frame.winfo_width: {self.buff_frame.winfo_width()}")
-
-        self.buffs_display_nicely()
 
     def buffs_display_nicely(self):
         """ takes all the buffs labelframe objects and sorts and displays them
@@ -446,6 +421,55 @@ class MainFrame(tk.Frame):
     def button_friends(self):
         self.friends_stringvar.set(friends_list.scrape_portal())
 
+
+
+class BuffLabelFrame(tk.LabelFrame):
+    def __init__(self, container, buff_added):
+        super().__init__(container)
+
+        self.added_buff = buff_added
+
+        self.config(width=44, height=70, borderwidth=1, text=self.added_buff[0][0:4], labelanchor="n")
+        self.grid_propagate(0)
+        self.columnconfigure(0, weight=1) 
+        self.rowconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
+
+        self.buff_name = self.added_buff[0]
+        self.buff_image_reference = ImageTk.PhotoImage(Image.open(self.added_buff[2]))
+        self.buff_image_label = ttk.Label(self, image=self.buff_image_reference)
+        self.buff_image_label.image_keep = self.buff_image_reference # keeping image in memory
+        self.buff_image_label.grid(column=0, row=0)
+        self.buff_birthday = self.added_buff[1]
+        self.buff_timer = tk.StringVar()
+        self.buff_timer.set(f"{self.buff_birthday - time.time():.1f}s")
+        self.buff_label = ttk.Label(self, textvariable=self.buff_timer)
+        self.buff_label.grid(column=0, row=1)
+
+        # adding click-ability to click the buff frame image
+        self.buff_image_label.bind("<Button-1>", self.clicked_in_buff_frame)
+
+        self.click_menu = Menu(self, tearoff=0)
+
+        self.click_menu.add_command(label='Extended (nothing yet)')
+        self.click_menu.add_command(label='Sub-buff (ie shadow conj) (nothing yet)')
+        self.click_menu.add_command(label='Destroy', command=lambda: self.menu_destroy_buff_labelframe())
+
+        # When the object is created, add the Frame to the buffs list in the main_frame
+        # probably move this elsewhere
+        main_frame.buffs_list_frames.append(self)
+
+        # When the object is created, call the function in the main_frame that organizes and displays them
+        # probably move this elsewhere
+        main_frame.buffs_display_nicely()
+
+    def clicked_in_buff_frame(self, event):
+        self.click_menu.post(event.x_root, event.y_root)
+
+    def menu_destroy_buff_labelframe(self):
+        main_frame.buffs_list_frames.remove(self)
+        self.destroy()
+        main_frame.resize_set_buff_window('buff destroy')
 
 
 class App(tk.Tk): # creating a tk window object and using it for overall constructor, but otherwise not good practice to do much more with it, instead you build stuff in the "window" inside of a Frame widget that makes up the whole interior of the window
