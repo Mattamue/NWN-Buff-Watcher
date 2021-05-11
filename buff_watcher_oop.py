@@ -37,7 +37,30 @@ class MainFrame(tk.Frame):
 
         self.buffs_list_frames = [] # setting this to be used later
 
-        self.name_stringvar = tk.StringVar() # setting in constructor so doesn't error when opening file when not set
+        # feel like I'm saying this a lot... probably a better place for this...
+        # tries to open settings, just goes with defaults if it can't
+        try:
+            self.char_options = json.load(open('settings.json','r'))
+            self.name_stringvar = tk.StringVar() 
+            self.name_stringvar.set(self.char_options['name'])
+            self.cha_modifier = tk.IntVar()
+            self.cha_modifier.set(self.char_options['cha_mod'])
+            self.cl_modifier = tk.IntVar()
+            self.cl_modifier.set(self.char_options['cl_mod'])
+            self.vendor_bool = tk.BooleanVar()
+            self.vendor_bool.set(self.char_options['vop_bool'])
+            self.lm_modifier = tk.IntVar()
+            self.lm_modifier.set(self.char_options['lm_mod'])
+            print("Loaded char settings.")
+        except:
+            # setting in constructor for main_frame... maybe a better way to do this?
+            self.name_stringvar = tk.StringVar() 
+            self.cha_modifier = tk.IntVar()
+            self.cl_modifier = tk.IntVar()
+            self.vendor_bool = tk.BooleanVar()
+            self.vendor_bool.set(True) # setting a default... might turn off if impliment csv/options file -- or set there... maybe a json
+            self.lm_modifier = tk.IntVar()
+            print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
         self.use_items_dict = json.load(open('NWN-Buff-Watcher/buffs_json/use_items.json','r'))
@@ -56,7 +79,7 @@ class MainFrame(tk.Frame):
         # tearoff is an old unix (I think) thing that allows you to click and have the menu be its own window, we don't want that so its set to 0
         self.menu_button.menu = Menu(self.menu_button, tearoff=0)
         self.menu_button["menu"] = self.menu_button.menu
-        self.menu_button.menu.add_command(label='Name', command=lambda: main_frame.character_name())
+        self.menu_button.menu.add_command(label='Character', command=lambda: main_frame.character_settings())
         self.menu_button.menu.add_command(label='Open log...', command=lambda: main_frame.open_file())
         self.menu_button.menu.add_command(label='Friends', command=lambda: main_frame.friends_list_window())
         self.menu_button.menu.add_command(label='Testing', command=lambda: main_frame.testing_buttons())
@@ -111,23 +134,139 @@ class MainFrame(tk.Frame):
         # print(f'self.canvas_test.configure("confine"): {self.canvas_test.configure("confine")}')
 
 
-    def character_name(self):
+    def character_settings(self):
+        # TODO: refactor this into a class of TopLevel, but still have the name, level, and stuff available?
+        
         # lets user set their character name so only their buffs are captured from the chat log
         # expand this out so that it can save settings, and has settings for caster level, LM, player-made zoo pots
-        self.name_entry_window = tk.Toplevel(self)
-        self.name_entry_window.title("Enter Character Name")
-        self.name_stringvar = tk.StringVar()
-        self.name_label = ttk.Label(self.name_entry_window, text="Enter character name\nExample: Sleve Mcdichael\nAdd quotes for disguise: \"Maskedess Drowess\"\nNote: case and space-sensitive")
+        self.character_settings_window = tk.Toplevel(self) # creates a "toplevel" window which just means another pop-out window when called
+        self.character_settings_window.title("Character Settings") # name for the window, duh
+        self.character_settings_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
+
+        # since we're taking user input here we have to validate
+        # https://stackoverflow.com/questions/4140437/interactively-validating-entry-widget-content-in-tkinter/4140988#4140988
+        # we'll use this later where users are meant to enter intergers
+        vcmd = (self.character_settings_window.register(self.validate_int), '%d', '%i', '%P', '%s', '%S', '%v', '%V', '%W')
+
+        # all the name stuff in a frame
+        self.name_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.name_frame.grid(column=0, row=0, sticky='ew')
+        self.name_label = ttk.Label(self.name_frame, text="Enter character name\nExample: Sleve Mcdichael\nAdd quotes for disguise: \"Maskedess Drowess\"\nNote: case and space-sensitive")
         self.name_label.grid(column=0, row=0, columnspan=2)
-        self.name_entry = tk.Entry(self.name_entry_window, width = 30, textvariable = self.name_stringvar)
+        self.name_entry = tk.Entry(self.name_frame, width = 30, textvariable = self.name_stringvar)
         self.name_entry.grid(column=0, row=1, columnspan=2)
-        self.show_name_label = ttk.Label(self.name_entry_window, text="Name:")
+        self.name_entry.focus_set() # sets the focus and cursor here when the window is opened, in the name field
+        self.show_name_label = ttk.Label(self.name_frame, text="Name:")
         self.show_name_label.grid(column=0, row=2, sticky='e')
-        self.show_name_stringvar = ttk.Label(self.name_entry_window, textvariable=self.name_stringvar)
+        self.show_name_stringvar = ttk.Label(self.name_frame, textvariable=self.name_stringvar)
         self.show_name_stringvar.grid(column=1, row=2, sticky='w')
-        self.button_enter = tk.Button(self.name_entry_window, text="OK", command=lambda: self.name_entry_window.destroy())
-        self.button_enter.grid(column=0, row=3, columnspan=2)
-        self.name_entry_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
+
+        # cha modifier in its own frame
+        self.cha_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.cha_frame.grid(column=0, row=1, sticky='ew')
+        self.cha_description = ttk.Label(self.cha_frame, text="Enter charisma modifier for\nabilities like divine shield\nin order to estimate duration\n(enter an interger)")
+        self.cha_description.grid(column=0, row=0, columnspan=2, sticky='ew')
+        self.cha_entry = tk.Entry(self.cha_frame, width=10, textvariable=self.cha_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.cha_entry.grid(column=1, row=1, sticky='e')
+        self.cha_label = ttk.Label(self.cha_frame, text="Cha modifier:")
+        self.cha_label.grid(column=0, row=1, sticky='w')
+
+        # caster level in its own frame
+        self.caster_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.caster_frame.grid(column=0, row=2, sticky='ew')
+        self.cl_description = ttk.Label(self.caster_frame, text="Enter caster level for tracking\nof self-cast buffs\n(enter an interger)")
+        self.cl_description.grid(column=0, row=0, columnspan=2, sticky='ew')
+        self.cl_entry = tk.Entry(self.caster_frame, width=10, textvariable=self.cl_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.cl_entry.grid(column=1, row=1, sticky='e')
+        self.cl_label = ttk.Label(self.caster_frame, text="Caster Level:")
+        self.cl_label.grid(column=0, row=1, sticky='w')
+
+        # vendor/player pots in its own frame
+        self.vop_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.vop_frame.grid(column=0, row=3, sticky='ew')
+        self.vop_description = ttk.Label(self.vop_frame, text="Using vendor or player-made\nzoo or barkskin potions?\n(affects duration)")
+        self.vop_description.grid(column=0, row=0, columnspan=2, sticky='ew')
+        self.vop_radiobutton_vendor = tk.Radiobutton(self.vop_frame, text="Vendor", variable=self.vendor_bool, value=True)
+        self.vop_radiobutton_vendor.grid(column=0, row=1, sticky="w")
+        self.vop_radiobutton_player = tk.Radiobutton(self.vop_frame, text="Player", variable=self.vendor_bool, value=False)
+        self.vop_radiobutton_player.grid(column=1, row=1, sticky="e")
+
+        # Loremaster levels in its own frame
+        self.lm_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.lm_frame.grid(column=0, row=4, sticky='ew')
+        self.lm_description = ttk.Label(self.lm_frame, text="Loremaster levels increase the\ncaster level of wands and scrolls\nand therefore the duration. Enter\nyour Loremaster levels\n(enter an interger)")
+        self.lm_description.grid(column=0, row=0, columnspan=2, sticky='ew')
+        self.lm_entry = tk.Entry(self.lm_frame, width=10, textvariable=self.lm_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.lm_entry.grid(column=1, row=1, sticky='e')
+        self.lm_label = ttk.Label(self.lm_frame, text="Loremaster Level:")
+        self.lm_label.grid(column=0, row=1, sticky='w')
+
+        # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
+        self.character_settings_window.bind("<Return>", self.close_character_settings_window)
+        self.button_enter = tk.Button(self.character_settings_window, text="Save", command=lambda: self.close_character_settings_window("saved"))
+        self.button_enter.grid(column=0, row=5, columnspan=2)
+
+    def validate_int(self, action, index, value_if_allowed, prior_value, text, validation_type, trigger_type, widget_name):
+        ''' Here we take the vcmd from the entry windows and try to validate if they're intergers
+        The "value_if_allowed" argument is %P from above
+        The "text" argument is %S from above
+        value_if_allowed is more strict in that it doesn't even let you delete data from the cell
+        since an empty value isn't an int, but that's not how users expect it to work, so the
+        text argument is closer even if it poops out some errors now and then
+        '''
+        int_set = set("1234567890")
+
+        """
+        this checks if the value being typed into the entry field is part of the 1 to 0 set; allows users
+        to delete since that's what usually expected (you don't think about it, but highlighting a 0 and
+        changing it to something is really deleting the 0 and typing the new number) the empty values are
+        handled later in the close_char_window function since there's no easy way to allow deletes and not
+        allow this possible empty field
+        """
+
+        if int_set.issuperset(value_if_allowed):
+            return True
+        else:
+            self.bell()
+            return False
+
+    def close_character_settings_window(self, event):
+        # handling if user left these int fields blank when they saved
+        # otherwise, the validation will make sure they're at least an int
+
+        savefile = {}
+
+        # name can be anything and the radiobuttons can't get any user input but true and false so they're fine
+        savefile['name'] = self.name_stringvar.get()
+        savefile['vop_bool'] = self.vendor_bool.get()
+
+        # these three have to be in and the valuechecking in the entry windows keeps non 0-9 getting through,
+        # but an empty could still be a problem, so anything that fails just gets set to 0 before being saved
+        try:
+            savefile['cha_mod'] = self.cha_modifier.get()
+        except:
+            self.cha_modifier.set(0)
+            savefile['cha_mod'] = self.cha_modifier.get()
+        try:
+            savefile['cl_mod'] = self.cl_modifier.get()
+        except:
+            self.cl_modifier.set(0)
+            savefile['cl_mod'] = self.cl_modifier.get()
+        try:
+            savefile['lm_mod'] = self.lm_modifier.get()
+        except:
+            self.lm_modifier.set(0)
+            savefile['lm_mod'] = self.lm_modifier.get()
+
+        # saving to json, it's smart enough to overwrite old settings
+        with open('settings.json', 'w') as f:
+            json.dump(savefile, f, indent=4)
+
+        # closes the window
+        self.character_settings_window.destroy()
+
+
+
 
     def testing_buttons(self):
         # seperate window for holding debugging stuff, nice when not want to boot up NWN all the time
@@ -193,8 +332,10 @@ class MainFrame(tk.Frame):
     def buffs_loop_time_passing(self):
         # the main "loop" of the watcher, calls itself at the end to keep watching the chat log for new lines and updating timers
         
-        buffs = self.logfile.readlines() # when readlines is called it gets the newlines that have been written in the file since their last update and puts them as seperate list items into a list
+        # when readlines is called it gets the newlines that have been written in the file since their last update and puts them
+        # as seperate list items into a list
         
+        buffs = self.logfile.readlines() 
         # print(buffs) # debugging, shows the chat lot output from the game in the console
 
         for logline in buffs:
