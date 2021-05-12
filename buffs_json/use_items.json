@@ -3,426 +3,511 @@
         "name": "Aid",
         "duration": "60",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/aid.png"
     },
     "uses Potion of Amplify": {
         "name": "Amplify",
         "duration": "6",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/amplify.png"
     },
     "uses Potion of Animate Dead": {
         "name": "Animate Dead",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/animate_dead.png"
     },
     "uses Potion of Aura of Glory": {
         "name": "Aura of Glory",
         "duration": "60",
         "caster_level": "7",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/aura_glory.png"
     },
     "uses Potion of Balagarn's Iron Horn": {
         "name": "CD Balgarn's",
         "duration": "6",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
     },
     "uses Potion of Barkskin": {
         "name": "Barkskin",
         "duration": "360",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/bark.png"
+    },
+    "uses Potion of Black Warding": {
+        "name": "Death Ward",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "potion",
+        "icon": "NWN-Buff-Watcher/graphics/death_ward.png"
     },
     "uses Potion of Blade Thirst": {
         "name": "Blade Thirst",
         "duration": "120",
         "caster_level": "12",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/blade_thirst.png"
     },
     "uses Potion of Bless": {
         "name": "Bless",
         "duration": "60",
         "caster_level": "2",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/bless.png"
     },
     "uses Potion of Bless Weapon": {
         "name": "Bless Weapon",
         "duration": "120",
         "caster_level": "6",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/bless_weapon.png"
     },
     "uses Potion of Blood Frenzy": {
         "name": "Blood Frenzy",
         "duration": "6",
         "caster_level": "7",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
     },
     "uses Potion of Bull's Strength": {
         "name": "Bull's Strength",
         "duration": "360",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/bulls.png"
     },
     "uses Potion of Camouflage": {
         "name": "Camouflage",
         "duration": "600",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
     },
     "uses Potion of Cat's Grace": {
         "name": "Cat's Grace",
         "duration": "360",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/cats.png"
     },
     "uses Potion of Clairaudience/Clairvoyance": {
         "name": "Clairaudience/Clairvoyance",
         "duration": "6",
         "caster_level": "15",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/clairaud_clairvoyance.png"
     },
     "uses Potion of Clarity": {
         "name": "Clarity",
         "duration": "6",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/clar.png"
     },
     "uses Potion of Continual Flame": {
         "name": "Continual Flame",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/continual_flame.png"
     },
     "uses Potion of Darkfire": {
         "name": "Darkfire",
         "duration": "360",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/darkfire.png"
     },
     "uses Potion of Darkness": {
         "name": "Darkness",
         "duration": "6",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/darkness.png"
     },
     "uses Potion of Deafening Clang": {
         "name": "Deafening Clang",
         "duration": "6",
         "caster_level": "6",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/deaf_clang.png"
     },
     "uses Potion of Death Armor": {
         "name": "Death Armor",
         "duration": "6",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/death_armor.png"
     },
     "uses Potion of Displacement": {
         "name": "Displacement",
         "duration": "6",
         "caster_level": "9",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/displacement.png"
     },
     "uses Potion of Divine Favor": {
         "name": "Divine Favor",
         "duration": "60",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/divine_favor.png"
     },
     "uses Potion of Eagle's Splendor": {
         "name": "Eagle's Splendor",
         "duration": "360",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/eagle.png"
     },
     "uses Potion of Endurance": {
         "name": "Endurance",
         "duration": "360",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/endu.png"
     },
     "uses Potion of Endure Elements": {
         "name": "Endure Elements",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/endure_elements.png"
     },
     "uses Potion of Entropic Shield": {
         "name": "Entropic Shield",
         "duration": "60",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/entrop_shield.png"
     },
     "uses Potion of Expeditious Retreat": {
         "name": "Expeditious Retreat",
         "duration": "6",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/exped_retreat.png"
     },
     "uses Potion of Flame Weapon": {
         "name": "Flame Weapon",
         "duration": "60",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/flame_weap.png"
     },
     "uses Potion of Fox's Cunning": {
         "name": "Fox's Cunning",
         "duration": "360",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/foxs.png"
     },
     "uses Potion of Freedom": {
         "name": "Freedom",
         "duration": "60",
         "caster_level": "7",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/freedom.png"
     },
     "uses Potion of Ghostly Visage": {
         "name": "Ghostly Visage",
         "duration": "60",
         "caster_level": "15",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
+    },
+    "uses Potion of Giant Strength": {
+        "name": "Bull's Strength",
+        "duration": "360",
+        "caster_level": "15",
+        "type": "potion",
+        "icon": "NWN-Buff-Watcher/graphics/bulls.png"
     },
     "uses Potion of Greater Magic Fang": {
         "name": "Greater Magic Fang",
         "duration": "60",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/greater_magic_fang.png"
     },
     "uses Potion of Greater Magic Weapon": {
         "name": "Greater Magic Weapon",
         "duration": "120",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/greater_magic_weapon.png"
     },
     "uses Potion of Speed": {
         "name": "Haste",
         "duration": "6",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/haste.png"
     },
     "uses Potion of Haste": {
         "name": "Haste",
         "duration": "6",
         "caster_level": "10",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/haste.png"
     },
     "uses Potion of Identify": {
         "name": "Identify",
         "duration": "12",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/identify.png"
     },
     "uses Potion of Invisibility": {
         "name": "Invisibility",
         "duration": "6",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/invisibility.png"
     },
     "uses Potion of Invisibility Sphere": {
         "name": "Invisibility Sphere",
         "duration": "6",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/invisibility_sphere.png"
     },
     "uses Potion of Ironguts": {
         "name": "Ironguts",
         "duration": "600",
         "caster_level": "2",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/ironguts.png"
     },
     "uses Potion of Keen Edge": {
         "name": "Keen Edge",
         "duration": "120",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/keen_edge.png"
     },
     "uses Potion of Light": {
         "name": "Light",
         "duration": "360",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/light.png"
     },
     "uses Potion of Mage Armor": {
         "name": "Mage Armor",
         "duration": "360",
         "caster_level": "2",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
     },
     "uses Potion of Magic Circle against Alignment": {
         "name": "Magic Circle against Alignment",
         "duration": "360",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/magic_circle_alignment.png"
     },
     "uses Potion of Magic Fang": {
         "name": "Magic Fang",
         "duration": "60",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/magic_fang.png"
     },
     "uses Potion of Magic Vestment": {
         "name": "Magic Vestment",
         "duration": "360",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/magic_vestment.png"
     },
     "uses Potion of Magic Weapon": {
         "name": "Magic Weapon",
         "duration": "360",
         "caster_level": "2",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/magic_weapon.png"
     },
     "uses Potion of Negative Energy Protection": {
         "name": "Negative Energy Protection",
         "duration": "60",
         "caster_level": "15",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/neg_protection.png"
     },
     "uses Potion of One With The Land": {
         "name": "One With The Land",
         "duration": "360",
         "caster_level": "7",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/one_with_land.png"
     },
     "uses Potion of Owl's Wisdom": {
         "name": "Owl's Wisdom",
         "duration": "360",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/owls.png"
     },
     "uses Potion of Prayer": {
         "name": "Prayer",
         "duration": "6",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/prayer.png"
     },
     "uses Potion of Protection from Alignment": {
         "name": "Protection from Alignment",
         "duration": "360",
         "caster_level": "2",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/prot_alignment.png"
     },
     "uses Potion of Protection from Elements": {
         "name": "Protection from Elements",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/prot_elements.png"
     },
     "uses Potion of Remove Fear": {
         "name": "Remove Fear",
         "duration": "600",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/remove_fear.png"
     },
     "uses Potion of Resist Elements": {
         "name": "Resist Elements",
         "duration": "60",
         "caster_level": "10",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/resist_elements.png"
     },
     "uses Potion of Resistance": {
         "name": "Resistance",
         "duration": "120",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/resistance.png"
     },
     "uses Potion of Sanctuary": {
         "name": "Sanctuary",
         "duration": "6",
         "caster_level": "2",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/sanctuary.png"
     },
     "uses Potion of See Invisibility": {
         "name": "See Invisibility",
         "duration": "60",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/see_invisibility.png"
     },
     "uses Potion of Shadow Conjuration": {
         "name": "Shadow Conjuration",
         "duration": "360",
         "caster_level": "7",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
     },
     "uses Potion of Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/shelg_blade.png"
     },
     "uses Potion of Shield": {
         "name": "Shield",
         "duration": "60",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/shield.png"
     },
     "uses Potion of Shield of Faith": {
         "name": "Shield of Faith",
         "duration": "60",
         "caster_level": "5",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/shield_of_faith.png"
     },
     "uses Potion of Silence": {
         "name": "Silence",
         "duration": "6",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/silence.png"
     },
     "uses Potion of Stone Bones": {
         "name": "Stone Bones",
         "duration": "600",
         "caster_level": "3",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/stone_bones.png"
     },
     "uses Potion of Summon Creature I": {
         "name": "Summon Creature I",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/summon_creat_1.png"
     },
     "uses Potion of Summon Creature II": {
         "name": "Summon Creature II",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/summon_creat_2.png"
     },
     "uses Potion of Summon Creature III": {
         "name": "Summon Creature III",
         "duration": "8640",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/summon_creat_3.png"
     },
     "uses Potion of True Strike": {
         "name": "True Strike",
         "duration": "9",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/true.png"
     },
     "uses Potion of Ultravision": {
         "name": "Ultravision",
         "duration": "360",
         "caster_level": "6",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/ultravision.png"
     },
     "uses Potion of Virtue": {
         "name": "Virtue",
         "duration": "60",
         "caster_level": "1",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/virtue.png"
     },
     "uses Potion of War Cry": {
         "name": "War Cry",
         "duration": "6",
         "caster_level": "7",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/war_cry.png"
     },
     "uses Potion of Wounding Whispers": {
         "name": "Wounding Whispers",
         "duration": "6",
         "caster_level": "9",
+        "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/wounding_whispers.png"
     },
 
@@ -437,474 +522,553 @@
         "name": "Aid",
         "duration": "60",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/aid.png"
     },
     "uses Wand of Amplify": {
         "name": "Amplify",
         "duration": "6",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/amplify.png"
     },
     "uses Wand of Animate Dead": {
         "name": "Animate Dead",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/animate_dead.png"
     },
     "uses Wand of Aura of Glory": {
         "name": "Aura of Glory",
         "duration": "60",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/aura_glory.png"
     },
     "uses Wand of Balagarn's Iron Horn": {
         "name": "CD Balgarn's",
         "duration": "6",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
     },
     "uses Wand of Barkskin": {
         "name": "Barkskin",
         "duration": "360",
         "caster_level": "12",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/bark.png"
     },
     "uses Wand of Blade Thirst": {
         "name": "Blade Thirst",
         "duration": "120",
         "caster_level": "6",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/blade_thirst.png"
     },
     "uses Wand of Bless": {
         "name": "Bless",
         "duration": "60",
         "caster_level": "2",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/bless.png"
     },
     "uses Wand of Bless Weapon": {
         "name": "Bless Weapon",
         "duration": "120",
         "caster_level": "6",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/bless_weapon.png"
     },
     "uses Wand of Blood Frenzy": {
         "name": "Blood Frenzy",
         "duration": "6",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
     },
     "uses Wand of Bull's Strength": {
         "name": "Bull's Strength",
         "duration": "360",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/bulls.png"
     },
     "uses Wand of Camouflage": {
         "name": "Camouflage",
         "duration": "600",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
     },
     "uses Wand of Cat's Grace": {
         "name": "Cat's Grace",
         "duration": "360",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/cats.png"
     },
     "uses Wand of Clairaudience/Clairvoyance": {
         "name": "Clairaudience/Clairvoyance",
         "duration": "6",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/clairaud_clairvoyance.png"
     },
     "uses Wand of Clarity": {
         "name": "Clarity",
         "duration": "6",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/clar.png"
     },
     "uses Wand of Continual Flame": {
         "name": "Continual Flame",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/continual_flame.png"
     },
     "uses Wand of Darkfire": {
         "name": "Darkfire",
         "duration": "360",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/darkfire.png"
     },
     "uses Wand of Darkness": {
         "name": "Darkness",
         "duration": "6",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/darkness.png"
     },
     "uses Wand of Deafening Clang": {
         "name": "Deafening Clang",
         "duration": "6",
         "caster_level": "6",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/deaf_clang.png"
     },
     "uses Wand of Death Armor": {
         "name": "Death Armor",
         "duration": "6",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/death_armor.png"
     },
     "uses Wand of Death Ward": {
         "name": "Death Ward",
         "duration": "360",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/death_ward.png"
     },
     "uses Wand of Dismissal": {
         "name": "Summon Ward",
         "duration": "30",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/dismissal_ward.png"
     },
     "uses Wand of Displacement": {
         "name": "Displacement",
         "duration": "6",
         "caster_level": "9",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/displacement.png"
     },
     "uses Wand of Divine Favor": {
         "name": "Divine Favor",
         "duration": "60",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/divine_favor.png"
     },
     "uses Wand of Eagle's Splendor": {
         "name": "Eagle's Splendor",
         "duration": "360",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/eagle.png"
     },
     "uses Wand of Elemental Shield": {
         "name": "Elemental Shield",
         "duration": "6",
         "caster_level": "12",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
     },
     "uses Wand of Flame Shield": {
         "name": "Flame Shield",
         "duration": "6",
         "caster_level": "12",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
     },
     "uses Wand of Frost Shield": {
         "name": "Frost Shield",
         "duration": "6",
         "caster_level": "7",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "type": "wand",
+        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png"
     },
     "uses Wand of Bear's Endurance": {
         "name": "Endurance",
         "duration": "360",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/endu.png"
     },
     "uses Wand of Endure Elements": {
         "name": "Endure Elements",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/endure_elements.png"
     },
     "uses Wand of Entropic Shield": {
         "name": "Entropic Shield",
         "duration": "60",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/entrop_shield.png"
     },
     "uses Wand of Expeditious Retreat": {
         "name": "Expeditious Retreat",
         "duration": "6",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/exped_retreat.png"
     },
     "uses Wand of Flame Weapon": {
         "name": "Flame Weapon",
         "duration": "60",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/flame_weap.png"
     },
     "uses Wand of Fox's Cunning": {
         "name": "Fox's Cunning",
         "duration": "360",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/foxs.png"
     },
     "uses Wand of Freedom": {
         "name": "Freedom",
         "duration": "60",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/freedom.png"
     },
     "uses Wand of Ghostly Visage": {
         "name": "Ghostly Visage",
         "duration": "60",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
     },
     "uses Wand of Greater Magic Fang": {
         "name": "Greater Magic Fang",
         "duration": "60",
         "caster_level": "9",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/greater_magic_fang.png"
     },
     "uses Wand of Greater Magic Weapon": {
         "name": "Greater Magic Weapon",
         "duration": "120",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/greater_magic_weapon.png"
     },
     "uses Wand of Haste": {
         "name": "Haste",
         "duration": "6",
         "caster_level": "10",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/haste.png"
     },
     "uses Wand of Holy Sword": {
         "name": "Holy Sword",
         "duration": "6",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/holy_sword.png"
     },
     "uses Wand of Identify": {
         "name": "Identify",
         "duration": "12",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/identify.png"
     },
     "uses Wand of Improved Invisibility": {
         "name": "Improved Invisibility",
         "duration": "60",
         "caster_level": "7",
-        "icon": "NWN-Buff-Watcher/graphics/invisibility.png"
+        "type": "wand",
+        "icon": "NWN-Buff-Watcher/graphics/improved_invis_conceal.png"
     },
     "uses Wand of Invisibility": {
         "name": "Invisibility",
         "duration": "6",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/invisibility.png"
     },
     "uses Wand of Invisibility Sphere": {
         "name": "Invisibility Sphere",
         "duration": "6",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/invisibility_sphere.png"
     },
     "uses Wand of Ironguts": {
         "name": "Ironguts",
         "duration": "600",
         "caster_level": "2",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/ironguts.png"
     },
     "uses Wand of Keen Edge": {
         "name": "Keen Edge",
         "duration": "120",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/keen_edge.png"
     },
     "uses Wand of Light": {
         "name": "Light",
         "duration": "360",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/light.png"
     },
     "uses Wand of Mage Armor": {
         "name": "Mage Armor",
         "duration": "360",
         "caster_level": "2",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
     },
     "uses Wand of Magic Circle against Alignment": {
         "name": "Magic Circle against Alignment",
         "duration": "360",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/magic_circle_alignment.png"
     },
     "uses Wand of Magic Fang": {
         "name": "Magic Fang",
         "duration": "60",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/magic_fang.png"
     },
     "uses Wand of Magic Vestment": {
         "name": "Magic Vestment",
         "duration": "360",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/magic_vestment.png"
     },
     "uses Wand of Magic Weapon": {
         "name": "Magic Weapon",
         "duration": "360",
         "caster_level": "2",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/magic_weapon.png"
     },
     "uses Wand of Mass Camouflage": {
         "name": "Mass Camouflage",
         "duration": "600",
         "caster_level": "13",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/mass_camo.png"
     },
     "uses Wand of Negative Energy Protection": {
         "name": "Negative Energy Protection",
         "duration": "60",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/neg_protection.png"
     },
     "uses Wand of One With The Land": {
         "name": "One With The Land",
         "duration": "360",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/one_with_land.png"
     },
     "uses Wand of Owl's Wisdom": {
         "name": "Owl's Wisdom",
         "duration": "360",
         "caster_level": "15",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/owls.png"
     },
     "uses Wand of Polymorph": {
         "name": "Polymorph",
         "duration": "60",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
     },
     "uses Wand of Prayer": {
         "name": "Prayer",
         "duration": "6",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/prayer.png"
     },
     "uses Wand of Protection from Alignment": {
         "name": "Protection from Alignment",
         "duration": "360",
         "caster_level": "2",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/prot_alignment.png"
     },
     "uses Wand of Protection from Elements": {
         "name": "Protection from Elements",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/prot_elements.png"
     },
     "uses Wand of Remove Fear": {
         "name": "Remove Fear",
         "duration": "600",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/remove_fear.png"
     },
     "uses Wand of Resist Elements": {
         "name": "Resist Elements",
         "duration": "60",
         "caster_level": "10",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/resist_elements.png"
     },
     "uses Wand of Resistance": {
         "name": "Resistance",
         "duration": "120",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/resistance.png"
     },
     "uses Wand of Sanctuary": {
         "name": "Sanctuary",
         "duration": "6",
         "caster_level": "2",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/sanctuary.png"
     },
     "uses Wand of See Invisibility": {
         "name": "See Invisibility",
         "duration": "60",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/see_invisibility.png"
     },
     "uses Wand of Shadow Conjuration": {
         "name": "Shadow Conjuration",
         "duration": "360",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
     },
     "uses Wand of Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/shelg_blade.png"
     },
     "uses Wand of Shield": {
         "name": "Shield",
         "duration": "60",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/shield.png"
     },
     "uses Wand of Shield of Faith": {
         "name": "Shield of Faith",
         "duration": "60",
         "caster_level": "5",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/shield_of_faith.png"
     },
     "uses Wand of Silence": {
         "name": "Silence",
         "duration": "6",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/silence.png"
     },
     "uses Wand of Stone Bones": {
         "name": "Stone Bones",
         "duration": "600",
         "caster_level": "3",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/stone_bones.png"
     },
     "uses Wand of Stoneskin": {
         "name": "Stoneskin",
         "duration": "360",
         "caster_level": "7",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/stoneskin.png"
     },
     "uses Wand of Summon Creature I": {
         "name": "Summon Creature I",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/summon_creat_1.png"
     },
     "uses Wand of Summon Creature II": {
         "name": "Summon Creature II",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/summon_creat_2.png"
     },
     "uses Wand of Summon Creature III": {
         "name": "Summon Creature III",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/summon_creat_3.png"
     },
     "uses Wand of Summon Creature IV": {
         "name": "Summon Creature IV",
         "duration": "8640",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/summon_creat_4.png"
     },
     "uses Wand of True Strike": {
         "name": "True Strike",
         "duration": "9",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/true.png"
     },
     "uses Wand of Ultravision": {
         "name": "Ultravision",
         "duration": "360",
         "caster_level": "6",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/ultravision.png"
     },
     "uses Wand of Virtue": {
         "name": "Virtue",
         "duration": "60",
         "caster_level": "1",
+        "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/virtue.png"
     },
 
@@ -912,18 +1076,1233 @@
 
 
 
+    "uses Masterly Elven Chain": {
+        "name": "Camouflage",
+        "duration": "600",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
+    },
+    "uses Dust of Disappearance": {
+        "name": "Improved Invisibility",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/improved_invis_conceal.png"
+    },
+    "uses Dust of Appearance": {
+        "name": "Invisibility Purge",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/invis_purge.png"
+    },
+    "uses Skleen (Blue)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Skleen (Deep Red)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Skleen (Dusty Rose)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Skleen (Pale Blue)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Skleen (Pink-Green)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Skleen (Scarlet Blue)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Skleen (Pink)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Ioun Stone (Blue)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Ioun Stone (Deep Red)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Ioun (Dusty Rose)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Ioun Stone (Pale Blue)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Ioun Stone (Pink and Green)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Ioun Stone (Pink)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Ioun Stone (Scarlet and Blue)": {
+        "name": "Ioun Stone",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ioun_stone.png"
+    },
+    "uses Staff of Life": {
+        "name": "Regenerate",
+        "duration": "6",
+        "caster_level": "13",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/regenerate.png"
+    },
+    "uses Bardic Pipes": {
+        "name": "Amplify",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/amplify.png"
+    },
+    "uses Bardic Mandolin": {
+        "name": "Amplify",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/amplify.png"
+    },
+    "uses Cli Lyre": {
+        "name": "Haste",
+        "duration": "6",
+        "caster_level": "10",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/haste.png"
+    },
+    "uses Doss Lute": {
+        "name": "Ghostly Visage",
+        "duration": "60",
+        "caster_level": "15",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
+    },
+    "uses Bardic Harp": {
+        "name": "Eagle's Splendor",
+        "duration": "360",
+        "caster_level": "10",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/eagle.png"
+    },
+    "uses Ollamh Harp": {
+        "name": "Mass Haste",
+        "duration": "6",
+        "caster_level": "11",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/mass_haste.png"
+    },
+    "uses Sweetberry Wine": {
+        "name": "Haste",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/haste.png"
+    },
+    "uses Pot of Dirt": {
+        "name": "Camouflage",
+        "duration": "600",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
+    },
+    "uses Greensteel Bracer of Aggression": {
+        "name": "Expeditious Retreat",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/exped_retreat.png"
+    },
+    "uses Greensteel Bracer of Avoidance": {
+        "name": "Shield",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/shield.png"
+    },
+    "uses Greensteel Bracer of Knowing": {
+        "name": "Identify",
+        "duration": "12",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/identify.png"
+    },
+    "uses Mithril Bracer of Aggression": {
+        "name": "Expeditious Retreat",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/exped_retreat.png"
+    },
+    "uses Mithril Bracer of Avoidance": {
+        "name": "Shield",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/shield.png"
+    },
+    "uses Mithril Bracer of Knowing": {
+        "name": "Identify",
+        "duration": "12",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/identify.png"
+    },
+    "uses Adamantine Bracer of Aggression": {
+        "name": "Expeditious Retreat",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/exped_retreat.png"
+    },
+    "uses Adamantine Bracer of Avoidance": {
+        "name": "Shield",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/shield.png"
+    },
+    "uses Adamantine Bracer of Knowing": {
+        "name": "Identify",
+        "duration": "12",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/identify.png"
+    },
+    "uses Barbarian Helmet": {
+        "name": "Bull's Strength",
+        "duration": "360",
+        "caster_level": "10",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/bulls.png"
+    },
+    "uses Ranger's Runic Vestment": {
+        "name": "Barkskin",
+        "duration": "360",
+        "caster_level": "12",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/bark.png"
+    },
+    "uses Inception of Nightmares": {
+        "name": "Camouflage",
+        "duration": "600",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
+    },
+    "uses Desperado's Raiment": {
+        "name": "Fox's Cunning",
+        "duration": "360",
+        "caster_level": "10",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/foxs.png"
+    },
+    "uses Armor of Immolation": {
+        "name": "Flame Shield",
+        "duration": "6",
+        "caster_level": "12",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+    },
+    "uses Displacer Beast Hide Armor": {
+        "name": "Invisibility",
+        "duration": "6",
+        "caster_level": "3",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/invisibility.png"
+    },
+    "uses Rogue Leathers": {
+        "name": "Rogue's Cunning",
+        "duration": "300",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/rogue_cunning.png"
+    },
+    "uses Ranger's Runic Studded Leather": {
+        "name": "Barkskin",
+        "duration": "360",
+        "caster_level": "12",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/bark.png"
+    },
+    "uses Battlemedic Armor": {
+        "name": "Monstrous Regeneration",
+        "duration": "3",
+        "caster_level": "9",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/monst_regen.png"
+    },
+    "uses Infiltration Belt": {
+        "name": "Camouflage",
+        "duration": "600",
+        "caster_level": "5",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
+    },
+    "uses Displacer Beast Cloak": {
+        "name": "Improved Invisibility",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/improved_invis_conceal.png"
+    },
+    "uses Orcish Blood Mace": {
+        "name": "Blood Frenzy",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
+    },
+    "uses Orcish Blood Axe": {
+        "name": "Blood Frenzy",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
+    },
+    "uses Icon of the Hunt": {
+        "name": "Aura of Vitality",
+        "duration": "6",
+        "caster_level": "13",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/aura_vit.png"
+    },
+    "uses Elder Dream": {
+        "name": "Barkskin",
+        "duration": "360",
+        "caster_level": "12",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/bark.png"
+    },
+    "uses Dragonbone Spear": {
+        "name": "Energy Buffer",
+        "duration": "60",
+        "caster_level": "11",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/energy_buffer.png"
+    },
+    "uses Orcish Blood Sword": {
+        "name": "Energy Buffer",
+        "duration": "60",
+        "caster_level": "11",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/energy_buffer.png"
+    },
+    "uses Witchhunter's Cloak ": {
+        "name": "Summon Ward",
+        "duration": "30",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/dismissal_ward.png"
+    },
 
 
+
+
+
+
+
+
+
+
+
+    "uses Aid": {
+        "name": "Aid",
+        "duration": "60",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/aid.png"
+    },
+    "uses Animate Dead": {
+        "name": "Animate Dead",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/animate_dead.png"
+    },
+    "uses Aura of Glory": {
+        "name": "Aura of Glory",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/aura_glory.png"
+    },
+    "uses Aura of Vitality": {
+        "name": "Aura of Vitality",
+        "duration": "6",
+        "caster_level": "13",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/aura_vit.png"
+    },
+    "uses Awaken": {
+        "name": "Awaken",
+        "duration": "9999",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/awaken.png"
+    },
+    "uses Balagarn's Iron Horn": {
+        "name": "CD Balgarn's",
+        "duration": "6",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
+    },
+    "uses Banishment": {
+        "name": "Summon Ward",
+        "duration": "60",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/banishment.png"
+    },
+    "uses Barkskin": {
+        "name": "Barkskin",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/bark.png"
+    },
+    "uses Battletide": {
+        "name": "Battletide",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/battletide.png"
+    },
+    "uses Black Blade of Disaster": {
+        "name": "Black Blade of Disaster",
+        "duration": "6",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/black_blade.png"
+    },
+    "uses Blackstaff": {
+        "name": "Blackstaff",
+        "duration": "60",
+        "caster_level": "15",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/blackstaff.png"
+    },
+    "uses Bless": {
+        "name": "Bless",
+        "duration": "60",
+        "caster_level": "2",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/bless.png"
+    },
+    "uses Bless Weapon": {
+        "name": "Bless Weapon",
+        "duration": "120",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/bless_weapon.png"
+    },
+    "uses Blood Frenzy": {
+        "name": "Blood Frenzy",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
+    },
+    "uses Bull's Strength": {
+        "name": "Bull's Strength",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/bulls.png"
+    },
+    "uses Camouflage": {
+        "name": "Camouflage",
+        "duration": "600",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
+    },
+    "uses Cat's Grace": {
+        "name": "Cat's Grace",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/cats.png"
+    },
+    "uses Clairaudience/Clairvoyance": {
+        "name": "Clairaudience/Clairvoyance",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/clairaud_clairvoyance.png"
+    },
+    "uses Clarity": {
+        "name": "Clarity",
+        "duration": "6",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/clar.png"
+    },
+    "uses Continual Flame": {
+        "name": "Continual Flame",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/continual_flame.png"
+    },
+    "uses Darkfire": {
+        "name": "Darkfire",
+        "duration": "360",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/darkfire.png"
+    },
+    "uses Darkness": {
+        "name": "Darkness",
+        "duration": "6",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/darkness.png"
+    },
+    "uses Deafening Clang": {
+        "name": "Deafening Clang",
+        "duration": "6",
+        "caster_level": "6",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/deaf_clang.png"
+    },
+    "uses Death Armor": {
+        "name": "Death Armor",
+        "duration": "6",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/death_armor.png"
+    },
+    "uses Death Ward": {
+        "name": "Death Ward",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/death_ward.png"
+    },
+    "uses Dismissal": {
+        "name": "Summon Ward",
+        "duration": "30",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/dismissal_ward.png"
+    },
+    "uses Displacement": {
+        "name": "Displacement",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/displacement.png"
+    },
+    "uses Divine Favor": {
+        "name": "Divine Favor",
+        "duration": "60",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/divine_favor.png"
+    },
+    "uses Eagle's Splendor": {
+        "name": "Eagle's Splendor",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/eagle.png"
+    },
+    "uses Elemental Shield": {
+        "name": "Elemental Shield",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+    },
+    "uses Flame Shield": {
+        "name": "Flame Shield",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+    },
+    "uses Frost Shield": {
+        "name": "Frost Shield",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png"
+    },
+    "uses Bear's Endurance": {
+        "name": "Endurance",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/endu.png"
+    },
+    "uses Endurance": {
+        "name": "Endurance",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/endu.png"
+    },
+    "uses Endure Elements": {
+        "name": "Endure Elements",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/endure_elements.png"
+    },
+    "uses Energy Buffer": {
+        "name": "Energy Buffer",
+        "duration": "60",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/energy_buffer.png"
+    },
+    "uses Entropic Shield": {
+        "name": "Entropic Shield",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/entrop_shield.png"
+    },
+    "uses Ethereal Visage": {
+        "name": "Ethereal Visage",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/ethereal_visage.png"
+    },
+    "uses Expeditious Retreat": {
+        "name": "Expeditious Retreat",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/exped_retreat.png"
+    },
+    "uses Flame Weapon": {
+        "name": "Flame Weapon",
+        "duration": "60",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/flame_weap.png"
+    },
+    "uses Fox's Cunning": {
+        "name": "Fox's Cunning",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/foxs.png"
+    },
+    "uses Freedom of Movement": {
+        "name": "Freedom",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/freedom.png"
+    },
+    "uses Gate": {
+        "name": "Gate",
+        "duration": "6",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/gate.png"
+    },
+    "uses Ghostly Visage": {
+        "name": "Ghostly Visage",
+        "duration": "60",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
+    },
+    "uses Globe of Invulnerability": {
+        "name": "Globe of Invulnerability",
+        "duration": "6",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/globe_invuln.png"
+    },
+    "uses Greater Magic Fang": {
+        "name": "Greater Magic Fang",
+        "duration": "60",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/greater_magic_fang.png"
+    },
+    "uses Greater Magic Weapon": {
+        "name": "Greater Magic Weapon",
+        "duration": "120",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/greater_magic_weapon.png"
+    },
+    "uses Greater Planar Binding": {
+        "name": "Greater Planar Binding",
+        "duration": "60",
+        "caster_level": "15",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/greater_planar.png"
+    },
+    "uses Greater Shadow Conjuration": {
+        "name": "Stoneskin",
+        "duration": "360",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/greater_shadow_conj.png"
+    },
+    "uses Greater Spell Mantle": {
+        "name": "Greater Spell Mantle",
+        "duration": "6",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/greater_spell_mantle.png"
+    },
+    "uses Greater Stoneskin": {
+        "name": "Greater Stoneskin",
+        "duration": "360",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/greater_stoneskin.png"
+    },
+    "uses Haste": {
+        "name": "Haste",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/haste.png"
+    },
+    "uses Holy Sword": {
+        "name": "Holy Sword",
+        "duration": "6",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/holy_sword.png"
+    },
+    "uses Identify": {
+        "name": "Identify",
+        "duration": "12",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/identify.png"
+    },
+    "uses Improved Invisibility": {
+        "name": "Improved Invisibility",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/improved_invis_conceal.png"
+    },
+    "uses Invisibility": {
+        "name": "Invisibility",
+        "duration": "6",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/invisibility.png"
+    },
+    "uses Invisibility Sphere": {
+        "name": "Invisibility Sphere",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/invisibility_sphere.png"
+    },
+    "uses Ironguts": {
+        "name": "Ironguts",
+        "duration": "600",
+        "caster_level": "2",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/ironguts.png"
+    },
+    "uses Keen Edge": {
+        "name": "Keen Edge",
+        "duration": "120",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/keen_edge.png"
+    },
+    "uses Legend Lore": {
+        "name": "Legend Lore",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/legend_lore.png"
+    },
+    "uses Lesser Mind Blank": {
+        "name": "Lesser Mind Blank",
+        "duration": "60",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/lesser_mind.png"
+    },
+    "uses Lesser Planar Binding": {
+        "name": "Lesser Planar Binding",
+        "duration": "360",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/lesser_planar.png"
+    },
+    "uses Lesser Spell Mantle": {
+        "name": "Lesser Spell Mantle",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/lesser_spell_mantle.png"
+    },
+    "uses Light": {
+        "name": "Light",
+        "duration": "360",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/light.png"
+    },
+    "uses Mage Armor": {
+        "name": "Mage Armor",
+        "duration": "360",
+        "caster_level": "2",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
+    },
+    "uses Magic Circle against Alignment": {
+        "name": "Magic Circle against Alignment",
+        "duration": "360",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/magic_circle_alignment.png"
+    },
+    "uses Magic Fang": {
+        "name": "Magic Fang",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/magic_fang.png"
+    },
+    "uses Magic Vestment": {
+        "name": "Magic Vestment",
+        "duration": "360",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/magic_vestment.png"
+    },
+    "uses Magic Weapon": {
+        "name": "Magic Weapon",
+        "duration": "360",
+        "caster_level": "2",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/magic_weapon.png"
+    },
+    "uses Mass Camouflage": {
+        "name": "Mass Camouflage",
+        "duration": "600",
+        "caster_level": "13",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/mass_camo.png"
+    },
+    "uses Mass Haste": {
+        "name": "Mass Haste",
+        "duration": "6",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/mass_haste.png"
+    },
+    "uses Mestil's Acid Sheath": {
+        "name": "Mestil's Acid Sheath",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/mestil_acid_sheath.png"
+    },
+    "uses Mind Blank": {
+        "name": "Mind Blank",
+        "duration": "60",
+        "caster_level": "15",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/mind_blank.png"
+    },
+    "uses Minor Globe of Invulnerability": {
+        "name": "Minor Globe of Invulnerability",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/minor_globe_invuln.png"
+    },
+    "uses Monstrous Regeneration": {
+        "name": "Monstrous Regeneration",
+        "duration": "3",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/monst_regen.png"
+    },
+    "uses Mordenkainen's Sword": {
+        "name": "Mordenkainen's Sword",
+        "duration": "60",
+        "caster_level": "13",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/mord_sword.png"
+    },
+    "uses Negative Energy Protection": {
+        "name": "Negative Energy Protection",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/neg_protection.png"
+    },
+    "uses One With The Land": {
+        "name": "One With The Land",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/one_with_land.png"
+    },
+    "uses Owl's Insight": {
+        "name": "Owl's Insight",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/owl_insight.png"
+    },
+    "uses Owl's Wisdom": {
+        "name": "Owl's Wisdom",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/owls.png"
+    },
+    "uses Planar Ally": {
+        "name": "Planar Ally",
+        "duration": "360",
+        "caster_level": "15",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/planar_ally.png"
+    },
+    "uses Planar Binding": {
+        "name": "Planar Binding",
+        "duration": "360",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/planar_binding.png"
+    },
+    "uses Polymorph Self": {
+        "name": "Polymorph",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+    },
+    "uses Prayer": {
+        "name": "Prayer",
+        "duration": "6",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/prayer.png"
+    },
+    "uses Premonition": {
+        "name": "Premonition",
+        "duration": "360",
+        "caster_level": "15",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/premo.png"
+    },
+    "uses Protection from Alignment": {
+        "name": "Protection from Alignment",
+        "duration": "360",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/prot_alignment.png"
+    },
+    "uses Protection from Elements": {
+        "name": "Protection from Elements",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/prot_elements.png"
+    },
+    "uses Protection from Spells": {
+        "name": "Protection from Spells",
+        "duration": "60",
+        "caster_level": "13",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/prot_spells.png"
+    },
+    "uses Regenerate": {
+        "name": "Regenerate",
+        "duration": "6",
+        "caster_level": "13",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/regenerate.png"
+    },
+    "uses Remove Fear": {
+        "name": "Remove Fear",
+        "duration": "600",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/remove_fear.png"
+    },
+    "uses Resist Elements": {
+        "name": "Resist Elements",
+        "duration": "60",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/resist_elements.png"
+    },
+    "uses Resistance": {
+        "name": "Resistance",
+        "duration": "120",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/resistance.png"
+    },
+    "uses Sanctuary": {
+        "name": "Sanctuary",
+        "duration": "6",
+        "caster_level": "2",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/sanctuary.png"
+    },
+    "uses See Invisibility": {
+        "name": "See Invisibility",
+        "duration": "60",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/see_invisibility.png"
+    },
+    "uses Shadow Conjuration": {
+        "name": "Shadow Conjuration",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "wand",
+        "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
+    },
     "uses Shadow Shield": {
         "name": "Shadow Shield",
         "duration": "60",
         "caster_level": "13",
+        "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/shadow_shield.png"
+    },
+    "uses Shapechange": {
+        "name": "Shapechange",
+        "duration": "60",
+        "caster_level": "17",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+    },
+    "uses Shelgarn's Persistent Blade": {
+        "name": "Shelgarn's Persistent Blade",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/shelg_blade.png"
+    },
+    "uses Shield": {
+        "name": "Shield",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/shield.png"
+    },
+    "uses Shield of Faith": {
+        "name": "Shield of Faith",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/shield_of_faith.png"
+    },
+    "uses Silence": {
+        "name": "Silence",
+        "duration": "6",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/silence.png"
+    },
+    "uses Spell Mantle": {
+        "name": "Spell Mantle",
+        "duration": "6",
+        "caster_level": "13",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/spell_mantle.png"
+    },
+    "uses Spell Resistance": {
+        "name": "Spell Resistance",
+        "duration": "60",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/spell_resistance.png"
+    },
+    "uses Stone Bones": {
+        "name": "Stone Bones",
+        "duration": "600",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/stone_bones.png"
+    },
+    "uses Stoneskin": {
+        "name": "Stoneskin",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/stoneskin.png"
+    },
+    "uses Summon Creature I": {
+        "name": "Summon Creature I",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_1.png"
+    },
+    "uses Summon Creature II": {
+        "name": "Summon Creature II",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_2.png"
+    },
+    "uses Summon Creature III": {
+        "name": "Summon Creature III",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_3.png"
+    },
+    "uses Summon Creature IV": {
+        "name": "Summon Creature IV",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_4.png"
+    },
+    "uses Summon Creature V": {
+        "name": "Summon Creature V",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_5.png"
+    },
+    "uses Summon Creature VI": {
+        "name": "Summon Creature VI",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_6.png"
+    },
+    "uses Summon Creature VII": {
+        "name": "Summon Creature VII",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_7.png"
+    },
+    "uses Summon Creature VIII": {
+        "name": "Summon Creature VIII",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_8.png"
+    },
+    "uses Summon Creature IX": {
+        "name": "Summon Creature IX",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_creat_9.png"
+    },
+    "uses Tenser's Transformation": {
+        "name": "Tenser's Transformation",
+        "duration": "6",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/tense_trans.png"
+    },
+    "uses True Seeing": {
+        "name": "True Seeing",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/true_seeing.png"
+    },
+    "uses True Strike": {
+        "name": "True Strike",
+        "duration": "9",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/true.png"
+    },
+    "uses Ultravision": {
+        "name": "Ultravision",
+        "duration": "360",
+        "caster_level": "3",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/ultravision.png"
+    },
+    "uses Undeath's Eternal Foe": {
+        "name": "Undeath's Eternal Foe",
+        "duration": "6",
+        "caster_level": "20",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/ultravision.png"
+    },
+    "uses Virtue": {
+        "name": "Virtue",
+        "duration": "60",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/virtue.png"
+    },
+    "uses Wounding Whispers": {
+        "name": "Wounding Whispers",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/wounding_whispers.png"
     }
-
-
-
-
-
-
 }
