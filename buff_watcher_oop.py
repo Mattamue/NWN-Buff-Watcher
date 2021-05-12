@@ -367,21 +367,44 @@ class MainFrame(tk.Frame):
         # if/when I make a PyInstaller .exe release
         
         adding_buff = []
-        
-        try: # handle "uses" lines that aren't defined in the json, otherwise they exception and stop the program
+
+        # just added types to everything
+        try:
+            buff_type = self.use_items_dict[f'{buff_string}']['type']
+        except:
+            buff_type = 'other'
+            print(f"EXCEPTED ON TYPE: {buff_string}")
+
+        # the try handle "uses" lines that aren't defined in the json, otherwise they exception and stop the program
+        try: 
             adding_buff.append(self.use_items_dict[f'{buff_string}']['name'])
-            adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) *
-                                            int(self.use_items_dict[f'{buff_string}']['caster_level'])))
+
+            # handling the loremaster changes to duration for scrolls and wands
+            if self.lm_modifier.get() > 0:
+                if buff_type == 'scroll':
+                    adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + self.lm_modifier.get())))
+                    # print(f"scroll: {adding_buff[1]}") # testing
+                elif buff_type == 'wand':
+                    adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + (self.lm_modifier.get() + 2 // 2) // 2)))
+                    # print(f"wand: {adding_buff[1]}") # testing
+                else:
+                    adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * int(self.use_items_dict[f'{buff_string}']['caster_level'])))
+            else:
+                adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * int(self.use_items_dict[f'{buff_string}']['caster_level'])))
+
             adding_buff.append(self.use_items_dict[f'{buff_string}']['icon'])
+
+            # handling edge cases for things like clarity
             # print(adding_buff) # testing
             if self.use_items_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle -- gets wand and potion
                 adding_buff[1] = adding_buff[1] + 30
                 self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
-            if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF
+            if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
                 self.make_buff_labelframe(["Invisibility", time.time() + 42, "NWN-Buff-Watcher/graphics/invisibility.png"])
             self.make_buff_labelframe(adding_buff)
         except:
-            print(f"EXCEPTED ON SOMETHING: {buff_string}") # for now just fart out that it was handled, maybe later add to a CSV and user can add to json with a buff-managing window?
+            print(f"EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later add to a CSV and user can add to json with a buff-managing window?
+
 
     def buffs_display_nicely(self):
         """ takes all the buffs labelframe objects and sorts and displays them
