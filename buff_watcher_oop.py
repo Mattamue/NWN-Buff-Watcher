@@ -51,6 +51,8 @@ class MainFrame(tk.Frame):
             self.vendor_bool.set(self.char_options['vop_bool'])
             self.lm_modifier = tk.IntVar()
             self.lm_modifier.set(self.char_options['lm_mod'])
+            self.sf_illu_state = tk.IntVar()
+            self.sf_illu_state.set(self.char_options['illu_mod'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -60,10 +62,12 @@ class MainFrame(tk.Frame):
             self.vendor_bool = tk.BooleanVar()
             self.vendor_bool.set(True) # setting a default... might turn off if impliment csv/options file -- or set there... maybe a json
             self.lm_modifier = tk.IntVar()
+            self.sf_illu_state = tk.IntVar()
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
         self.use_items_dict = json.load(open('NWN-Buff-Watcher/buffs_json/use_items.json','r'))
+        self.cast_spells_dict = json.load(open('NWN-Buff-Watcher/buffs_json/cast_spells.json','r'))
 
         # frame for the buttons on the right
         self.buttons_frame = tk.Frame(self)
@@ -201,10 +205,27 @@ class MainFrame(tk.Frame):
         self.lm_label = ttk.Label(self.lm_frame, text="Loremaster Level:")
         self.lm_label.grid(column=0, row=1, sticky='w')
 
+        # SF Illusion in its own frame
+        self.sf_illu_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.sf_illu_frame.grid(column=0, row=5, sticky='ew')
+        self.sf_illu_description = ttk.Label(self.sf_illu_frame, text="Set Spell Focus: Illusion\nstatus, controls length of invsibility\n0 = none\n1 = GSF\n2 = ESF")
+        self.sf_illu_description.grid(column=0, row=0, sticky='ew')
+
+        self.option_menu = ttk.OptionMenu(
+            self.sf_illu_frame,
+            self.sf_illu_state,
+            0,
+            *range(0, 3)
+            #, command=self.option_changed
+            )
+
+        self.option_menu.grid(column=0, row=1, sticky='ew')
+
+
         # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
         self.character_settings_window.bind("<Return>", self.close_character_settings_window)
         self.button_enter = tk.Button(self.character_settings_window, text="Save", command=lambda: self.close_character_settings_window("saved"))
-        self.button_enter.grid(column=0, row=5, columnspan=2)
+        self.button_enter.grid(column=0, row=6, columnspan=2)
 
     def validate_int(self, action, index, value_if_allowed, prior_value, text, validation_type, trigger_type, widget_name):
         ''' Here we take the vcmd from the entry windows and try to validate if they're intergers
@@ -257,6 +278,11 @@ class MainFrame(tk.Frame):
         except:
             self.lm_modifier.set(0)
             savefile['lm_mod'] = self.lm_modifier.get()
+        try:
+            savefile['illu_mod'] = self.sf_illu_state.get()
+        except:
+            self.sf_illu_state.set(0)
+            savefile['illu_mod'] = self.sf_illu_state.get()
 
         # saving to json, it's smart enough to overwrite old settings
         with open('settings.json', 'w') as f:
@@ -304,6 +330,11 @@ class MainFrame(tk.Frame):
         self.geo_blank.grid(column=0, row=15)
         self.resize_test = ttk.Button(self.debugging_buttons_frame, text="resize call", command=lambda: self.resize_set_buff_window("test"))
         self.resize_test.grid(column=0, row=16)
+
+        # testing the call functions
+        self.call_testing1 = ttk.Button(self.debugging_buttons_frame, text="Simulate 'uses Summon Creature II'", command=lambda: self.uses_call("uses Summon Creature II"))
+        self.call_testing1.grid(column=0, row=17)
+
         self.testing_buttons_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
 
     def make_buff_labelframe(self, added_buff):
@@ -348,6 +379,17 @@ class MainFrame(tk.Frame):
                 # print(output_string[:-1]) # testing
                 self.uses_call(output_string[:-1])
 
+        for logline in buffs:
+            if self.name_stringvar.get() + " casts " in logline:
+                start = logline.split(" ").index("casts")
+                stop = len(logline.split(" "))
+                output_string = ""
+                for x in range(start, stop):
+                    output_string = output_string + logline.strip().split(" ")[x] + " "
+                # print(output_string[:-1]) # testing
+                self.casts_call(output_string[:-1])
+
+
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
             if x.buff_birthday < time.time() + 6:
@@ -380,10 +422,12 @@ class MainFrame(tk.Frame):
             adding_buff.append(self.use_items_dict[f'{buff_string}']['name'])
 
             # handling the loremaster changes to duration for scrolls and wands
-            if self.lm_modifier.get() > 0:
+            # also checks if caster level is 1 and doesn't apply LM since the cl 1 signifies it has a default duration that isn't affected by cl
+            if self.lm_modifier.get() > 0 and int(self.use_items_dict[f'{buff_string}']['caster_level']) > 1:
                 if buff_type == 'scroll':
                     adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + self.lm_modifier.get())))
                     # print(f"scroll: {adding_buff[1]}") # testing
+                    # print(f"duration in scroll: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
                 elif buff_type == 'wand':
                     adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + (self.lm_modifier.get() + 2 // 2) // 2)))
                     # print(f"wand: {adding_buff[1]}") # testing
@@ -392,18 +436,103 @@ class MainFrame(tk.Frame):
             else:
                 adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * int(self.use_items_dict[f'{buff_string}']['caster_level'])))
 
+            # print(f"duration after LM ifs: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             adding_buff.append(self.use_items_dict[f'{buff_string}']['icon'])
 
-            # handling edge cases for things like clarity
+            # handling edge cases clarity
             # print(adding_buff) # testing
-            if self.use_items_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle -- gets wand and potion
+            if self.use_items_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle
                 adding_buff[1] = adding_buff[1] + 30
                 self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+            
+            # handling imp invis, the invis duration part for SF illu
             if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
-                self.make_buff_labelframe(["Invisibility", time.time() + 42, "NWN-Buff-Watcher/graphics/invisibility.png"])
+                if self.sf_illu_state.get() == 0:
+                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * int(self.use_items_dict[f'{buff_string}']['caster_level'])), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                elif self.sf_illu_state.get() == 1:
+                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * int(self.use_items_dict[f'{buff_string}']['caster_level'])), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                else:
+                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * int(self.use_items_dict[f'{buff_string}']['caster_level'])), "NWN-Buff-Watcher/graphics/invisibility.png"])
+
+            # handling invisibility for SF illu & invis sphere
+            if self.use_items_dict[f'{buff_string}']['name'] == "Invisibility" or self.use_items_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
+                if self.sf_illu_state.get() == 0:
+                    pass
+                elif self.sf_illu_state.get() == 1:
+                    adding_buff[1] = adding_buff[1] + (12 * int(self.use_items_dict[f'{buff_string}']['caster_level'])) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
+                else:
+                    adding_buff[1] = adding_buff[1] + (24 * int(self.use_items_dict[f'{buff_string}']['caster_level'])) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
+
+            # print(f"duration just before pass to make labelframe: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             self.make_buff_labelframe(adding_buff)
         except:
-            print(f"EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later add to a CSV and user can add to json with a buff-managing window?
+            print(f"EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later user can add to json with a buff-managing window?
+
+
+    def casts_call(self, buff_string):
+        # takes the string that comes back from the main loop and compares it to a dictionary of all possible "character uses X thing" responses
+        # that dictionary has the "char uses X" as the keys so it can easily return the values like duration and icon
+        # much faster (I think) than the if > elif > elif... I was using to prototype, easy to put in a json and potentially easy for
+        # users to add their own "unique" item uses into the json without having to know the code -- or not have access to the code
+        # if/when I make a PyInstaller .exe release
+        
+        adding_buff = []
+
+        # just added types to everything
+        # not using in casting, but keeping here for now
+        try:
+            buff_type = self.cast_spells_dict[f'{buff_string}']['type']
+        except:
+            buff_type = 'other'
+            print(f"EXCEPTED ON TYPE: {buff_string}")
+
+        # the try handle "uses" lines that aren't defined in the json, otherwise they exception and stop the program
+        try: 
+            adding_buff.append(self.cast_spells_dict[f'{buff_string}']['name'])
+
+            # handling the "1" cl spells since that signifies that they aren't changed by caster level, they just get their duration
+            if int(self.cast_spells_dict[f'{buff_string}']['duration']) > 1:
+                adding_buff.append(time.time() + (int(self.cast_spells_dict[f'{buff_string}']['duration']) * int(self.cl_modifier.get())))
+            else:
+                adding_buff.append(time.time() + (int(self.cast_spells_dict[f'{buff_string}']['duration'])))
+
+            adding_buff.append(self.cast_spells_dict[f'{buff_string}']['icon'])
+
+            # handling edge cases for clarity
+            # print(adding_buff) # testing
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle
+                adding_buff[1] = adding_buff[1] + 30
+                self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+
+            # handling imp invis duration if character as SF illu
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
+                if self.sf_illu_state.get() == 0:
+                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * int(self.cl_modifier.get())), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                elif self.sf_illu_state.get() == 1:
+                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * int(self.cl_modifier.get())), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                elif self.sf_illu_state.get() == 2:
+                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * int(self.cl_modifier.get())), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                else:
+                    print("Something wrong with imp invis.")
+
+
+            # handling invisibility for SF illu & invis sphere
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Invisibility" or self.cast_spells_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
+                if self.sf_illu_state.get() == 0:
+                    pass
+                elif self.sf_illu_state.get() == 1:
+                    adding_buff[1] = adding_buff[1] + (12 * int(self.cl_modifier.get())) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
+                elif self.sf_illu_state.get() == 2:
+                    adding_buff[1] = adding_buff[1] + (24 * int(self.cl_modifier.get())) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
+                else:
+                    print("Something wrong with invis or invis sphere.")
+
+
+
+
+            self.make_buff_labelframe(adding_buff)
+        except:
+            print(f"EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later user can add to json with a buff-managing window?
 
 
     def buffs_display_nicely(self):
