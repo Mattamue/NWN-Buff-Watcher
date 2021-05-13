@@ -319,16 +319,16 @@ class MainFrame(tk.Frame):
         self.debugging_label.grid(column=0, row=9)
         # re-tooling for the BuffLabelFrame object
         self.button1 = ttk.Button(self.debugging_buttons_frame)
-        self.button1['text'] = "Simulate frame list appended True Strike"
-        self.button1['command'] = lambda: self.make_buff_labelframe(["True Strike", time.time() + 9, "NWN-Buff-Watcher/graphics/true.png"])
+        self.button1['text'] = "Simulate 'uses Wand of Clarity'"
+        self.button1['command'] = lambda: self.uses_call("uses Wand of Clarity")
         self.button1.grid(column=0, row=11)
         self.button2 = ttk.Button(self.debugging_buttons_frame)
-        self.button2['text'] = "Simulate frame list appended Bulls"
-        self.button2['command'] = lambda: self.make_buff_labelframe(["Bulls", time.time() + 1080, "NWN-Buff-Watcher/graphics/bulls.png"])
+        self.button2['text'] = "Simulate 'casts Clarity'"
+        self.button2['command'] = lambda: self.casts_call("casts Clarity")
         self.button2.grid(column=0, row=12)
         self.button0 = ttk.Button(self.debugging_buttons_frame)
-        self.button0['text'] = "Simulate 'casts Divine Wrath'"
-        self.button0['command'] = lambda: self.casts_call("casts Divine Wrath")
+        self.button0['text'] = "Simulate 'uses Clarity' (scroll)"
+        self.button0['command'] = lambda: self.uses_call("uses Clarity")
         self.button0.grid(column=0, row=13)
         self.button3 = ttk.Button(self.debugging_buttons_frame)
         self.button3['text'] = "Simulate 'uses Potion of Clarity'"
@@ -456,9 +456,12 @@ class MainFrame(tk.Frame):
 
             # handling edge cases clarity
             # print(adding_buff) # testing
-            if self.use_items_dict[f'{buff_string}']['name'] == "Clarity" and "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]: # edge cases for clarity... not sure if this is the best way to handle
-                adding_buff[1] = adding_buff[1] + 30
-                self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+            if self.use_items_dict[f'{buff_string}']['name'] == "Clarity":
+                if "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]:
+                    adding_buff[1] = adding_buff[1] + 30
+                    self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+                else:
+                    return
 
             # handling imp invis, the invis duration part for SF illu
             if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
@@ -516,9 +519,12 @@ class MainFrame(tk.Frame):
             # handling edge cases for clarity
             # print(adding_buff) # testing
             # added a test to make sure cooldown isn't active when trying to add
-            if self.cast_spells_dict[f'{buff_string}']['name'] == "Clarity" and "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]: # edge cases for clarity... not sure if this is the best way to handle
-                adding_buff[1] = adding_buff[1] + 30
-                self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Clarity":
+                if "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]:
+                    adding_buff[1] = adding_buff[1] + 30
+                    self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+                else:
+                    return
 
             # handling imp invis duration if character as SF illu
             if self.cast_spells_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
@@ -550,9 +556,13 @@ class MainFrame(tk.Frame):
             # handling divine wrath
             # uses list comprehension to make sure that the cooldown isn't already active
             # good template for other non-performance areas checking cooldowns, OK here since it's only called on DW cast
-            if self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Wrath" and "CD Wrath" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Wrath"]:
-                adding_buff[1] = time.time() + ((3 + (self.cot_modifier.get() // 2) + self.cha_modifier.get()) * 6)
-                self.make_buff_labelframe(["CD Wrath", time.time() + 480, "NWN-Buff-Watcher/graphics/divine_wrath_cd.png"])
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Wrath":
+                if "CD Wrath" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Wrath"]:
+                    adding_buff[1] = time.time() + ((3 + (self.cot_modifier.get() // 2) + self.cha_modifier.get()) * 6)
+                    self.make_buff_labelframe(["CD Wrath", time.time() + 480, "NWN-Buff-Watcher/graphics/divine_wrath_cd.png"])
+                    self.make_buff_labelframe(adding_buff)
+                else:
+                    return
 
             self.make_buff_labelframe(adding_buff)
         except:
