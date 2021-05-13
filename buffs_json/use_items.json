@@ -1440,12 +1440,19 @@
         "type": "item",
         "icon": "NWN-Buff-Watcher/graphics/energy_buffer.png"
     },
-    "uses Witchhunter's Cloak ": {
+    "uses Witchhunter's Cloak": {
         "name": "Summon Ward",
         "duration": "30",
         "caster_level": "1",
         "type": "item",
         "icon": "NWN-Buff-Watcher/graphics/dismissal_ward.png"
+    },
+    "uses Blackguard's Helmet": {
+        "name": "Divine Shield",
+        "duration": "6",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/divine_shield.png"
     },
 
 
