@@ -1,7 +1,7 @@
 """
 Author: Mattamue
 Program: buff_watcher_oop.py
-Last updated: 05/0/2021
+Last updated: 05/12/2021
 
 Watches chat log of the Neverwinter Nights video game
 and extends the UI by overlaying a window with more
@@ -53,6 +53,8 @@ class MainFrame(tk.Frame):
             self.lm_modifier.set(self.char_options['lm_mod'])
             self.sf_illu_state = tk.IntVar()
             self.sf_illu_state.set(self.char_options['illu_mod'])
+            self.cot_modifier = tk.IntVar()
+            self.cot_modifier.set(self.char_options['cot_mod'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -63,6 +65,7 @@ class MainFrame(tk.Frame):
             self.vendor_bool.set(True) # setting a default... might turn off if impliment csv/options file -- or set there... maybe a json
             self.lm_modifier = tk.IntVar()
             self.sf_illu_state = tk.IntVar()
+            self.cot_modifier = tk.IntVar()
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
@@ -174,6 +177,10 @@ class MainFrame(tk.Frame):
         self.cha_entry.grid(column=1, row=1, sticky='e')
         self.cha_label = ttk.Label(self.cha_frame, text="Cha modifier:")
         self.cha_label.grid(column=0, row=1, sticky='w')
+        self.cot_entry = tk.Entry(self.cha_frame, width=10, textvariable=self.cot_modifier, validate='key', validatecommand=vcmd)
+        self.cot_entry.grid(column=1, row=2, sticky='e')
+        self.cot_label = ttk.Label(self.cha_frame, text="CoT Levels (for Wrath):")
+        self.cot_label.grid(column=0, row=2, sticky='w')
 
         # caster level in its own frame
         self.caster_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
@@ -235,7 +242,7 @@ class MainFrame(tk.Frame):
         since an empty value isn't an int, but that's not how users expect it to work, so the
         text argument is closer even if it poops out some errors now and then
         '''
-        int_set = set("1234567890")
+        int_set = set("1234567890-")
 
         """
         this checks if the value being typed into the entry field is part of the 1 to 0 set; allows users
@@ -243,6 +250,9 @@ class MainFrame(tk.Frame):
         changing it to something is really deleting the 0 and typing the new number) the empty values are
         handled later in the close_char_window function since there's no easy way to allow deletes and not
         allow this possible empty field
+
+        Some joker might still mess it up with the "-" but no way around it if the field is going to
+        allow negative cha mod
         """
 
         if int_set.issuperset(value_if_allowed):
@@ -283,6 +293,11 @@ class MainFrame(tk.Frame):
         except:
             self.sf_illu_state.set(0)
             savefile['illu_mod'] = self.sf_illu_state.get()
+        try:
+            savefile['cot_mod'] = self.cot_modifier.get()
+        except:
+            self.cot_modifier.set(0)
+            savefile['cot_mod'] = self.cot_modifier.get()
 
         # saving to json, it's smart enough to overwrite old settings
         with open('settings.json', 'w') as f:
@@ -312,12 +327,12 @@ class MainFrame(tk.Frame):
         self.button2['command'] = lambda: self.make_buff_labelframe(["Bulls", time.time() + 1080, "NWN-Buff-Watcher/graphics/bulls.png"])
         self.button2.grid(column=0, row=12)
         self.button0 = ttk.Button(self.debugging_buttons_frame)
-        self.button0['text'] = "Simulate frame list appended Endurance"
-        self.button0['command'] = lambda: self.make_buff_labelframe(["Endurance", time.time() + 1080, "NWN-Buff-Watcher/graphics/endu.png"])
+        self.button0['text'] = "Simulate 'casts Divine Wrath'"
+        self.button0['command'] = lambda: self.casts_call("casts Divine Wrath")
         self.button0.grid(column=0, row=13)
         self.button3 = ttk.Button(self.debugging_buttons_frame)
-        self.button3['text'] = "Simulate frame list appended Clarity"
-        self.button3['command'] = lambda: self.make_buff_labelframe(["Clarity", time.time() + 48, "NWN-Buff-Watcher/graphics/clar.png"])
+        self.button3['text'] = "Simulate 'uses Potion of Clarity'"
+        self.button3['command'] = lambda: self.uses_call("uses Potion of Clarity")
         self.button3.grid(column=0, row=10)
 
         # don't run simulated looping with actual looping, or click more than once, causes two loops that get weird
@@ -441,10 +456,10 @@ class MainFrame(tk.Frame):
 
             # handling edge cases clarity
             # print(adding_buff) # testing
-            if self.use_items_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle
+            if self.use_items_dict[f'{buff_string}']['name'] == "Clarity" and "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]: # edge cases for clarity... not sure if this is the best way to handle
                 adding_buff[1] = adding_buff[1] + 30
                 self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
-            
+
             # handling imp invis, the invis duration part for SF illu
             if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
                 if self.sf_illu_state.get() == 0:
@@ -500,7 +515,8 @@ class MainFrame(tk.Frame):
 
             # handling edge cases for clarity
             # print(adding_buff) # testing
-            if self.cast_spells_dict[f'{buff_string}']['name'] == "Clarity": # edge cases for clarity... not sure if this is the best way to handle
+            # added a test to make sure cooldown isn't active when trying to add
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Clarity" and "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]: # edge cases for clarity... not sure if this is the best way to handle
                 adding_buff[1] = adding_buff[1] + 30
                 self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
 
@@ -527,8 +543,16 @@ class MainFrame(tk.Frame):
                 else:
                     print("Something wrong with invis or invis sphere.")
 
+            # handling divine might and shield duration
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Shield" or self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Might":
+                adding_buff[1] = time.time() + (6 * self.cha_modifier.get())
 
-
+            # handling divine wrath
+            # uses list comprehension to make sure that the cooldown isn't already active
+            # good template for other non-performance areas checking cooldowns, OK here since it's only called on DW cast
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Wrath" and "CD Wrath" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Wrath"]:
+                adding_buff[1] = time.time() + ((3 + (self.cot_modifier.get() // 2) + self.cha_modifier.get()) * 6)
+                self.make_buff_labelframe(["CD Wrath", time.time() + 480, "NWN-Buff-Watcher/graphics/divine_wrath_cd.png"])
 
             self.make_buff_labelframe(adding_buff)
         except:
