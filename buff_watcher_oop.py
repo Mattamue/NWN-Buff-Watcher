@@ -55,6 +55,8 @@ class MainFrame(tk.Frame):
             self.sf_illu_state.set(self.char_options['illu_mod'])
             self.cot_modifier = tk.IntVar()
             self.cot_modifier.set(self.char_options['cot_mod'])
+            self.sf_div_state = tk.IntVar()
+            self.sf_div_state.set(self.char_options['div_mod'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -66,6 +68,7 @@ class MainFrame(tk.Frame):
             self.lm_modifier = tk.IntVar()
             self.sf_illu_state = tk.IntVar()
             self.cot_modifier = tk.IntVar()
+            self.sf_div_state = tk.IntVar()
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
@@ -228,11 +231,19 @@ class MainFrame(tk.Frame):
 
         self.option_menu.grid(column=0, row=1, sticky='ew')
 
+        # SF Div in its own frame
+        self.sf_div_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.sf_div_frame.grid(column=0, row=6, sticky='ew')
+        self.sf_div_description = ttk.Label(self.sf_div_frame, text="Set Spell Focus: Divination\nstatus, controls length of true seeing\n0 = none\n1 = SF\n2 = GSF\n3 = ESF")
+        self.sf_div_description.grid(column=0, row=0, sticky='ew')
+        self.sf_option_menu = ttk.OptionMenu(self.sf_div_frame, self.sf_div_state, 0, *range(0, 4))
+        self.sf_option_menu.grid(column=0, row=1, sticky='ew')
+
 
         # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
         self.character_settings_window.bind("<Return>", self.close_character_settings_window)
         self.button_enter = tk.Button(self.character_settings_window, text="Save", command=lambda: self.close_character_settings_window("saved"))
-        self.button_enter.grid(column=0, row=6, columnspan=2)
+        self.button_enter.grid(column=0, row=7, columnspan=2)
 
     def validate_int(self, action, index, value_if_allowed, prior_value, text, validation_type, trigger_type, widget_name):
         ''' Here we take the vcmd from the entry windows and try to validate if they're intergers
@@ -298,6 +309,11 @@ class MainFrame(tk.Frame):
         except:
             self.cot_modifier.set(0)
             savefile['cot_mod'] = self.cot_modifier.get()
+        try:
+            savefile['div_mod'] = self.sf_div_state.get()
+        except:
+            self.sf_div_state.set(0)
+            savefile['div_mod'] = self.sf_div_state.get()
 
         # saving to json, it's smart enough to overwrite old settings
         with open('settings.json', 'w') as f:
@@ -321,19 +337,36 @@ class MainFrame(tk.Frame):
         self.button1 = ttk.Button(self.debugging_buttons_frame)
         self.button1['text'] = "Simulate 'uses Wand of Clarity'"
         self.button1['command'] = lambda: self.uses_call("uses Wand of Clarity")
-        self.button1.grid(column=0, row=11)
+        self.button1.grid(column=0, row=10)
         self.button2 = ttk.Button(self.debugging_buttons_frame)
         self.button2['text'] = "Simulate 'casts Clarity'"
         self.button2['command'] = lambda: self.casts_call("casts Clarity")
-        self.button2.grid(column=0, row=12)
+        self.button2.grid(column=0, row=11)
         self.button0 = ttk.Button(self.debugging_buttons_frame)
         self.button0['text'] = "Simulate 'uses Clarity' (scroll)"
         self.button0['command'] = lambda: self.uses_call("uses Clarity")
-        self.button0.grid(column=0, row=13)
+        self.button0.grid(column=0, row=12)
         self.button3 = ttk.Button(self.debugging_buttons_frame)
         self.button3['text'] = "Simulate 'uses Potion of Clarity'"
         self.button3['command'] = lambda: self.uses_call("uses Potion of Clarity")
-        self.button3.grid(column=0, row=10)
+        self.button3.grid(column=0, row=13)
+
+        self.button_a = ttk.Button(self.debugging_buttons_frame)
+        self.button_a['text'] = "Simulate 'uses True Seeing' (scroll)"
+        self.button_a['command'] = lambda: self.uses_call("uses True Seeing")
+        self.button_a.grid(column=1, row=10)
+        self.button_b = ttk.Button(self.debugging_buttons_frame)
+        self.button_b['text'] = "Simulate 'casts True Seeing'"
+        self.button_b['command'] = lambda: self.casts_call("casts True Seeing")
+        self.button_b.grid(column=1, row=11)
+        self.button_c = ttk.Button(self.debugging_buttons_frame)
+        self.button_c['text'] = "Simulate 'uses Bull's Strength' (scroll)"
+        self.button_c['command'] = lambda: self.uses_call("uses Bull's Strength")
+        self.button_c.grid(column=1, row=12)
+        self.button_d = ttk.Button(self.debugging_buttons_frame)
+        self.button_d['text'] = "Simulate 'uses Potion of Endurance'"
+        self.button_d['command'] = lambda: self.uses_call("uses Potion of Endurance")
+        self.button_d.grid(column=1, row=13)
 
         # don't run simulated looping with actual looping, or click more than once, causes two loops that get weird
         self.button4 = ttk.Button(self.debugging_buttons_frame)
@@ -481,6 +514,24 @@ class MainFrame(tk.Frame):
                 else:
                     adding_buff[1] = adding_buff[1] + (24 * int(self.use_items_dict[f'{buff_string}']['caster_level'])) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
 
+            # handling true seeing
+            if self.use_items_dict[f'{buff_string}']['name'] == "True Seeing":
+                if self.sf_div_state.get() == 0:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 6, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                elif self.sf_div_state.get() == 1:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 12, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                elif self.sf_div_state.get() == 2:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 18, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                elif self.sf_div_state.get() == 3:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 30, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                else:
+                    print("sf_div went wrong")
+
+                self.make_buff_labelframe(["See Invisibility", adding_buff[1], "NWN-Buff-Watcher/graphics/see_invisibility.png"])
+                self.make_buff_labelframe(["Ultravision", adding_buff[1], "NWN-Buff-Watcher/graphics/ultravision.png"])
+                return
+
+
             # print(f"duration just before pass to make labelframe: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             self.make_buff_labelframe(adding_buff)
         except:
@@ -563,6 +614,24 @@ class MainFrame(tk.Frame):
                     self.make_buff_labelframe(adding_buff)
                 else:
                     return
+
+            # handling true seeing
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "True Seeing":
+                if self.sf_div_state.get() == 0:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 6, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                elif self.sf_div_state.get() == 1:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 12, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                elif self.sf_div_state.get() == 2:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 18, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                elif self.sf_div_state.get() == 3:
+                    self.make_buff_labelframe(["True Seeing", time.time() + 30, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                else:
+                    print("sf_div went wrong")
+
+                self.make_buff_labelframe(["See Invisibility", adding_buff[1], "NWN-Buff-Watcher/graphics/see_invisibility.png"])
+                self.make_buff_labelframe(["Ultravision", adding_buff[1], "NWN-Buff-Watcher/graphics/ultravision.png"])
+                return
+
 
             self.make_buff_labelframe(adding_buff)
         except:

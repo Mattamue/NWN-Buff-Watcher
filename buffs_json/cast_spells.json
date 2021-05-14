@@ -841,7 +841,7 @@
     },
     "casts True Seeing": {
         "name": "True Seeing",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "9",
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/true_seeing.png"
