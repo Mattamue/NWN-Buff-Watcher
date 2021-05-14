@@ -57,6 +57,8 @@ class MainFrame(tk.Frame):
             self.cot_modifier.set(self.char_options['cot_mod'])
             self.sf_div_state = tk.IntVar()
             self.sf_div_state.set(self.char_options['div_mod'])
+            self.sf_trans_state = tk.IntVar()
+            self.sf_trans_state.set(self.char_options['trans_mod'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -69,6 +71,7 @@ class MainFrame(tk.Frame):
             self.sf_illu_state = tk.IntVar()
             self.cot_modifier = tk.IntVar()
             self.sf_div_state = tk.IntVar()
+            self.sf_trans_state = tk.IntVar()
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
@@ -217,7 +220,7 @@ class MainFrame(tk.Frame):
 
         # SF Illusion in its own frame
         self.sf_illu_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.sf_illu_frame.grid(column=0, row=5, sticky='ew')
+        self.sf_illu_frame.grid(column=1, row=0, sticky='ew')
         self.sf_illu_description = ttk.Label(self.sf_illu_frame, text="Set Spell Focus: Illusion\nstatus, controls length of invsibility\n0 = none\n1 = GSF\n2 = ESF")
         self.sf_illu_description.grid(column=0, row=0, sticky='ew')
 
@@ -233,11 +236,19 @@ class MainFrame(tk.Frame):
 
         # SF Div in its own frame
         self.sf_div_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.sf_div_frame.grid(column=0, row=6, sticky='ew')
+        self.sf_div_frame.grid(column=1, row=1, sticky='ew')
         self.sf_div_description = ttk.Label(self.sf_div_frame, text="Set Spell Focus: Divination\nstatus, controls length of true seeing\n0 = none\n1 = SF\n2 = GSF\n3 = ESF")
         self.sf_div_description.grid(column=0, row=0, sticky='ew')
         self.sf_option_menu = ttk.OptionMenu(self.sf_div_frame, self.sf_div_state, 0, *range(0, 4))
         self.sf_option_menu.grid(column=0, row=1, sticky='ew')
+
+        # SF Trans in its own frame
+        self.sf_trans_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.sf_trans_frame.grid(column=1, row=2, sticky='ew')
+        self.sf_trans_description = ttk.Label(self.sf_trans_frame, text="Set Spell Focus: Trans\nstatus, controls length of\nAura of Vitality\n0 = none\n1 = GSF\n2 = ESF")
+        self.sf_trans_description.grid(column=0, row=0, sticky='ew')
+        self.sf_trans_option_menu = ttk.OptionMenu(self.sf_trans_frame, self.sf_trans_state, 0, *range(0, 3))
+        self.sf_trans_option_menu.grid(column=0, row=1, sticky='ew')
 
 
         # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
@@ -314,6 +325,11 @@ class MainFrame(tk.Frame):
         except:
             self.sf_div_state.set(0)
             savefile['div_mod'] = self.sf_div_state.get()
+        try:
+            savefile['trans_mod'] = self.sf_trans_state.get()
+        except:
+            self.sf_trans_state.set(0)
+            savefile['trans_mod'] = self.sf_trans_state.get()
 
         # saving to json, it's smart enough to overwrite old settings
         with open('settings.json', 'w') as f:
@@ -367,6 +383,23 @@ class MainFrame(tk.Frame):
         self.button_d['text'] = "Simulate 'uses Potion of Endurance'"
         self.button_d['command'] = lambda: self.uses_call("uses Potion of Endurance")
         self.button_d.grid(column=1, row=13)
+
+        self.button_aa = ttk.Button(self.debugging_buttons_frame)
+        self.button_aa['text'] = "Simulate 'uses Icon of the Hunt'"
+        self.button_aa['command'] = lambda: self.uses_call("uses Icon of the Hunt")
+        self.button_aa.grid(column=2, row=10)
+        self.button_bb = ttk.Button(self.debugging_buttons_frame)
+        self.button_bb['text'] = "Simulate 'casts Aura of Vitality'"
+        self.button_bb['command'] = lambda: self.casts_call("casts Aura of Vitality")
+        self.button_bb.grid(column=2, row=11)
+        self.button_cc = ttk.Button(self.debugging_buttons_frame)
+        self.button_cc['text'] = "Simulate 'uses Wand of Bull's Strength'"
+        self.button_cc['command'] = lambda: self.uses_call("uses Wand of Bull's Strength")
+        self.button_cc.grid(column=2, row=12)
+        self.button_dd = ttk.Button(self.debugging_buttons_frame)
+        self.button_dd['text'] = "Simulate 'uses Potion of True Strike'"
+        self.button_dd['command'] = lambda: self.uses_call("uses Potion of True Strike")
+        self.button_dd.grid(column=2, row=13)
 
         # don't run simulated looping with actual looping, or click more than once, causes two loops that get weird
         self.button4 = ttk.Button(self.debugging_buttons_frame)
@@ -471,18 +504,22 @@ class MainFrame(tk.Frame):
 
             # handling the loremaster changes to duration for scrolls and wands
             # also checks if caster level is 1 and doesn't apply LM since the cl 1 signifies it has a default duration that isn't affected by cl
+            lm_modifier = 0
+
             if self.lm_modifier.get() > 0 and int(self.use_items_dict[f'{buff_string}']['caster_level']) > 1:
                 if buff_type == 'scroll':
-                    adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + self.lm_modifier.get())))
+                    lm_modifier = int(self.lm_modifier.get())
+                    # adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + self.lm_modifier.get()))) # old way
                     # print(f"scroll: {adding_buff[1]}") # testing
                     # print(f"duration in scroll: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
                 elif buff_type == 'wand':
-                    adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + (self.lm_modifier.get() + 2 // 2) // 2)))
+                    lm_modifier = ((self.lm_modifier.get() + 2 // 2) // 2)
+                    # adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + (self.lm_modifier.get() + 2 // 2) // 2))) # old way
                     # print(f"wand: {adding_buff[1]}") # testing
                 else:
-                    adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * int(self.use_items_dict[f'{buff_string}']['caster_level'])))
-            else:
-                adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * int(self.use_items_dict[f'{buff_string}']['caster_level'])))
+                    pass
+            
+            adding_buff.append(time.time() + (int(self.use_items_dict[f'{buff_string}']['duration']) * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))))
 
             # print(f"duration after LM ifs: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             adding_buff.append(self.use_items_dict[f'{buff_string}']['icon'])
@@ -499,20 +536,20 @@ class MainFrame(tk.Frame):
             # handling imp invis, the invis duration part for SF illu
             if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
                 if self.sf_illu_state.get() == 0:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * int(self.use_items_dict[f'{buff_string}']['caster_level'])), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "NWN-Buff-Watcher/graphics/invisibility.png"])
                 elif self.sf_illu_state.get() == 1:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * int(self.use_items_dict[f'{buff_string}']['caster_level'])), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "NWN-Buff-Watcher/graphics/invisibility.png"])
                 else:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * int(self.use_items_dict[f'{buff_string}']['caster_level'])), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "NWN-Buff-Watcher/graphics/invisibility.png"])
 
             # handling invisibility for SF illu & invis sphere
             if self.use_items_dict[f'{buff_string}']['name'] == "Invisibility" or self.use_items_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
                 if self.sf_illu_state.get() == 0:
                     pass
                 elif self.sf_illu_state.get() == 1:
-                    adding_buff[1] = adding_buff[1] + (12 * int(self.use_items_dict[f'{buff_string}']['caster_level'])) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
+                    adding_buff[1] = adding_buff[1] + (12 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
                 else:
-                    adding_buff[1] = adding_buff[1] + (24 * int(self.use_items_dict[f'{buff_string}']['caster_level'])) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
+                    adding_buff[1] = adding_buff[1] + (24 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
 
             # handling true seeing
             if self.use_items_dict[f'{buff_string}']['name'] == "True Seeing":
@@ -531,6 +568,16 @@ class MainFrame(tk.Frame):
                 self.make_buff_labelframe(["Ultravision", adding_buff[1], "NWN-Buff-Watcher/graphics/ultravision.png"])
                 return
 
+            # handling Aura of Vitality
+            if self.use_items_dict[f'{buff_string}']['name'] == "Aura of Vitality":
+                if self.sf_trans_state.get() == 0:
+                    pass
+                elif self.sf_trans_state.get() == 1:
+                    adding_buff[1] = adding_buff[1] + (12 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
+                elif self.sf_trans_state.get() == 2:
+                    adding_buff[1] = adding_buff[1] + (54 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))) # only needs another 54*cl to get to 60 (turns/level) since it already has 6*cl as its base
+                else:
+                    print("Something wrong with AoV")
 
             # print(f"duration just before pass to make labelframe: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             self.make_buff_labelframe(adding_buff)
@@ -632,6 +679,16 @@ class MainFrame(tk.Frame):
                 self.make_buff_labelframe(["Ultravision", adding_buff[1], "NWN-Buff-Watcher/graphics/ultravision.png"])
                 return
 
+            # handling aura of vitality
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Aura of Vitality":
+                if self.sf_trans_state.get() == 0:
+                    pass
+                elif self.sf_trans_state.get() == 1:
+                    adding_buff[1] = adding_buff[1] + (12 * int(self.cl_modifier.get())) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
+                elif self.sf_trans_state.get() == 2:
+                    adding_buff[1] = adding_buff[1] + (54 * int(self.cl_modifier.get())) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
+                else:
+                    print("Something wrong with AoV cast")
 
             self.make_buff_labelframe(adding_buff)
         except:
