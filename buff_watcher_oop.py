@@ -401,6 +401,18 @@ class MainFrame(tk.Frame):
         self.button_dd['command'] = lambda: self.uses_call("uses Potion of True Strike")
         self.button_dd.grid(column=2, row=13)
 
+        self.freeform_uses_test = tk.StringVar()
+        self.entry_test = tk.Entry(self.debugging_buttons_frame, width=30, textvariable=self.freeform_uses_test)
+        self.entry_test.grid(column=2, row=14)
+        self.entry_button = ttk.Button(self.debugging_buttons_frame, text='Enter uses freeform', command=lambda: self.uses_call(self.freeform_uses_test.get()))
+        self.entry_button.grid(column=2, row=15)
+
+        self.freeform_cast_test = tk.StringVar()
+        self.cast_test = tk.Entry(self.debugging_buttons_frame, width=30, textvariable=self.freeform_cast_test)
+        self.cast_test.grid(column=1, row=14)
+        self.cast_button = ttk.Button(self.debugging_buttons_frame, text='Enter casts freeform', command=lambda: self.casts_call(self.freeform_cast_test.get()))
+        self.cast_button.grid(column=1, row=15)
+
         # don't run simulated looping with actual looping, or click more than once, causes two loops that get weird
         self.button4 = ttk.Button(self.debugging_buttons_frame)
         self.button4['text'] = "START loops of time passing"
@@ -607,7 +619,7 @@ class MainFrame(tk.Frame):
             adding_buff.append(self.cast_spells_dict[f'{buff_string}']['name'])
 
             # handling the "1" cl spells since that signifies that they aren't changed by caster level, they just get their duration
-            if int(self.cast_spells_dict[f'{buff_string}']['duration']) > 1:
+            if int(self.cast_spells_dict[f'{buff_string}']['caster_level']) > 1:
                 adding_buff.append(time.time() + (int(self.cast_spells_dict[f'{buff_string}']['duration']) * int(self.cl_modifier.get())))
             else:
                 adding_buff.append(time.time() + (int(self.cast_spells_dict[f'{buff_string}']['duration'])))
