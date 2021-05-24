@@ -29,7 +29,7 @@
     },
     "uses Potion of Balagarn's Iron Horn": {
         "name": "CD Balgarn's",
-        "duration": "6",
+        "duration": "12",
         "caster_level": "1",
         "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
@@ -548,7 +548,7 @@
     },
     "uses Wand of Balagarn's Iron Horn": {
         "name": "CD Balgarn's",
-        "duration": "6",
+        "duration": "12",
         "caster_level": "1",
         "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
@@ -1502,7 +1502,7 @@
     },
     "uses Balagarn's Iron Horn": {
         "name": "CD Balgarn's",
-        "duration": "6",
+        "duration": "12",
         "caster_level": "1",
         "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
@@ -1801,6 +1801,13 @@
         "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/greater_planar.png"
     },
+    "uses Greater Restoration": {
+        "name": "CD Greater Restoration",
+        "duration": "240",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/greater_resto_cd.png"
+    },
     "uses Greater Shadow Conjuration": {
         "name": "Stoneskin",
         "duration": "360",
@@ -2040,7 +2047,7 @@
         "icon": "NWN-Buff-Watcher/graphics/planar_binding.png"
     },
     "uses Polymorph Self": {
-        "name": "Polymorph",
+        "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "scroll",
@@ -2270,6 +2277,13 @@
         "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/tense_trans.png"
     },
+    "uses Time Stop": {
+        "name": "Time Stop",
+        "duration": "9",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/time_stop.png"
+    },
     "uses True Seeing": {
         "name": "True Seeing",
         "duration": "60",
@@ -2311,5 +2325,13 @@
         "caster_level": "9",
         "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/wounding_whispers.png"
+    },
+
+    "uses Innate Ability": {
+        "name": "Innate Ability",
+        "duration": "300",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/innate.png"
     }
 }

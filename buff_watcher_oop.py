@@ -1,7 +1,7 @@
 """
 Author: Mattamue
 Program: buff_watcher_oop.py
-Last updated: 05/12/2021
+Last updated: 05/20/2021
 
 Watches chat log of the Neverwinter Nights video game
 and extends the UI by overlaying a window with more
@@ -18,6 +18,7 @@ from PIL import ImageTk, Image
 import time
 from tkinter.filedialog import askopenfile
 from get_friends_list import friends_list
+from abilities import abilities_trigger
 import json
 
 """
@@ -59,6 +60,8 @@ class MainFrame(tk.Frame):
             self.sf_div_state.set(self.char_options['div_mod'])
             self.sf_trans_state = tk.IntVar()
             self.sf_trans_state.set(self.char_options['trans_mod'])
+            self.character_level = tk.IntVar()
+            self.character_level.set(self.char_options['char_level'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -72,11 +75,13 @@ class MainFrame(tk.Frame):
             self.cot_modifier = tk.IntVar()
             self.sf_div_state = tk.IntVar()
             self.sf_trans_state = tk.IntVar()
+            self.character_level = tk.IntVar()
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
         self.use_items_dict = json.load(open('NWN-Buff-Watcher/buffs_json/use_items.json','r'))
         self.cast_spells_dict = json.load(open('NWN-Buff-Watcher/buffs_json/cast_spells.json','r'))
+        self.ability_ref_dict = json.load(open('NWN-Buff-Watcher/buffs_json/ability_ref.json','r'))
 
         # frame for the buttons on the right
         self.buttons_frame = tk.Frame(self)
@@ -250,6 +255,15 @@ class MainFrame(tk.Frame):
         self.sf_trans_option_menu = ttk.OptionMenu(self.sf_trans_frame, self.sf_trans_state, 0, *range(0, 3))
         self.sf_trans_option_menu.grid(column=0, row=1, sticky='ew')
 
+        # character level/innate ability own frame
+        self.char_level_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.char_level_frame.grid(column=1, row=3, sticky='ew')
+        self.char_level_description = ttk.Label(self.char_level_frame, text="Setting total character\nlevel for innate ability duration\n(for the few races that get one)")
+        self.char_level_description.grid(column=0, row=0, sticky='ew', columnspan=2)
+        self.char_level_entry = tk.Entry(self.char_level_frame, width=10, textvariable=self.character_level, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.char_level_entry.grid(column=1, row=1, sticky='e')
+        self.char_level_label = ttk.Label(self.char_level_frame, text="Character Level:")
+        self.char_level_label.grid(column=0, row=1, sticky='w')
 
         # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
         self.character_settings_window.bind("<Return>", self.close_character_settings_window)
@@ -330,8 +344,13 @@ class MainFrame(tk.Frame):
         except:
             self.sf_trans_state.set(0)
             savefile['trans_mod'] = self.sf_trans_state.get()
+        try:
+            savefile['char_level'] = self.character_level.get()
+        except:
+            self.character_level.set(0)
+            savefile['char_level'] = self.character_level.get()
 
-        # saving to json, it's smart enough to overwrite old settings
+        # saving to json, w to overwrite old settings, not appending
         with open('settings.json', 'w') as f:
             json.dump(savefile, f, indent=4)
 
@@ -460,7 +479,7 @@ class MainFrame(tk.Frame):
         # as seperate list items into a list
         
         buffs = self.logfile.readlines() 
-        # print(buffs) # debugging, shows the chat lot output from the game in the console
+        print(buffs) # debugging, shows the chat lot output from the game in the console
 
         for logline in buffs:
             if self.name_stringvar.get() + " uses " in logline: # need a modifier for vendor vs player potions
@@ -482,6 +501,11 @@ class MainFrame(tk.Frame):
                 # print(output_string[:-1]) # testing
                 self.casts_call(output_string[:-1])
 
+        for logline in buffs:
+            if " has a timer of " in logline:
+                ability_list = abilities_trigger(logline)
+                print(f"printing ability list: {ability_list}")
+                self.make_buff_labelframe([ability_list[0], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
 
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
@@ -591,6 +615,22 @@ class MainFrame(tk.Frame):
                 else:
                     print("Something wrong with AoV")
 
+            # handling greater resto scroll and its cooldown
+            if self.use_items_dict[f'{buff_string}']['name'] == "CD Greater Restoration":
+                if "CD Greater Restoration" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Greater Restoration"]:
+                    pass
+                else:
+                    return
+
+            # handling time stop scroll and its cooldown
+            if self.use_items_dict[f"{buff_string}"]["name"] == "Time Stop":
+                if "CD Time Stop" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Time Stop"]:
+                    self.make_buff_labelframe(["CD Time Stop", time.time() + 240, "NWN-Buff-Watcher/graphics/time_stop_cd.png"])
+                else:
+                    return
+
+
+
             # print(f"duration just before pass to make labelframe: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             self.make_buff_labelframe(adding_buff)
         except:
@@ -620,7 +660,10 @@ class MainFrame(tk.Frame):
 
             # handling the "1" cl spells since that signifies that they aren't changed by caster level, they just get their duration
             if int(self.cast_spells_dict[f'{buff_string}']['caster_level']) > 1:
-                adding_buff.append(time.time() + (int(self.cast_spells_dict[f'{buff_string}']['duration']) * int(self.cl_modifier.get())))
+                # changed the duration to a float to handle 1.5 rounds per level on greater sanctuary
+                # need to test in-game and see how this works out, if it just does 1.5 too, or if there's a break at the round/4 level
+                # if there is a break... we'll need to handle its duration in its own section below
+                adding_buff.append(time.time() + (float(self.cast_spells_dict[f'{buff_string}']['duration']) * int(self.cl_modifier.get())))
             else:
                 adding_buff.append(time.time() + (int(self.cast_spells_dict[f'{buff_string}']['duration'])))
 
@@ -702,6 +745,27 @@ class MainFrame(tk.Frame):
                 else:
                     print("Something wrong with AoV cast")
 
+            # handling greater resto cooldown on cast
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "CD Greater Restoration":
+                if "CD Greater Restoration" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Greater Restoration"]:
+                    pass
+                else:
+                    return
+
+            # handling greater sanctuary and its cooldown on cast
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Greater Sanctuary":
+                if "CD Greater Sanctuary" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Greater Sanctuary"]:
+                    self.make_buff_labelframe(["CD Greater Sanctuary", time.time() + 240, "NWN-Buff-Watcher/graphics/greater_sanc_cd.png"])
+                else:
+                    return
+
+            # handling time stop and its cooldown on cast
+            if self.cast_spells_dict[f"{buff_string}"]["name"] == "Time Stop":
+                if "CD Time Stop" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Time Stop"]:
+                    self.make_buff_labelframe(["CD Time Stop", time.time() + 240, "NWN-Buff-Watcher/graphics/time_stop_cd.png"])
+                else:
+                    return
+
             self.make_buff_labelframe(adding_buff)
         except:
             print(f"EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later user can add to json with a buff-managing window?
@@ -773,6 +837,7 @@ class BuffLabelFrame(tk.LabelFrame):
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
 
+        self.buff_epoch = time.time()
         self.buff_name = self.added_buff[0]
         self.buff_image_reference = ImageTk.PhotoImage(Image.open(self.added_buff[2]))
         self.buff_image_label = ttk.Label(self, image=self.buff_image_reference)
@@ -787,11 +852,25 @@ class BuffLabelFrame(tk.LabelFrame):
         # adding click-ability to click the buff frame image
         self.buff_image_label.bind("<Button-1>", self.clicked_in_buff_frame)
 
-        self.click_menu = Menu(self, tearoff=0)
+        self.click_menu = tk.Menu(self, tearoff=0)
+        self.innate_cascade = tk.Menu(self, tearoff=0)
 
-        self.click_menu.add_command(label='Extended (nothing yet)')
-        self.click_menu.add_command(label='Sub-buff (ie shadow conj) (nothing yet)')
+        self.click_menu.add_command(label=f'{self.buff_name}')
+
+        if self.buff_name == "Innate Ability":
+            # TODO: revisit this, cascade working good, or just move back to adding the huge list since its context specific...
+            self.click_menu.add_separator()
+            self.click_menu.add_cascade(label="Innate Abilities:", menu=self.innate_cascade)
+            self.innate_cascade.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/darkness.png"])])
+            self.innate_cascade.add_command(label='Invis (Duergar)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_duerg()]) 
+            self.innate_cascade.add_command(label='Invis (Svir/Fey/Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_most()]) 
+            self.innate_cascade.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/polymorph.png"])])
+            self.innate_cascade.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/war_cry.png"])])
+
+        self.click_menu.add_separator()
         self.click_menu.add_command(label='Destroy', command=lambda: self.menu_destroy_buff_labelframe())
+
+
 
         # When the object is created, add the Frame to the buffs list in the main_frame
         # probably move this elsewhere
@@ -809,6 +888,30 @@ class BuffLabelFrame(tk.LabelFrame):
         self.destroy()
         main_frame.resize_set_buff_window('buff destroy')
 
+    def innate_invis_duerg(self):
+        print("Innate invis fired")
+        # handling invisibility for innate and SF illu
+        # for whatever undocumented reason in Arelith, duergar get 2x character level to their invis
+        if main_frame.sf_illu_state.get() == 0:
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (6 * (main_frame.character_level.get() * 2)), "NWN-Buff-Watcher/graphics/invisibility.png"])
+        elif main_frame.sf_illu_state.get() == 1:
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (18 * (main_frame.character_level.get() * 2)), "NWN-Buff-Watcher/graphics/invisibility.png"])
+        elif main_frame.sf_illu_state.get() == 2:
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (30 * (main_frame.character_level.get() * 2)), "NWN-Buff-Watcher/graphics/invisibility.png"])
+        else:
+            print("Something wrong with duerg innate invis.")
+
+    def innate_invis_most(self):
+        print("Innate invis fired")
+        # handling invisibility for innate and SF illu
+        if main_frame.sf_illu_state.get() == 0:
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/invisibility.png"])
+        elif main_frame.sf_illu_state.get() == 1:
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (18 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/invisibility.png"])
+        elif main_frame.sf_illu_state.get() == 2:
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (30 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/invisibility.png"])
+        else:
+            print("Something wrong with innate invis.")
 
 class App(tk.Tk): # creating a tk window object and using it for overall constructor, but otherwise not good practice to do much more with it, instead you build stuff in the "window" inside of a Frame widget that makes up the whole interior of the window
     def __init__(self):
