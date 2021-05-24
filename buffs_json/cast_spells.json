@@ -36,7 +36,7 @@
     },
     "casts Balagarn's Iron Horn": {
         "name": "CD Balgarn's",
-        "duration": "6",
+        "duration": "12",
         "caster_level": "1",
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
@@ -356,6 +356,20 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/greater_planar.png"
     },
+    "casts Greater Restoration": {
+        "name": "CD Greater Restoration",
+        "duration": "240",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/greater_resto_cd.png"
+    },
+    "casts Greater Sanctuary": {
+        "name": "Greater Sanctuary",
+        "duration": "1.5",
+        "caster_level": "2",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/greater_sanc.png"
+    },
     "casts Greater Shadow Conjuration": {
         "name": "Stoneskin",
         "duration": "360",
@@ -602,7 +616,7 @@
         "icon": "NWN-Buff-Watcher/graphics/planar_binding.png"
     },
     "casts Polymorph Self": {
-        "name": "Polymorph",
+        "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
@@ -838,6 +852,13 @@
         "caster_level": "1",
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/teleport.png"
+    },
+    "casts Time Stop": {
+        "name": "Time Stop",
+        "duration": "9",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/time_stop.png"
     },
     "casts True Seeing": {
         "name": "True Seeing",
