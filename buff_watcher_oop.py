@@ -20,6 +20,7 @@ from tkinter.filedialog import askopenfile
 from get_friends_list import friends_list
 from abilities import abilities_trigger
 import json
+from summons_cooldown import summons_cd_call
 
 """
 the MainFrame class is the main object of the program, when the driver in the "if __main__" below runs, it instantiates an instance of this class
@@ -479,7 +480,7 @@ class MainFrame(tk.Frame):
         # as seperate list items into a list
         
         buffs = self.logfile.readlines() 
-        print(buffs) # debugging, shows the chat lot output from the game in the console
+        # print(buffs) # debugging, shows the chat lot output from the game in the console
 
         for logline in buffs:
             if self.name_stringvar.get() + " uses " in logline: # need a modifier for vendor vs player potions
@@ -504,8 +505,12 @@ class MainFrame(tk.Frame):
         for logline in buffs:
             if " has a timer of " in logline:
                 ability_list = abilities_trigger(logline)
-                print(f"printing ability list: {ability_list}")
+                # print(f"printing ability list: {ability_list}") # testing
                 self.make_buff_labelframe([ability_list[0], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
+
+        for logline in buffs:
+            if " will be available once more in " in logline:
+                self.make_buff_labelframe(summons_cd_call(logline))
 
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
