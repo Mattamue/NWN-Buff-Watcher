@@ -38,6 +38,8 @@ class MainFrame(tk.Frame):
         self.rowconfigure(0, weight=1) # allows the main_frame *in its frame* to grow up and down in the row when the window is resized, since it doesn't share with other widgets it gets 100% of the 1 weight
 
         self.buffs_list_frames = [] # setting this to be used later
+        self.smite_iterator = 0
+        self.smite_list = []
 
         # feel like I'm saying this a lot... probably a better place for this...
         # tries to open settings, just goes with defaults if it can't
@@ -492,7 +494,6 @@ class MainFrame(tk.Frame):
                 # print(output_string[:-1]) # testing
                 self.uses_call(output_string[:-1])
 
-        for logline in buffs:
             if self.name_stringvar.get() + " casts " in logline:
                 start = logline.split(" ").index("casts")
                 stop = len(logline.split(" "))
@@ -502,15 +503,16 @@ class MainFrame(tk.Frame):
                 # print(output_string[:-1]) # testing
                 self.casts_call(output_string[:-1])
 
-        for logline in buffs:
             if " has a timer of " in logline:
                 ability_list = abilities_trigger(logline)
                 # print(f"printing ability list: {ability_list}") # testing
                 self.make_buff_labelframe([ability_list[0], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
 
-        for logline in buffs:
             if " will be available once more in " in logline:
                 self.make_buff_labelframe(summons_cd_call(logline))
+
+            if self.name_stringvar.get() + " attempts Smite Evil " in logline or self.name_stringvar.get() + " attempts Smite Good " in logline:
+                self.smite_call()
 
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
@@ -522,6 +524,32 @@ class MainFrame(tk.Frame):
                 self.resize_set_buff_window('buff destroy')
         
         self.after(100, self.buffs_loop_time_passing) # 1000 works... trying 100
+
+    def smite_call(self):
+        """ handles the sequential cooldowns of smite, they don't all start CDs right when used
+        but instead recharge 1 use after 10 minutes, will be able to recycle lots of this
+        code for the turn undead/divine shield&might cooldowns as well... just calling
+        this smite so it works for evil and good
+        Maybe bard song too...
+        """
+
+        if "CD Smite" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]):
+            self.make_buff_labelframe(["CD Smite", time.time() + 600, "NWN-Buff-Watcher/graphics/smite_both_cd.png"])
+            # print(f'in if: {[obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]}') # testing
+        else:
+            self.smite_iterator = self.smite_iterator + 1
+
+            for smite_buff in self.buffs_list_frames:
+                if "CD Smite" in str(smite_buff.buff_name):
+                    self.smite_list.append(float(smite_buff.buff_birthday))
+            
+            self.smite_list.sort()
+            squential_smite_cd = self.smite_list[-1]
+
+            self.make_buff_labelframe([f"CD Smite {self.smite_iterator}", squential_smite_cd + 600, "NWN-Buff-Watcher/graphics/smite_both_cd.png"])
+
+            self.smite_list = []
+            # print(f'in else: {[obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]}') # testing
 
     def uses_call(self, buff_string):
         # takes the string that comes back from the main loop and compares it to a dictionary of all possible "character uses X thing" responses
