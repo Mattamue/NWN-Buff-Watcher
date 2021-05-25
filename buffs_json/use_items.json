@@ -1238,11 +1238,11 @@
         "icon": "NWN-Buff-Watcher/graphics/eagle.png"
     },
     "uses Ollamh Harp": {
-        "name": "Mass Haste",
+        "name": "Haste",
         "duration": "6",
         "caster_level": "11",
         "type": "item",
-        "icon": "NWN-Buff-Watcher/graphics/mass_haste.png"
+        "icon": "NWN-Buff-Watcher/graphics/haste.png"
     },
     "uses Sweetberry Wine": {
         "name": "Haste",
@@ -1963,11 +1963,11 @@
         "icon": "NWN-Buff-Watcher/graphics/mass_camo.png"
     },
     "uses Mass Haste": {
-        "name": "Mass Haste",
+        "name": "Haste",
         "duration": "6",
         "caster_level": "11",
         "type": "scroll",
-        "icon": "NWN-Buff-Watcher/graphics/mass_haste.png"
+        "icon": "NWN-Buff-Watcher/graphics/haste.png"
     },
     "uses Mestil's Acid Sheath": {
         "name": "Mestil's Acid Sheath",

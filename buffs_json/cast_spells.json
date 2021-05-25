@@ -532,11 +532,11 @@
         "icon": "NWN-Buff-Watcher/graphics/mass_camo.png"
     },
     "casts Mass Haste": {
-        "name": "Mass Haste",
+        "name": "Haste",
         "duration": "6",
         "caster_level": "11",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mass_haste.png"
+        "icon": "NWN-Buff-Watcher/graphics/haste.png"
     },
     "casts Mestil's Acid Sheath": {
         "name": "Mestil's Acid Sheath",
