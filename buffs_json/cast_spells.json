@@ -846,13 +846,6 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/tense_trans.png"
     },
-    "casts Teleport": {
-        "name": "Teleport",
-        "duration": "600",
-        "caster_level": "1",
-        "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/teleport.png"
-    },
     "casts Time Stop": {
         "name": "Time Stop",
         "duration": "9",
