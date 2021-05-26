@@ -507,16 +507,47 @@ class MainFrame(tk.Frame):
             if " has a timer of " in logline:
                 ability_list = abilities_trigger(logline)
                 # print(f"printing ability list: {ability_list}") # testing
-                self.make_buff_labelframe([ability_list[0], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
+                try:
+                    self.make_buff_labelframe([ability_list[0], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
+                except:
+                    print(f"ability farted on: {ability_list}")
 
             if " will be available once more in " in logline:
-                self.make_buff_labelframe(summons_cd_call(logline))
+                try:
+                    self.make_buff_labelframe(summons_cd_call(logline))
+                except:
+                    print(f"summon farted on: {logline}")
 
             if self.name_stringvar.get() + " attempts Smite Evil " in logline or self.name_stringvar.get() + " attempts Smite Good " in logline:
-                self.smite_call()
+                try:
+                    self.smite_call()
+                except:
+                    print(f"smite farted on: {logline}")
 
             if self.name_stringvar.get() + " turns undead." in logline or self.name_stringvar.get() + " casts Divine Might" in logline or self.name_stringvar.get() + " casts Divine Shield" in logline:
-                self.smite_call()
+                try:
+                    self.smite_call()
+                except:
+                    print(f"turn/might/shield farted on: {logline}")
+
+            if "You will be able to use Scry again in 10 minute(s)." in logline:
+                try:
+                    self.make_buff_labelframe(["CD Scry", time.time() + 600, "NWN-Buff-Watcher/graphics/scry_cd.png"])
+                except:
+                    print(f"Scry farted.")
+
+            if " grants you a greater favor." in logline:
+                try:
+                    self.make_buff_labelframe(["CD Pray", time.time() + 1200, "NWN-Buff-Watcher/graphics/pray_cd.png"])
+                except:
+                    print(f"Pray farted.")
+
+            if self.name_stringvar.get() + " attempts Knockdown on " in logline and "*critical hit*" in logline or "*hit*" in logline:
+                try:
+                    if "CD Knockdown" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Knockdown"]:
+                        self.make_buff_labelframe(["CD Knockdown", time.time() + 12, "NWN-Buff-Watcher/graphics/knockdown_cd.png"])
+                except:
+                    print(f"KD farted.")
 
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
@@ -858,9 +889,24 @@ class MainFrame(tk.Frame):
         self.resize_set_buff_window('buff display')
 
     def rest_off_buffs(self): # removes all buffs and removes the frame border by re-drawing as 1 width when character rests
+        # also preserves scry since that isn't reset by resting cooldown
+        # do this by popping the scry cooldown out of the list, trying so only actually calling when there is a Scry cooldown
+        try:
+            popped_scry_cd = self.buffs_list_frames.pop(self.buffs_list_frames.index(*[obj for obj in self.buffs_list_frames if obj.buff_name == "CD Scry"]))
+        except:
+            pass
+        # print(f"pop: {popped_scry_cd}") # testing
+
+        # destryong everything else as normal
         for x in self.buffs_list_frames:
             x.destroy()
         self.buffs_list_frames.clear()
+
+        # then putting the scry CD back in if it exists, otherwise pass
+        try:
+            self.buffs_list_frames.append(popped_scry_cd)
+        except:
+            pass
         self.buff_holding_frame['width'] = "1"
 
     def friends_list_window(self):

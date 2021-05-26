@@ -243,5 +243,10 @@
         "name": "CD Racial Ability",
         "type": "ability",
         "icon": "NWN-Buff-Watcher/graphics/racial_cd.png"
+    },
+    "Lesser Teleport": {
+        "name": "CD Lesser Teleport",
+        "type": "ability",
+        "icon": "NWN-Buff-Watcher/graphics/teleport.png"
     }
 }
