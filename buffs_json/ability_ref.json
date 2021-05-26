@@ -252,6 +252,6 @@
     "Signature Spell": {
         "name": "CD Signature Spell",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/teleport.png"
+        "icon": "NWN-Buff-Watcher/graphics/signature_cd.png"
     }
 }
