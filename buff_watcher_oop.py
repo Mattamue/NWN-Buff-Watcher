@@ -38,8 +38,9 @@ class MainFrame(tk.Frame):
         self.rowconfigure(0, weight=1) # allows the main_frame *in its frame* to grow up and down in the row when the window is resized, since it doesn't share with other widgets it gets 100% of the 1 weight
 
         self.buffs_list_frames = [] # setting this to be used later
-        self.smite_iterator = 0
+        self.buff_iterator = 0
         self.smite_list = []
+        self.turn_list = []
 
         # feel like I'm saying this a lot... probably a better place for this...
         # tries to open settings, just goes with defaults if it can't
@@ -514,6 +515,9 @@ class MainFrame(tk.Frame):
             if self.name_stringvar.get() + " attempts Smite Evil " in logline or self.name_stringvar.get() + " attempts Smite Good " in logline:
                 self.smite_call()
 
+            if self.name_stringvar.get() + " turns undead." in logline or self.name_stringvar.get() + " casts Divine Might" in logline or self.name_stringvar.get() + " casts Divine Shield" in logline:
+                self.smite_call()
+
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
             if x.buff_birthday < time.time() + 6:
@@ -537,7 +541,7 @@ class MainFrame(tk.Frame):
             self.make_buff_labelframe(["CD Smite", time.time() + 600, "NWN-Buff-Watcher/graphics/smite_both_cd.png"])
             # print(f'in if: {[obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]}') # testing
         else:
-            self.smite_iterator = self.smite_iterator + 1
+            self.buff_iterator = self.buff_iterator + 1
 
             for smite_buff in self.buffs_list_frames:
                 if "CD Smite" in str(smite_buff.buff_name):
@@ -546,10 +550,29 @@ class MainFrame(tk.Frame):
             self.smite_list.sort()
             squential_smite_cd = self.smite_list[-1]
 
-            self.make_buff_labelframe([f"CD Smite {self.smite_iterator}", squential_smite_cd + 600, "NWN-Buff-Watcher/graphics/smite_both_cd.png"])
+            self.make_buff_labelframe([f"CD Smite {self.buff_iterator}", squential_smite_cd + 600, "NWN-Buff-Watcher/graphics/smite_both_cd.png"])
 
             self.smite_list = []
             # print(f'in else: {[obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]}') # testing
+
+    def turn_call(self):
+        """Essetially using the same code as smite_call
+        """
+        if "CD Turn" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Turn" in str(obj.buff_name)]):
+            self.make_buff_labelframe(["CD Turn", time.time() + 600, "NWN-Buff-Watcher/graphics/turn_cd.png"])
+        else:
+            self.buff_iterator = self.buff_iterator + 1
+
+            for turn_buff in self.buffs_list_frames:
+                if "CD Smite" in str(turn_buff.buff_name):
+                    self.turn_list.append(float(turn_buff.buff_birthday))
+            
+            self.turn_list.sort()
+            squential_turn_cd = self.turn_list[-1]
+
+            self.make_buff_labelframe([f"CD Smite {self.buff_iterator}", squential_turn_cd + 600, "NWN-Buff-Watcher/graphics/turn_cd.png"])
+
+            self.turn_list = []
 
     def uses_call(self, buff_string):
         # takes the string that comes back from the main loop and compares it to a dictionary of all possible "character uses X thing" responses
