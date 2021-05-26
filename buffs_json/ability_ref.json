@@ -248,5 +248,10 @@
         "name": "CD Lesser Teleport",
         "type": "ability",
         "icon": "NWN-Buff-Watcher/graphics/teleport.png"
+    },
+    "Signature Spell": {
+        "name": "CD Signature Spell",
+        "type": "ability",
+        "icon": "NWN-Buff-Watcher/graphics/teleport.png"
     }
 }
