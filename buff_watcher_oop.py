@@ -508,7 +508,7 @@ class MainFrame(tk.Frame):
                 ability_list = abilities_trigger(logline)
                 # print(f"printing ability list: {ability_list}") # testing
                 try:
-                    self.make_buff_labelframe([ability_list[0], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
+                    self.make_buff_labelframe([self.ability_ref_dict[ability_list[0]]['name'], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
                 except:
                     print(f"ability farted on: {ability_list}")
 
