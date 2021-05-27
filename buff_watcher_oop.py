@@ -560,7 +560,7 @@ class MainFrame(tk.Frame):
                 except:
                     print(f"Pray farted.")
 
-            if self.name_stringvar.get() + " attempts Knockdown on " in logline and "*critical hit*" in logline or "*hit*" in logline:
+            if self.name_stringvar.get() + " attempts Knockdown on " in logline and "*critical hit*" in logline or self.name_stringvar.get() + " attempts Knockdown on " in logline and "*hit*" in logline:
                 try:
                     if "CD Knockdown" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Knockdown"]:
                         self.make_buff_labelframe(["CD Knockdown", time.time() + 12, "NWN-Buff-Watcher/graphics/knockdown_cd.png"])
@@ -629,13 +629,13 @@ class MainFrame(tk.Frame):
             self.buff_iterator = self.buff_iterator + 1
 
             for turn_buff in self.buffs_list_frames:
-                if "CD Smite" in str(turn_buff.buff_name):
+                if "CD Turn" in str(turn_buff.buff_name):
                     self.turn_list.append(float(turn_buff.buff_birthday))
             
             self.turn_list.sort()
             squential_turn_cd = self.turn_list[-1]
 
-            self.make_buff_labelframe([f"CD Smite {self.buff_iterator}", squential_turn_cd + 600, "NWN-Buff-Watcher/graphics/turn_cd.png"])
+            self.make_buff_labelframe([f"CD Turn {self.buff_iterator}", squential_turn_cd + 600, "NWN-Buff-Watcher/graphics/turn_cd.png"])
 
             self.turn_list = []
 
