@@ -544,7 +544,7 @@ class MainFrame(tk.Frame):
 
             if self.name_stringvar.get() + " turns undead." in logline or self.name_stringvar.get() + " casts Divine Might" in logline or self.name_stringvar.get() + " casts Divine Shield" in logline:
                 try:
-                    self.smite_call()
+                    self.turn_call()
                 except:
                     print(f"turn/might/shield farted on: {logline}")
 
