@@ -568,13 +568,29 @@ class MainFrame(tk.Frame):
                     print(f"KD farted.")
 
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
-            x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
-            if x.buff_birthday < time.time() + 6:
-                x['background'] = 'red'
-            if x.buff_birthday < time.time():
-                self.buffs_list_frames.remove(x)
-                x.destroy()
-                self.resize_set_buff_window('buff destroy')
+            # print(f"buff_timer {x.buff_name}: {x.buff_timer.get()}") # this is the remaining seconds that gets counted down
+            # print(f"buff_epoch {x.buff_name}: {x.buff_epoch}") # this is the time.time when the buff is created
+            # print(f"buff_birthday {x.buff_name}: {x.buff_birthday}") # this is the time.time + the duration of the buff
+
+            # handling extended buffs, has to be chosen by the user on the buff drop-down, that sets a boolean on the object
+            # probably a better way to do this
+            if x.extended_bool.get() == False:
+                x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
+                if x.buff_birthday < time.time() + 6:
+                    x['background'] = 'red'
+                if x.buff_birthday < time.time():
+                    self.buffs_list_frames.remove(x)
+                    x.destroy()
+                    self.resize_set_buff_window('buff destroy')
+            else:
+                x.buff_timer.set(f"{(x.buff_birthday + (x.buff_birthday - x.buff_epoch)) - time.time():.1f}s")
+                if (x.buff_birthday + (x.buff_birthday - x.buff_epoch)) < time.time() + 6:
+                    x['background'] = 'red'
+                if (x.buff_birthday + (x.buff_birthday - x.buff_epoch)) < time.time():
+                    self.buffs_list_frames.remove(x)
+                    x.destroy()
+                    self.resize_set_buff_window('buff destroy')
+
         
         self.after(100, self.buffs_loop_time_passing) # 1000 works... trying 100
 
@@ -1031,8 +1047,14 @@ class BuffLabelFrame(tk.LabelFrame):
 
         self.click_menu = tk.Menu(self, tearoff=0)
         self.innate_cascade = tk.Menu(self, tearoff=0)
+        self.extended_bool = tk.BooleanVar()
+        self.extended_bool.set(False)
 
         self.click_menu.add_command(label=f'{self.buff_name}')
+
+        if "CD " not in str(self.buff_name) and "True Seeing" not in str(self.buff_name):
+            self.click_menu.add_separator()
+            self.click_menu.add_checkbutton(label="Extend", variable=self.extended_bool, onvalue=True, offvalue=False)
 
         if self.buff_name == "Innate Ability":
             # TODO: revisit this, cascade working good, or just move back to adding the huge list since its context specific...
