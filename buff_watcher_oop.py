@@ -66,6 +66,8 @@ class MainFrame(tk.Frame):
             self.sf_trans_state.set(self.char_options['trans_mod'])
             self.character_level = tk.IntVar()
             self.character_level.set(self.char_options['char_level'])
+            self.specialist_type = tk.StringVar()
+            self.specialist_type.set(self.char_options['spec_type'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -73,13 +75,15 @@ class MainFrame(tk.Frame):
             self.cha_modifier = tk.IntVar()
             self.cl_modifier = tk.IntVar()
             self.vendor_bool = tk.BooleanVar()
-            self.vendor_bool.set(True) # setting a default... might turn off if impliment csv/options file -- or set there... maybe a json
+            self.vendor_bool.set(True) # setting a default
             self.lm_modifier = tk.IntVar()
             self.sf_illu_state = tk.IntVar()
             self.cot_modifier = tk.IntVar()
             self.sf_div_state = tk.IntVar()
             self.sf_trans_state = tk.IntVar()
             self.character_level = tk.IntVar()
+            self.specialist_type = tk.StringVar()
+            self.specialist_type.set("None")
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
@@ -172,7 +176,7 @@ class MainFrame(tk.Frame):
 
         # all the name stuff in a frame
         self.name_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.name_frame.grid(column=0, row=0, sticky='ew')
+        self.name_frame.grid(column=0, row=0, sticky='nsew')
         self.name_label = ttk.Label(self.name_frame, text="Enter character name\nExample: Sleve Mcdichael\nAdd quotes for disguise: \"Maskedess Drowess\"\nNote: case and space-sensitive")
         self.name_label.grid(column=0, row=0, columnspan=2)
         self.name_entry = tk.Entry(self.name_frame, width = 30, textvariable = self.name_stringvar)
@@ -185,7 +189,7 @@ class MainFrame(tk.Frame):
 
         # cha modifier in its own frame
         self.cha_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.cha_frame.grid(column=0, row=1, sticky='ew')
+        self.cha_frame.grid(column=0, row=1, sticky='nsew')
         self.cha_description = ttk.Label(self.cha_frame, text="Enter charisma modifier for\nabilities like divine shield\nin order to estimate duration\n(enter an interger)")
         self.cha_description.grid(column=0, row=0, columnspan=2, sticky='ew')
         self.cha_entry = tk.Entry(self.cha_frame, width=10, textvariable=self.cha_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
@@ -199,7 +203,7 @@ class MainFrame(tk.Frame):
 
         # caster level in its own frame
         self.caster_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.caster_frame.grid(column=0, row=2, sticky='ew')
+        self.caster_frame.grid(column=0, row=2, sticky='nsew')
         self.cl_description = ttk.Label(self.caster_frame, text="Enter caster level for tracking\nof self-cast buffs\n(enter an interger)")
         self.cl_description.grid(column=0, row=0, columnspan=2, sticky='ew')
         self.cl_entry = tk.Entry(self.caster_frame, width=10, textvariable=self.cl_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
@@ -209,7 +213,7 @@ class MainFrame(tk.Frame):
 
         # vendor/player pots in its own frame
         self.vop_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.vop_frame.grid(column=0, row=3, sticky='ew')
+        self.vop_frame.grid(column=0, row=3, sticky='nsew')
         self.vop_description = ttk.Label(self.vop_frame, text="Using vendor or player-made\nzoo or barkskin potions?\n(affects duration)")
         self.vop_description.grid(column=0, row=0, columnspan=2, sticky='ew')
         self.vop_radiobutton_vendor = tk.Radiobutton(self.vop_frame, text="Vendor", variable=self.vendor_bool, value=True)
@@ -219,7 +223,7 @@ class MainFrame(tk.Frame):
 
         # Loremaster levels in its own frame
         self.lm_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.lm_frame.grid(column=0, row=4, sticky='ew')
+        self.lm_frame.grid(column=0, row=4, sticky='nsew')
         self.lm_description = ttk.Label(self.lm_frame, text="Loremaster levels increase the\ncaster level of wands and scrolls\nand therefore the duration. Enter\nyour Loremaster levels\n(enter an interger)")
         self.lm_description.grid(column=0, row=0, columnspan=2, sticky='ew')
         self.lm_entry = tk.Entry(self.lm_frame, width=10, textvariable=self.lm_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
@@ -229,7 +233,7 @@ class MainFrame(tk.Frame):
 
         # SF Illusion in its own frame
         self.sf_illu_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.sf_illu_frame.grid(column=1, row=0, sticky='ew')
+        self.sf_illu_frame.grid(column=1, row=0, sticky='nsew')
         self.sf_illu_description = ttk.Label(self.sf_illu_frame, text="Set Spell Focus: Illusion\nstatus, controls length of invsibility\n0 = none\n1 = GSF\n2 = ESF")
         self.sf_illu_description.grid(column=0, row=0, sticky='ew')
 
@@ -245,7 +249,7 @@ class MainFrame(tk.Frame):
 
         # SF Div in its own frame
         self.sf_div_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.sf_div_frame.grid(column=1, row=1, sticky='ew')
+        self.sf_div_frame.grid(column=1, row=1, sticky='nsew')
         self.sf_div_description = ttk.Label(self.sf_div_frame, text="Set Spell Focus: Divination\nstatus, controls length of true seeing\n0 = none\n1 = SF\n2 = GSF\n3 = ESF")
         self.sf_div_description.grid(column=0, row=0, sticky='ew')
         self.sf_option_menu = ttk.OptionMenu(self.sf_div_frame, self.sf_div_state, 0, *range(0, 4))
@@ -253,7 +257,7 @@ class MainFrame(tk.Frame):
 
         # SF Trans in its own frame
         self.sf_trans_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.sf_trans_frame.grid(column=1, row=2, sticky='ew')
+        self.sf_trans_frame.grid(column=1, row=2, sticky='nsew')
         self.sf_trans_description = ttk.Label(self.sf_trans_frame, text="Set Spell Focus: Trans\nstatus, controls length of\nAura of Vitality\n0 = none\n1 = GSF\n2 = ESF")
         self.sf_trans_description.grid(column=0, row=0, sticky='ew')
         self.sf_trans_option_menu = ttk.OptionMenu(self.sf_trans_frame, self.sf_trans_state, 0, *range(0, 3))
@@ -261,13 +265,21 @@ class MainFrame(tk.Frame):
 
         # character level/innate ability own frame
         self.char_level_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
-        self.char_level_frame.grid(column=1, row=3, sticky='ew')
-        self.char_level_description = ttk.Label(self.char_level_frame, text="Setting total character\nlevel for innate ability duration\n(for the few races that get one)")
+        self.char_level_frame.grid(column=1, row=3, sticky='nsew')
+        self.char_level_description = ttk.Label(self.char_level_frame, text="Setting total character\nlevel for innate ability duration\n(for the few races that get one)\n(enter an integer")
         self.char_level_description.grid(column=0, row=0, sticky='ew', columnspan=2)
         self.char_level_entry = tk.Entry(self.char_level_frame, width=10, textvariable=self.character_level, validate='key', validatecommand=vcmd) # also validating that its interger input
         self.char_level_entry.grid(column=1, row=1, sticky='e')
         self.char_level_label = ttk.Label(self.char_level_frame, text="Character Level:")
         self.char_level_label.grid(column=0, row=1, sticky='w')
+
+        # specialist wizard own frame
+        self.spec_type_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.spec_type_frame.grid(column=1, row=4, sticky='nsew')
+        self.spec_type_description = ttk.Label(self.spec_type_frame, text="Choose specialist wizard as\nsome specialists have longer\ndurations for certian spells")
+        self.spec_type_description.grid(column=0, row=0, sticky='ew')
+        self.spec_options = ttk.OptionMenu(self.spec_type_frame, self.specialist_type, 0, *["None", "Divination", "Illusion"])
+        self.spec_options.grid(column=0, row=1, sticky='ew')
 
         # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
         self.character_settings_window.bind("<Return>", self.close_character_settings_window)
@@ -353,6 +365,12 @@ class MainFrame(tk.Frame):
         except:
             self.character_level.set(0)
             savefile['char_level'] = self.character_level.get()
+        try:
+            savefile['spec_type'] = self.specialist_type.get()
+        except:
+            self.specialist_type.set('None')
+            savefile['spec_type'] = self.specialist_type.get()
+
 
         # saving to json, w to overwrite old settings, not appending
         with open('settings.json', 'w') as f:
@@ -666,7 +684,8 @@ class MainFrame(tk.Frame):
                     self.make_buff_labelframe(["Invisibility", time.time() + (30 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "NWN-Buff-Watcher/graphics/invisibility.png"])
 
             # handling invisibility for SF illu & invis sphere
-            if self.use_items_dict[f'{buff_string}']['name'] == "Invisibility" or self.use_items_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
+            # splitting invis sphere off, also handling invis for specialist illu
+            if self.use_items_dict[f'{buff_string}']['name'] == "Invisibility":
                 if self.sf_illu_state.get() == 0:
                     pass
                 elif self.sf_illu_state.get() == 1:
@@ -674,16 +693,34 @@ class MainFrame(tk.Frame):
                 else:
                     adding_buff[1] = adding_buff[1] + (24 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
 
+                if self.specialist_type.get() == "Illusion":
+                    adding_buff[1] = time.time() + (2 * (adding_buff[1] - time.time()))
+
+            if self.use_items_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
+                if self.sf_illu_state.get() == 0:
+                    pass
+                elif self.sf_illu_state.get() == 1:
+                    adding_buff[1] = adding_buff[1] + (12 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
+                else:
+                    adding_buff[1] = adding_buff[1] + (24 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
+
+
+
             # handling true seeing
+            # and handling Divination specialist duration
             if self.use_items_dict[f'{buff_string}']['name'] == "True Seeing":
+                if self.specialist_type.get() == "Divination":
+                    div_mod = 6
+                else:
+                    div_mod = 0
                 if self.sf_div_state.get() == 0:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 6, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 6 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 1:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 12, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 12 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 2:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 18, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 18 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 3:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 30, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 30 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 else:
                     print("sf_div went wrong")
 
@@ -716,7 +753,14 @@ class MainFrame(tk.Frame):
                 else:
                     return
 
+            # handling specialist wizard durations in items
+            # Divination - The truesight effect of the True Seeing spell lasts 1 round longer (total of 2 rounds base, and 4 rounds with extended); Spell Foci of 1/2/4 are added afterwards (i.e. an extend TS cast by a diviner is 8 rounds long)
+            # Divination - Clairaudience/clairvoyance duration increases to turns per level
+            # Enchantment - Dominate Person/Monster duration increases to hours per level --- NOT CURRENTLY TRACKING THIS TYPE OF OFFENSIVE SPELL
+            # Illusion - ESF bonus: Invisibility spell duration extended (can’t stack with meta magic); improved invisibility given 50% + CL-25 (min 50) concealment (i.e. 55% for 30 wizard)
 
+            if self.use_items_dict[f"{buff_string}"]["name"] == "Clairaudience/Clairvoyance" and self.sf_div_state.get() > 1 and self.specialist_type.get() == "Divination":
+                adding_buff[1] = adding_buff[1] + (54 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier)))
 
             # print(f"duration just before pass to make labelframe: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             self.make_buff_labelframe(adding_buff)
@@ -778,8 +822,9 @@ class MainFrame(tk.Frame):
                     print("Something wrong with imp invis.")
 
 
-            # handling invisibility for SF illu & invis sphere
-            if self.cast_spells_dict[f'{buff_string}']['name'] == "Invisibility" or self.cast_spells_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
+            # handling invisibility for SF illu
+            # broke off invis sphere so could handle specialist illu invisiblity
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Invisibility":
                 if self.sf_illu_state.get() == 0:
                     pass
                 elif self.sf_illu_state.get() == 1:
@@ -787,7 +832,21 @@ class MainFrame(tk.Frame):
                 elif self.sf_illu_state.get() == 2:
                     adding_buff[1] = adding_buff[1] + (24 * int(self.cl_modifier.get())) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
                 else:
-                    print("Something wrong with invis or invis sphere.")
+                    print("Something wrong with invis casting.")
+
+                if self.specialist_type.get() == "Illusion":
+                    adding_buff[1] = time.time() + (2 * (adding_buff[1] - time.time()))
+
+            # handling SF illu & invis sphere
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
+                if self.sf_illu_state.get() == 0:
+                    pass
+                elif self.sf_illu_state.get() == 1:
+                    adding_buff[1] = adding_buff[1] + (12 * int(self.cl_modifier.get())) # only needs another 12*cl to get to 18 since it already has 6*cl as its base
+                elif self.sf_illu_state.get() == 2:
+                    adding_buff[1] = adding_buff[1] + (24 * int(self.cl_modifier.get())) # only needs another 24*cl to get to 30 since it already has 6*cl as its base
+                else:
+                    print("Something wrong with invis sphere casting.")
 
             # handling divine might and shield duration
             if self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Shield" or self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Might":
@@ -805,15 +864,21 @@ class MainFrame(tk.Frame):
                     return
 
             # handling true seeing
+            # handling divination specialist as well
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "True Seeing":
+                if self.specialist_type.get() == "Divination":
+                    div_mod = 6
+                else:
+                    div_mod = 0
             if self.cast_spells_dict[f'{buff_string}']['name'] == "True Seeing":
                 if self.sf_div_state.get() == 0:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 6, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 6 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 1:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 12, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 12 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 2:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 18, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 18 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 3:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 30, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 30 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
                 else:
                     print("sf_div went wrong")
 
@@ -852,6 +917,16 @@ class MainFrame(tk.Frame):
                     self.make_buff_labelframe(["CD Time Stop", time.time() + 240, "NWN-Buff-Watcher/graphics/time_stop_cd.png"])
                 else:
                     return
+
+            # handling specialist casting
+            # Divination - The truesight effect of the True Seeing spell lasts 1 round longer (total of 2 rounds base, and 4 rounds with extended); Spell Foci of 1/2/4 are added afterwards (i.e. an extend TS cast by a diviner is 8 rounds long)
+            # Divination - Clairaudience/clairvoyance duration increases to turns per level
+            # Enchantment - Dominate Person/Monster duration increases to hours per level --- NOT CURRENTLY TRACKING THIS TYPE OF OFFENSIVE SPELL
+            # Illusion - ESF bonus: Invisibility spell duration extended (can’t stack with meta magic); improved invisibility given 50% + CL-25 (min 50) concealment (i.e. 55% for 30 wizard)
+
+            if self.cast_spells_dict[f"{buff_string}"]["name"] == "Clairaudience/Clairvoyance" and self.sf_div_state.get() > 1 and self.specialist_type.get() == "Divination":
+                adding_buff[1] = adding_buff[1] + (54 * int(self.cl_modifier.get()))
+
 
             self.make_buff_labelframe(adding_buff)
         except:
