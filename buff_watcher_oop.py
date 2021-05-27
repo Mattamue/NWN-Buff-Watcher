@@ -462,7 +462,7 @@ class MainFrame(tk.Frame):
 
         self.geo_blank = ttk.Button(self.debugging_buttons_frame, text="Set geo to ''", command=lambda: app.geometry(""))
         self.geo_blank.grid(column=0, row=15)
-        self.resize_test = ttk.Button(self.debugging_buttons_frame, text="resize call", command=lambda: self.resize_set_buff_window("test"))
+        self.resize_test = ttk.Button(self.debugging_buttons_frame, text="buff disp nice", command=lambda: self.buffs_display_nicely())
         self.resize_test.grid(column=0, row=16)
 
         # testing the call functions
@@ -575,7 +575,8 @@ class MainFrame(tk.Frame):
             # handling extended buffs, has to be chosen by the user on the buff drop-down, that sets a boolean on the object
             # probably a better way to do this
             if x.extended_bool.get() == False:
-                x.buff_timer.set(f"{x.buff_birthday - time.time():.1f}s")
+                x.buff_timer.set(x.buff_birthday - time.time())
+                x.buff_label_string.set(f"{divmod(x.buff_timer.get(), 60)[0]:.0f}:{divmod(x.buff_timer.get(), 60)[1]:.1f}")
                 if x.buff_birthday < time.time() + 6:
                     x['background'] = 'red'
                 if x.buff_birthday < time.time():
@@ -583,7 +584,8 @@ class MainFrame(tk.Frame):
                     x.destroy()
                     self.resize_set_buff_window('buff destroy')
             else:
-                x.buff_timer.set(f"{(x.buff_birthday + (x.buff_birthday - x.buff_epoch)) - time.time():.1f}s")
+                x.buff_timer.set((x.buff_birthday + (x.buff_birthday - x.buff_epoch)) - time.time())
+                x.buff_label_string.set(f"{divmod(x.buff_timer.get(), 60)[0]:.0f}:{divmod(x.buff_timer.get(), 60)[1]:.1f}")
                 if (x.buff_birthday + (x.buff_birthday - x.buff_epoch)) < time.time() + 6:
                     x['background'] = 'red'
                 if (x.buff_birthday + (x.buff_birthday - x.buff_epoch)) < time.time():
@@ -958,7 +960,7 @@ class MainFrame(tk.Frame):
 
         # remove duplicates
 
-        self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z.buff_birthday - time.time(), reverse=True) # sort remaining reverse so the old duplicates get removed
+        self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z.buff_timer.get() - time.time(), reverse=True) # sort remaining reverse so the old duplicates get removed
 
         unique_buffs_set = set() # sets don't allow duplicates, we'll use this property in a few lines
         non_duplicates = [] # empty set to re-build with the non-duplicates
@@ -972,7 +974,7 @@ class MainFrame(tk.Frame):
         self.buffs_list_frames = non_duplicates # rebuild the buff list with just the non-duplicates
 
         # sort the list before packing and displaying
-        self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z.buff_birthday - time.time(), reverse=False) # sort remaining time back to oldest to the left
+        self.buffs_list_frames = sorted(self.buffs_list_frames, key=lambda z: z.buff_timer.get() - time.time(), reverse=False) # sort remaining time back to oldest to the left
 
         for x in self.buffs_list_frames:
             x.pack_forget()
@@ -1024,22 +1026,24 @@ class BuffLabelFrame(tk.LabelFrame):
 
         self.added_buff = buff_added
 
-        self.config(width=44, height=70, borderwidth=1, text=self.added_buff[0][0:4], labelanchor="n")
+        self.config(width=48, height=70, borderwidth=1, text=self.added_buff[0][0:6], labelanchor="n", font=("Courier", 7))
         self.grid_propagate(0)
         self.columnconfigure(0, weight=1) 
         self.rowconfigure(0, weight=1)
         self.rowconfigure(1, weight=1)
 
-        self.buff_epoch = time.time()
+        self.buff_epoch = time.time() # when the buff is created
         self.buff_name = self.added_buff[0]
         self.buff_image_reference = ImageTk.PhotoImage(Image.open(self.added_buff[2]))
         self.buff_image_label = ttk.Label(self, image=self.buff_image_reference)
         self.buff_image_label.image_keep = self.buff_image_reference # keeping image in memory
         self.buff_image_label.grid(column=0, row=0)
-        self.buff_birthday = self.added_buff[1]
-        self.buff_timer = tk.StringVar()
-        self.buff_timer.set(f"{self.buff_birthday - time.time():.1f}s")
-        self.buff_label = ttk.Label(self, textvariable=self.buff_timer)
+        self.buff_birthday = self.added_buff[1] # could be more accurately desribed as "deathday" as this is the time.time + duration at creation, then its used, when it matches current time.time, to delete the buff
+        self.buff_timer = tk.DoubleVar() # the duration remaining of the buff that's displayed in the labelframe... changing from StringVar to DoubleVar...
+        self.buff_timer.set(self.buff_birthday - time.time())
+        self.buff_label_string = tk.StringVar()
+        self.buff_label_string.set(f"{divmod(self.buff_timer.get(), 60)[0]:.0f}:{divmod(self.buff_timer.get(), 60)[1]:.1f}") # taking the DoubleVar of the buff_timer and formatting it into H/M/S?
+        self.buff_label = ttk.Label(self, textvariable=self.buff_label_string) # font=("Courier", 7) is too small vertically and still too wide, just going with making the frame a little wider
         self.buff_label.grid(column=0, row=1)
 
         # adding click-ability to click the buff frame image
@@ -1054,7 +1058,7 @@ class BuffLabelFrame(tk.LabelFrame):
 
         if "CD " not in str(self.buff_name) and "True Seeing" not in str(self.buff_name):
             self.click_menu.add_separator()
-            self.click_menu.add_checkbutton(label="Extend", variable=self.extended_bool, onvalue=True, offvalue=False)
+            self.click_menu.add_checkbutton(label="Extend", variable=self.extended_bool, onvalue=True, offvalue=False, command=lambda: self.extend_organize())
 
         if self.buff_name == "Innate Ability":
             # TODO: revisit this, cascade working good, or just move back to adding the huge list since its context specific...
@@ -1111,6 +1115,19 @@ class BuffLabelFrame(tk.LabelFrame):
             main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (30 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/invisibility.png"])
         else:
             print("Something wrong with innate invis.")
+
+    def extend_organize(self):
+        # wasn't workign right inside of the add_command command=, so passing here to handle
+        
+        if self.extended_bool.get() == False:
+            self.buff_timer.set(self.buff_birthday - time.time())
+            self.buff_label_string.set(f"{divmod(self.buff_timer.get(), 60)[0]:.0f}:{divmod(self.buff_timer.get(), 60)[1]:.1f}")
+
+        else:
+            self.buff_timer.set((self.buff_birthday + (self.buff_birthday - self.buff_epoch)) - time.time())
+            self.buff_label_string.set(f"{divmod(self.buff_timer.get(), 60)[0]:.0f}:{divmod(self.buff_timer.get(), 60)[1]:.1f}")
+
+        main_frame.buffs_display_nicely()
 
 class App(tk.Tk): # creating a tk window object and using it for overall constructor, but otherwise not good practice to do much more with it, instead you build stuff in the "window" inside of a Frame widget that makes up the whole interior of the window
     def __init__(self):
