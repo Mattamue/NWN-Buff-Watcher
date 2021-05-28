@@ -68,6 +68,10 @@ class MainFrame(tk.Frame):
             self.character_level.set(self.char_options['char_level'])
             self.specialist_type = tk.StringVar()
             self.specialist_type.set(self.char_options['spec_type'])
+            self.bg_levels = tk.IntVar()
+            self.bg_levels.set(self.char_options['bg_levels'])
+            self.paladin_bool = tk.BooleanVar()
+            self.paladin_bool.set(self.char_options['pal_levels'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -84,6 +88,9 @@ class MainFrame(tk.Frame):
             self.character_level = tk.IntVar()
             self.specialist_type = tk.StringVar()
             self.specialist_type.set("None")
+            self.bg_levels = tk.IntVar()
+            self.paladin_bool = tk.BooleanVar()
+            self.paladin_bool.set(False)
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
@@ -281,10 +288,28 @@ class MainFrame(tk.Frame):
         self.spec_options = ttk.OptionMenu(self.spec_type_frame, self.specialist_type, 0, *["None", "Divination", "Illusion"])
         self.spec_options.grid(column=0, row=1, sticky='ew')
 
+        # blackguard levels for BG strength frame
+        self.bg_levels_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.bg_levels_frame.grid(column=2, row=0, sticky='nsew')
+        self.bg_levels_description = ttk.Label(self.bg_levels_frame, text="Set blackguard levels\nfor duration change in Bull's\nStrength casting ability\n(enter an integer)")
+        self.bg_levels_description.grid(column=0, row=0, sticky='ew', columnspan=2)
+        self.bg_levels_entry = tk.Entry(self.bg_levels_frame, width=10, textvariable=self.bg_levels, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.bg_levels_entry.grid(column=1, row=1, sticky='e')
+        self.bg_levels_label = ttk.Label(self.bg_levels_frame, text="Blackguard Level:")
+        self.bg_levels_label.grid(column=0, row=1, sticky='w')
+
+        # paladin majority levels for aura of glory duration
+        self.paladin_majority_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.paladin_majority_frame.grid(column=2, row=1, sticky='nsew')
+        self.paladin_majority_description = ttk.Label(self.paladin_majority_frame, text="Set if Paladin majority levels\nfor Aura of Glory duration")
+        self.paladin_majority_description.grid(column=0, row=0)
+        self.paladin_majority_check = tk.Checkbutton(self.paladin_majority_frame, text="Majority Paladin", variable=self.paladin_bool)
+        self.paladin_majority_check.grid(column=0, row=1)
+
         # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
         self.character_settings_window.bind("<Return>", self.close_character_settings_window)
         self.button_enter = tk.Button(self.character_settings_window, text="Save", command=lambda: self.close_character_settings_window("saved"))
-        self.button_enter.grid(column=0, row=7, columnspan=2)
+        self.button_enter.grid(column=0, row=7, columnspan=3)
 
     def validate_int(self, action, index, value_if_allowed, prior_value, text, validation_type, trigger_type, widget_name):
         ''' Here we take the vcmd from the entry windows and try to validate if they're intergers
@@ -370,6 +395,16 @@ class MainFrame(tk.Frame):
         except:
             self.specialist_type.set('None')
             savefile['spec_type'] = self.specialist_type.get()
+        try:
+            savefile['bg_levels'] = self.bg_levels.get()
+        except:
+            self.bg_levels.set(0)
+            savefile['bg_levels'] = self.bg_levels.get()
+        try:
+            savefile['pal_levels'] = self.paladin_bool.get()
+        except:
+            self.paladin_bool.set(False)
+            savefile['pal_levels'] = self.paladin_bool.get()
 
 
         # saving to json, w to overwrite old settings, not appending
@@ -780,6 +815,11 @@ class MainFrame(tk.Frame):
             if self.use_items_dict[f"{buff_string}"]["name"] == "Clairaudience/Clairvoyance" and self.sf_div_state.get() > 1 and self.specialist_type.get() == "Divination":
                 adding_buff[1] = adding_buff[1] + (54 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier)))
 
+            # handling majority paladin levels for potions, wands, scrolls
+            if self.use_items_dict[f"{buff_string}"]["name"] == "Aura of Glory":
+                if self.paladin_bool.get() == True:
+                    adding_buff[1] = time.time() + (360 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier)))
+
             # print(f"duration just before pass to make labelframe: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             self.make_buff_labelframe(adding_buff)
         except:
@@ -945,6 +985,17 @@ class MainFrame(tk.Frame):
             if self.cast_spells_dict[f"{buff_string}"]["name"] == "Clairaudience/Clairvoyance" and self.sf_div_state.get() > 1 and self.specialist_type.get() == "Divination":
                 adding_buff[1] = adding_buff[1] + (54 * int(self.cl_modifier.get()))
 
+            if self.cast_spells_dict[f"{buff_string}"]["name"] == "Bull's Strength":
+                if self.bg_levels.get() > 0 and self.bg_levels.get() < 10:
+                    self.make_buff_labelframe(["BG Bulls", time.time() + (60 * self.bg_levels.get()), "NWN-Buff-Watcher/graphics/bg_bulls.png"])
+                    return
+                elif self.bg_levels.get() >= 10:
+                    self.make_buff_labelframe(["BG Bulls", time.time() + (360 * self.bg_levels.get()), "NWN-Buff-Watcher/graphics/bg_bulls.png"])
+                    return
+
+            if self.cast_spells_dict[f"{buff_string}"]["name"] == "Aura of Glory":
+                if self.paladin_bool.get() == True:
+                    adding_buff[1] = adding_buff[1] + (300 * self.cl_modifier.get())
 
             self.make_buff_labelframe(adding_buff)
         except:
