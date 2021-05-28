@@ -8,7 +8,7 @@
     },
     "uses Potion of Amplify": {
         "name": "Amplify",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "5",
         "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/amplify.png"
@@ -527,7 +527,7 @@
     },
     "uses Wand of Amplify": {
         "name": "Amplify",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "5",
         "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/amplify.png"
@@ -1204,14 +1204,14 @@
     },
     "uses Bardic Pipes": {
         "name": "Amplify",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "5",
         "type": "item",
         "icon": "NWN-Buff-Watcher/graphics/amplify.png"
     },
     "uses Bardic Mandolin": {
         "name": "Amplify",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "5",
         "type": "item",
         "icon": "NWN-Buff-Watcher/graphics/amplify.png"
