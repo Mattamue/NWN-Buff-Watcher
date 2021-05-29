@@ -86,7 +86,7 @@ class MainFrame(tk.Frame):
             self.cha_modifier = tk.IntVar()
             self.cl_modifier = tk.IntVar()
             self.vendor_bool = tk.BooleanVar()
-            self.vendor_bool.set(True) # setting a default
+            self.vendor_bool.set(True) # setting default vendor pots False = Player, True = vendor
             self.lm_modifier = tk.IntVar()
             self.sf_illu_state = tk.IntVar()
             self.cot_modifier = tk.IntVar()
@@ -107,6 +107,9 @@ class MainFrame(tk.Frame):
         self.use_items_dict = json.load(open('NWN-Buff-Watcher/buffs_json/use_items.json','r'))
         self.cast_spells_dict = json.load(open('NWN-Buff-Watcher/buffs_json/cast_spells.json','r'))
         self.ability_ref_dict = json.load(open('NWN-Buff-Watcher/buffs_json/ability_ref.json','r'))
+        self.player_pots_dict = json.load(open('NWN-Buff-Watcher/buffs_json/player_pots.json','r'))
+        self.vendor_pots_dict = json.load(open('NWN-Buff-Watcher/buffs_json/vendor_pots.json','r'))
+        self.player_vendor_pots()
 
         # frame for the buttons on the right
         self.buttons_frame = tk.Frame(self)
@@ -233,9 +236,9 @@ class MainFrame(tk.Frame):
         self.vop_frame.grid(column=0, row=3, sticky='nsew')
         self.vop_description = ttk.Label(self.vop_frame, text="Using vendor or player-made\nzoo or barkskin potions?\n(affects duration)")
         self.vop_description.grid(column=0, row=0, columnspan=2, sticky='ew')
-        self.vop_radiobutton_vendor = tk.Radiobutton(self.vop_frame, text="Vendor", variable=self.vendor_bool, value=True)
+        self.vop_radiobutton_vendor = tk.Radiobutton(self.vop_frame, text="Vendor", variable=self.vendor_bool, value=True, command=lambda: self.player_vendor_pots())
         self.vop_radiobutton_vendor.grid(column=0, row=1, sticky="w")
-        self.vop_radiobutton_player = tk.Radiobutton(self.vop_frame, text="Player", variable=self.vendor_bool, value=False)
+        self.vop_radiobutton_player = tk.Radiobutton(self.vop_frame, text="Player", variable=self.vendor_bool, value=False, command=lambda: self.player_vendor_pots())
         self.vop_radiobutton_player.grid(column=1, row=1, sticky="e")
 
         # Loremaster levels in its own frame
@@ -253,16 +256,8 @@ class MainFrame(tk.Frame):
         self.sf_illu_frame.grid(column=1, row=0, sticky='nsew')
         self.sf_illu_description = ttk.Label(self.sf_illu_frame, text="Set Spell Focus: Illusion\nstatus, controls length of invsibility\n0 = none\n1 = GSF\n2 = ESF")
         self.sf_illu_description.grid(column=0, row=0, sticky='ew')
-
-        self.option_menu = ttk.OptionMenu(
-            self.sf_illu_frame,
-            self.sf_illu_state,
-            0,
-            *range(0, 3)
-            #, command=self.option_changed
-            )
-
-        self.option_menu.grid(column=0, row=1, sticky='ew')
+        self.sf_illu_option_menu = ttk.OptionMenu(self.sf_illu_frame, self.sf_illu_state, 0, *range(0, 3))
+        self.sf_illu_option_menu.grid(column=0, row=1, sticky='ew')
 
         # SF Div in its own frame
         self.sf_div_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
@@ -348,6 +343,13 @@ class MainFrame(tk.Frame):
         self.character_settings_window.bind("<Return>", self.close_character_settings_window)
         self.button_enter = tk.Button(self.character_settings_window, text="Save", command=lambda: self.close_character_settings_window("saved"))
         self.button_enter.grid(column=0, row=7, columnspan=3)
+
+    # changes the dictionary so that "uses potion" gets different durations for vendor or player potions... maybe a better way to approach this whole thing overall... rather than having all the if/else in the function? Not sure yet
+    def player_vendor_pots(self):
+        if self.vendor_bool.get() == True:
+            self.use_items_dict.update(self.vendor_pots_dict)
+        else:
+            self.use_items_dict.update(self.player_pots_dict)
 
     def validate_int(self, action, index, value_if_allowed, prior_value, text, validation_type, trigger_type, widget_name):
         ''' Here we take the vcmd from the entry windows and try to validate if they're integers
