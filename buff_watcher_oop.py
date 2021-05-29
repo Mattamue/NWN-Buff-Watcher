@@ -1001,11 +1001,8 @@ class MainFrame(tk.Frame):
 
 
     def casts_call(self, buff_string):
-        # takes the string that comes back from the main loop and compares it to a dictionary of all possible "character uses X thing" responses
-        # that dictionary has the "char uses X" as the keys so it can easily return the values like duration and icon
-        # much faster (I think) than the if > elif > elif... I was using to prototype, easy to put in a json and potentially easy for
-        # users to add their own "unique" item uses into the json without having to know the code -- or not have access to the code
-        # if/when I make a PyInstaller .exe release
+        # takes the string that comes back from the main loop and compares it to a dictionary of all possible "character casts X" responses
+        # that dictionary has the "char casts X" as the keys so it can easily return the values like duration and icon
         
         adding_buff = []
 
