@@ -475,8 +475,14 @@ class MainFrame(tk.Frame):
         self.testing_buttons_window.title("Buttons for testing")
         self.debugging_buttons_frame = tk.Frame(self.testing_buttons_window)
         self.debugging_buttons_frame.grid(column=0, row=1)
-        self.debugging_label = ttk.Label(self.debugging_buttons_frame, text="Only click if you know what\nyou're doing")
-        self.debugging_label.grid(column=0, row=9)
+        self.debugging_label = ttk.Label(self.debugging_buttons_frame, text="To simulate opening a chatlog, click 'START loops of time passing' but only click once.\n" + 
+                                                                               "Do not click 'START' and then also open a real game chatlog output. You'll have to either\n" +
+                                                                               "click 'START' or open a chatlog to have the timer for the buffs start.\n" +
+                                                                               "You may also open enter any lines into the dummy.tmp that's created when 'START' is clicked;\n" +
+                                                                               "and then type anything you want into that file. When you click save on that file it will\n" +
+                                                                               "also simulate any chatlog coming from the game. Make sure you're simulating everything\n" +
+                                                                               "in that case, including the [CHAT WINDOW TEXT]... that comes in the log.")
+        self.debugging_label.grid(column=0, row=9, columnspan=3)
         # re-tooling for the BuffLabelFrame object
         self.button1 = ttk.Button(self.debugging_buttons_frame)
         self.button1['text'] = "Simulate 'uses Wand of Clarity'"
@@ -532,12 +538,14 @@ class MainFrame(tk.Frame):
         self.freeform_uses_test = tk.StringVar()
         self.entry_test = tk.Entry(self.debugging_buttons_frame, width=30, textvariable=self.freeform_uses_test)
         self.entry_test.grid(column=2, row=14)
+        self.entry_test.insert(0, "uses Wand of Cat's Grace")
         self.entry_button = ttk.Button(self.debugging_buttons_frame, text='Enter uses freeform', command=lambda: self.uses_call(self.freeform_uses_test.get()))
         self.entry_button.grid(column=2, row=15)
 
         self.freeform_cast_test = tk.StringVar()
         self.cast_test = tk.Entry(self.debugging_buttons_frame, width=30, textvariable=self.freeform_cast_test)
         self.cast_test.grid(column=1, row=14)
+        self.cast_test.insert(0, "casts Divine Might")
         self.cast_button = ttk.Button(self.debugging_buttons_frame, text='Enter casts freeform', command=lambda: self.casts_call(self.freeform_cast_test.get()))
         self.cast_button.grid(column=1, row=15)
 
@@ -700,6 +708,18 @@ class MainFrame(tk.Frame):
                     self.make_buff_labelframe(["CD Pray", time.time() + 1200, "NWN-Buff-Watcher/graphics/pray_cd.png"])
                 except:
                     print(f"Pray farted.")
+
+            if " augments your skill and grants you success." in logline:
+                try:
+                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "NWN-Buff-Watcher/graphics/pray_cd.png"])
+                except:
+                    print(f"Dweomer Save farted.")
+
+            if " intercedes to aid your work." in logline:
+                try:
+                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "NWN-Buff-Watcher/graphics/pray_cd.png"])
+                except:
+                    print(f"Dweomer Save farted.")
 
             if self.name_stringvar.get() + " attempts Knockdown on " in logline and "*critical hit*" in logline or self.name_stringvar.get() + " attempts Knockdown on " in logline and "*hit*" in logline:
                 try:
@@ -1220,6 +1240,16 @@ class MainFrame(tk.Frame):
             pass
         # print(f"pop: {popped_scry_cd}") # testing
 
+        try:
+            popped_pray_cd = self.buffs_list_frames.pop(self.buffs_list_frames.index(*[obj for obj in self.buffs_list_frames if obj.buff_name == "CD Pray"]))
+        except:
+            pass
+
+        try:
+            popped_save_cd = self.buffs_list_frames.pop(self.buffs_list_frames.index(*[obj for obj in self.buffs_list_frames if obj.buff_name == "CD Godsave"]))
+        except:
+            pass
+
         # destryong everything else as normal
         for x in self.buffs_list_frames:
             x.destroy()
@@ -1230,6 +1260,17 @@ class MainFrame(tk.Frame):
             self.buffs_list_frames.append(popped_scry_cd)
         except:
             pass
+
+        try:
+            self.buffs_list_frames.append(popped_pray_cd)
+        except:
+            pass
+
+        try:
+            self.buffs_list_frames.append(popped_save_cd)
+        except:
+            pass
+
         self.buff_holding_frame['width'] = "1"
 
     def friends_list_window(self):
