@@ -41,6 +41,7 @@ class MainFrame(tk.Frame):
         self.buff_iterator = 0
         self.smite_list = []
         self.turn_list = []
+        self.song_list = []
 
         # feel like I'm saying this a lot... probably a better place for this...
         # tries to open settings, just goes with defaults if it can't
@@ -72,6 +73,12 @@ class MainFrame(tk.Frame):
             self.bg_levels.set(self.char_options['bg_levels'])
             self.paladin_bool = tk.BooleanVar()
             self.paladin_bool.set(self.char_options['pal_levels'])
+            self.monk_levels = tk.IntVar()
+            self.monk_levels.set(self.char_options['monk_levels'])
+            self.sd_levels = tk.IntVar()
+            self.sd_levels.set(self.char_options['sd_levels'])
+            self.bard_song_feats = tk.StringVar()
+            self.bard_song_feats.set(self.char_options['bard_song_feats'])
             print("Loaded char settings.")
         except:
             # setting in constructor for main_frame... maybe a better way to do this?
@@ -91,6 +98,9 @@ class MainFrame(tk.Frame):
             self.bg_levels = tk.IntVar()
             self.paladin_bool = tk.BooleanVar()
             self.paladin_bool.set(False)
+            self.monk_levels = tk.IntVar()
+            self.sd_levels = tk.IntVar()
+            self.bard_song_feats = tk.StringVar()
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
@@ -178,7 +188,7 @@ class MainFrame(tk.Frame):
 
         # since we're taking user input here we have to validate
         # https://stackoverflow.com/questions/4140437/interactively-validating-entry-widget-content-in-tkinter/4140988#4140988
-        # we'll use this later where users are meant to enter intergers
+        # we'll use this later where users are meant to enter integers
         vcmd = (self.character_settings_window.register(self.validate_int), '%d', '%i', '%P', '%s', '%S', '%v', '%V', '%W')
 
         # all the name stuff in a frame
@@ -197,9 +207,9 @@ class MainFrame(tk.Frame):
         # cha modifier in its own frame
         self.cha_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
         self.cha_frame.grid(column=0, row=1, sticky='nsew')
-        self.cha_description = ttk.Label(self.cha_frame, text="Enter charisma modifier for\nabilities like divine shield\nin order to estimate duration\n(enter an interger)")
+        self.cha_description = ttk.Label(self.cha_frame, text="Enter charisma modifier for\nabilities like divine shield\nin order to estimate duration\n(enter an integer)")
         self.cha_description.grid(column=0, row=0, columnspan=2, sticky='ew')
-        self.cha_entry = tk.Entry(self.cha_frame, width=10, textvariable=self.cha_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.cha_entry = tk.Entry(self.cha_frame, width=10, textvariable=self.cha_modifier, validate='key', validatecommand=vcmd) # also validating that its integer input
         self.cha_entry.grid(column=1, row=1, sticky='e')
         self.cha_label = ttk.Label(self.cha_frame, text="Cha modifier:")
         self.cha_label.grid(column=0, row=1, sticky='w')
@@ -211,9 +221,9 @@ class MainFrame(tk.Frame):
         # caster level in its own frame
         self.caster_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
         self.caster_frame.grid(column=0, row=2, sticky='nsew')
-        self.cl_description = ttk.Label(self.caster_frame, text="Enter caster level for tracking\nof self-cast buffs\n(enter an interger)")
+        self.cl_description = ttk.Label(self.caster_frame, text="Enter caster level for tracking\nof self-cast buffs\n(enter an integer)")
         self.cl_description.grid(column=0, row=0, columnspan=2, sticky='ew')
-        self.cl_entry = tk.Entry(self.caster_frame, width=10, textvariable=self.cl_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.cl_entry = tk.Entry(self.caster_frame, width=10, textvariable=self.cl_modifier, validate='key', validatecommand=vcmd) # also validating that its integer input
         self.cl_entry.grid(column=1, row=1, sticky='e')
         self.cl_label = ttk.Label(self.caster_frame, text="Caster Level:")
         self.cl_label.grid(column=0, row=1, sticky='w')
@@ -231,9 +241,9 @@ class MainFrame(tk.Frame):
         # Loremaster levels in its own frame
         self.lm_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
         self.lm_frame.grid(column=0, row=4, sticky='nsew')
-        self.lm_description = ttk.Label(self.lm_frame, text="Loremaster levels increase the\ncaster level of wands and scrolls\nand therefore the duration. Enter\nyour Loremaster levels\n(enter an interger)")
+        self.lm_description = ttk.Label(self.lm_frame, text="Loremaster levels increase the\ncaster level of wands and scrolls\nand therefore the duration. Enter\nyour Loremaster levels\n(enter an integer)")
         self.lm_description.grid(column=0, row=0, columnspan=2, sticky='ew')
-        self.lm_entry = tk.Entry(self.lm_frame, width=10, textvariable=self.lm_modifier, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.lm_entry = tk.Entry(self.lm_frame, width=10, textvariable=self.lm_modifier, validate='key', validatecommand=vcmd) # also validating that its integer input
         self.lm_entry.grid(column=1, row=1, sticky='e')
         self.lm_label = ttk.Label(self.lm_frame, text="Loremaster Level:")
         self.lm_label.grid(column=0, row=1, sticky='w')
@@ -273,9 +283,9 @@ class MainFrame(tk.Frame):
         # character level/innate ability own frame
         self.char_level_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
         self.char_level_frame.grid(column=1, row=3, sticky='nsew')
-        self.char_level_description = ttk.Label(self.char_level_frame, text="Setting total character\nlevel for innate ability duration\n(for the few races that get one)\n(enter an integer")
+        self.char_level_description = ttk.Label(self.char_level_frame, text="Setting total character\nlevel for innate ability duration\n(for the few races that get one)\n(enter an integer)")
         self.char_level_description.grid(column=0, row=0, sticky='ew', columnspan=2)
-        self.char_level_entry = tk.Entry(self.char_level_frame, width=10, textvariable=self.character_level, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.char_level_entry = tk.Entry(self.char_level_frame, width=10, textvariable=self.character_level, validate='key', validatecommand=vcmd) # also validating that its integer input
         self.char_level_entry.grid(column=1, row=1, sticky='e')
         self.char_level_label = ttk.Label(self.char_level_frame, text="Character Level:")
         self.char_level_label.grid(column=0, row=1, sticky='w')
@@ -285,7 +295,7 @@ class MainFrame(tk.Frame):
         self.spec_type_frame.grid(column=1, row=4, sticky='nsew')
         self.spec_type_description = ttk.Label(self.spec_type_frame, text="Choose specialist wizard as\nsome specialists have longer\ndurations for certian spells")
         self.spec_type_description.grid(column=0, row=0, sticky='ew')
-        self.spec_options = ttk.OptionMenu(self.spec_type_frame, self.specialist_type, 0, *["None", "Divination", "Illusion"])
+        self.spec_options = ttk.OptionMenu(self.spec_type_frame, self.specialist_type, 0, *["None", "Divination", "Illusion", "Transmutation"])
         self.spec_options.grid(column=0, row=1, sticky='ew')
 
         # blackguard levels for BG strength frame
@@ -293,7 +303,7 @@ class MainFrame(tk.Frame):
         self.bg_levels_frame.grid(column=2, row=0, sticky='nsew')
         self.bg_levels_description = ttk.Label(self.bg_levels_frame, text="Set blackguard levels\nfor duration change in Bull's\nStrength casting ability\n(enter an integer)")
         self.bg_levels_description.grid(column=0, row=0, sticky='ew', columnspan=2)
-        self.bg_levels_entry = tk.Entry(self.bg_levels_frame, width=10, textvariable=self.bg_levels, validate='key', validatecommand=vcmd) # also validating that its interger input
+        self.bg_levels_entry = tk.Entry(self.bg_levels_frame, width=10, textvariable=self.bg_levels, validate='key', validatecommand=vcmd) # also validating that its integer input
         self.bg_levels_entry.grid(column=1, row=1, sticky='e')
         self.bg_levels_label = ttk.Label(self.bg_levels_frame, text="Blackguard Level:")
         self.bg_levels_label.grid(column=0, row=1, sticky='w')
@@ -306,13 +316,41 @@ class MainFrame(tk.Frame):
         self.paladin_majority_check = tk.Checkbutton(self.paladin_majority_frame, text="Majority Paladin", variable=self.paladin_bool)
         self.paladin_majority_check.grid(column=0, row=1)
 
+        # monk levels for empty body duration
+        self.monk_levels_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.monk_levels_frame.grid(column=2, row=2, sticky='nsew')
+        self.monk_levels_description = ttk.Label(self.monk_levels_frame, text="Set Monk levels for\nEmpty Body duration\n(enter an integer)")
+        self.monk_levels_description.grid(column=0, row=0, columnspan=2)
+        self.monk_levels_entry = tk.Entry(self.monk_levels_frame, width=10, textvariable=self.monk_levels, validate='key', validatecommand=vcmd)
+        self.monk_levels_entry.grid(column=1, row=1, sticky='e')
+        self.monk_levels_label = ttk.Label(self.monk_levels_frame, text="Monk Level:")
+        self.monk_levels_label.grid(column=0, row=1, sticky='w')
+
+        # sd levels for shadow evade
+        self.sd_levels_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.sd_levels_frame.grid(column=2, row=3, sticky='nsew')
+        self.sd_levels_description = ttk.Label(self.sd_levels_frame, text="Set Shadowdancer levels\nfor Shadow Evade duration\n(enter an integer)")
+        self.sd_levels_description.grid(column=0, row=0, columnspan=2)
+        self.sd_levels_entry = tk.Entry(self.sd_levels_frame, width=10, textvariable=self.sd_levels, validate='key', validatecommand=vcmd)
+        self.sd_levels_entry.grid(column=1, row=1, sticky='e')
+        self.sd_levels_label = ttk.Label(self.sd_levels_frame, text="SD Level:")
+        self.sd_levels_label.grid(column=0, row=1, sticky='w')
+
+        # bard songfeats for duration
+        self.bard_song_frame = tk.Frame(self.character_settings_window, bd=1, relief='solid')
+        self.bard_song_frame.grid(column=2, row=4, sticky='nsew')
+        self.bard_song_description = ttk.Label(self.bard_song_frame, text="Set Bard Song feats\nfor Bard Song duration")
+        self.bard_song_description.grid(column=0, row=0, sticky='ew')
+        self.bard_song_options = ttk.OptionMenu(self.bard_song_frame, self.bard_song_feats, 0, *["None", "Lingering Song", "Lasting Inspiration", "Lingering & Lasting"])
+        self.bard_song_options.grid(column=0, row=1, sticky='ew')
+
         # binding return to the OK button, also OK button just kills the window... figure some save/cancel instead?
         self.character_settings_window.bind("<Return>", self.close_character_settings_window)
         self.button_enter = tk.Button(self.character_settings_window, text="Save", command=lambda: self.close_character_settings_window("saved"))
         self.button_enter.grid(column=0, row=7, columnspan=3)
 
     def validate_int(self, action, index, value_if_allowed, prior_value, text, validation_type, trigger_type, widget_name):
-        ''' Here we take the vcmd from the entry windows and try to validate if they're intergers
+        ''' Here we take the vcmd from the entry windows and try to validate if they're integers
         The "value_if_allowed" argument is %P from above
         The "text" argument is %S from above
         value_if_allowed is more strict in that it doesn't even let you delete data from the cell
@@ -405,7 +443,21 @@ class MainFrame(tk.Frame):
         except:
             self.paladin_bool.set(False)
             savefile['pal_levels'] = self.paladin_bool.get()
-
+        try:
+            savefile['monk_levels'] = self.monk_levels.get()
+        except:
+            self.monk_levels.set(0)
+            savefile['monk_levels'] = self.monk_levels.get
+        try:
+            savefile['sd_levels'] = self.sd_levels.get()
+        except:
+            self.sd_levels.set(0)
+            savefile['sd_levels'] = self.sd_levels.get()
+        try:
+            savefile['bard_song_feats'] = self.bard_song_feats.get()
+        except:
+            self.bard_song_feats.set('None')
+            savefile['bard_song_feats'] = self.bard_song_feats.get()
 
         # saving to json, w to overwrite old settings, not appending
         with open('settings.json', 'w') as f:
@@ -565,6 +617,60 @@ class MainFrame(tk.Frame):
                 except:
                     print(f"ability farted on: {ability_list}")
 
+            try:
+                ability_list
+
+                if self.ability_ref_dict[ability_list[0]]['name'] == "CD Spirited Charge":
+                    self.make_buff_labelframe(["Spirited Charge", time.time() + 12, "NWN-Buff-Watcher/graphics/spirit_charge.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Aegis":
+                    self.make_buff_labelframe(["Aegis", time.time() + 30, "NWN-Buff-Watcher/graphics/aegis.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Banner":
+                    self.make_buff_labelframe(["Banner", time.time() + 60, "NWN-Buff-Watcher/graphics/Banner.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Deterrence":
+                    self.make_buff_labelframe(["Deterrence", time.time() + 18, "NWN-Buff-Watcher/graphics/deterrence.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Safeguard":
+                    self.make_buff_labelframe(["Safeguard", time.time() + 18, "NWN-Buff-Watcher/graphics/safeguard.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Blinding Speed":
+                    self.make_buff_labelframe(["Blinding Speed", time.time() + 180, "NWN-Buff-Watcher/graphics/blind_speed.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Heroic Shield":
+                    self.make_buff_labelframe(["Heroic Shield", time.time() + 4320, "NWN-Buff-Watcher/graphics/heroic_shield.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Inspire Courage":
+                    self.make_buff_labelframe(["Inspire Courage", time.time() + 60, "NWN-Buff-Watcher/graphics/inspire_courage.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Last Stand":
+                    self.make_buff_labelframe(["Last Stand", time.time() + 60, "NWN-Buff-Watcher/graphics/last_stand.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Oath of Wrath":
+                    self.make_buff_labelframe(["Oath of Wrath", time.time() + 60, "NWN-Buff-Watcher/graphics/oath_wrath.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD PDK Fear":
+                    self.make_buff_labelframe(["PDK Fear", time.time() + 60, "NWN-Buff-Watcher/graphics/pdk_fear.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Empty Body":
+                    self.make_buff_labelframe(["Empty Body", time.time() + (6 * self.monk_levels.get()), "NWN-Buff-Watcher/graphics/empty_body.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Shadow Evade":
+                    self.make_buff_labelframe(["Shadow Evade", time.time() + (18 * self.sd_levels.get()), "NWN-Buff-Watcher/graphics/shadow_evade.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Acrobatics Mastery":
+                    self.make_buff_labelframe(["Acrobatics Mastery", time.time() + 18, "NWN-Buff-Watcher/graphics/acrobatics.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Improved Acrobatics Mastery":
+                    self.make_buff_labelframe(["Improved Acrobatics Mastery", time.time() + 18, "NWN-Buff-Watcher/graphics/acrobatics.png"])
+
+                elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Third Intention":
+                    self.make_buff_labelframe(["Third Intention", time.time() + 6, "NWN-Buff-Watcher/graphics/third_intention.png"])
+
+            except:
+                pass
+
             if " will be available once more in " in logline:
                 try:
                     self.make_buff_labelframe(summons_cd_call(logline))
@@ -602,6 +708,18 @@ class MainFrame(tk.Frame):
                 except:
                     print(f"KD farted.")
 
+            if self.name_stringvar.get() + " is performing the song: " in logline:
+                try:
+                    self.song_call()
+                except:
+                    print(f"song farted on: {logline}")
+
+            if self.name_stringvar.get() + " is performing the curse song: " in logline:
+                try:
+                    self.curse_call()
+                except:
+                    print(f"song farted on: {logline}")
+
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             # print(f"buff_timer {x.buff_name}: {x.buff_timer.get()}") # this is the remaining seconds that gets counted down
             # print(f"buff_epoch {x.buff_name}: {x.buff_epoch}") # this is the time.time when the buff is created
@@ -629,7 +747,62 @@ class MainFrame(tk.Frame):
                     self.resize_set_buff_window('buff destroy')
 
         
-        self.after(100, self.buffs_loop_time_passing) # 1000 works... trying 100
+        self.after(100, self.buffs_loop_time_passing) # 100 is 1/10th of a second, 1000 is a second
+
+    def song_call(self):
+        """ Handle song buffs and cooldowns, silmilar to smite and turn.
+        """
+
+        # set duration according to bard feats...
+        # setup a dropdown for the different feat combos...
+        if self.bard_song_feats.get() == "None":
+            self.make_buff_labelframe([f"Bard Song", time.time() + 60, "NWN-Buff-Watcher/graphics/bard_song.png"])
+        elif self.bard_song_feats.get() == "Lasting Inspiration":
+            self.make_buff_labelframe([f"Bard Song", time.time() + 600, "NWN-Buff-Watcher/graphics/bard_song.png"])
+        elif self.bard_song_feats.get() == "Lingering Song":
+            self.make_buff_labelframe([f"Bard Song", time.time() + 90, "NWN-Buff-Watcher/graphics/bard_song.png"])
+        elif self.bard_song_feats.get() == "Lingering & Lasting":
+            self.make_buff_labelframe([f"Bard Song", time.time() + 900, "NWN-Buff-Watcher/graphics/bard_song.png"])
+            print("ling and last")
+        else:
+            print("Something wrong with bard song")
+
+        if "CD Song" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Song" in str(obj.buff_name)]):
+            self.make_buff_labelframe(["CD Song", time.time() + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+        else:
+            self.buff_iterator = self.buff_iterator + 1
+
+            for song_buff in self.buffs_list_frames:
+                if "CD Song" in str(song_buff.buff_name):
+                    self.song_list.append(float(song_buff.buff_birthday))
+
+            self.song_list.sort()
+            squential_song_cd = self.song_list[-1]
+
+            self.make_buff_labelframe([f"CD Song {self.buff_iterator}", squential_song_cd + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+
+            self.song_list = []
+
+    def curse_call(self):
+        """ Handle curse song cooldowns, silmilar to smite and turn.
+        Curse song is just the cooldown.
+        """
+
+        if "CD Song" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Song" in str(obj.buff_name)]):
+            self.make_buff_labelframe(["CD Song", time.time() + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+        else:
+            self.buff_iterator = self.buff_iterator + 1
+
+            for song_buff in self.buffs_list_frames:
+                if "CD Song" in str(song_buff.buff_name):
+                    self.song_list.append(float(song_buff.buff_birthday))
+
+            self.song_list.sort()
+            squential_song_cd = self.song_list[-1]
+
+            self.make_buff_labelframe([f"CD Song {self.buff_iterator}", squential_song_cd + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+
+            self.song_list = []
 
     def smite_call(self):
         """ handles the sequential cooldowns of smite, they don't all start CDs right when used
@@ -749,6 +922,7 @@ class MainFrame(tk.Frame):
                 if self.specialist_type.get() == "Illusion":
                     adding_buff[1] = time.time() + (2 * (adding_buff[1] - time.time()))
 
+            # broke off invisibilty sphere so Invisibility could get all its crazy stuff
             if self.use_items_dict[f'{buff_string}']['name'] == "Invisibility Sphere":
                 if self.sf_illu_state.get() == 0:
                     pass
@@ -985,6 +1159,7 @@ class MainFrame(tk.Frame):
             if self.cast_spells_dict[f"{buff_string}"]["name"] == "Clairaudience/Clairvoyance" and self.sf_div_state.get() > 1 and self.specialist_type.get() == "Divination":
                 adding_buff[1] = adding_buff[1] + (54 * int(self.cl_modifier.get()))
 
+            # handling BG's special bull's strength and its duration
             if self.cast_spells_dict[f"{buff_string}"]["name"] == "Bull's Strength":
                 if self.bg_levels.get() > 0 and self.bg_levels.get() < 10:
                     self.make_buff_labelframe(["BG Bulls", time.time() + (60 * self.bg_levels.get()), "NWN-Buff-Watcher/graphics/bg_bulls.png"])
@@ -993,9 +1168,16 @@ class MainFrame(tk.Frame):
                     self.make_buff_labelframe(["BG Bulls", time.time() + (360 * self.bg_levels.get()), "NWN-Buff-Watcher/graphics/bg_bulls.png"])
                     return
 
+            # handling aura of glory duration for paladins with majority levels
             if self.cast_spells_dict[f"{buff_string}"]["name"] == "Aura of Glory":
                 if self.paladin_bool.get() == True:
                     adding_buff[1] = adding_buff[1] + (300 * self.cl_modifier.get())
+
+            # adds 3 more rounds to Tensers for Trans specialists, they get 100% uptime at level 30 with a 3 level dip this way
+            if self.cast_spells_dict[f"{buff_string}"]["name"] == "Tenser's Transformation":
+                if self.specialist_type.get() == "Transmutation":
+                    adding_buff[1] = adding_buff[1] + 18
+
 
             self.make_buff_labelframe(adding_buff)
         except:
