@@ -2400,12 +2400,47 @@
         "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/wounding_whispers.png"
     },
-
     "uses Innate Ability": {
         "name": "Innate Ability",
         "duration": "300",
         "caster_level": "1",
         "type": "item",
         "icon": "NWN-Buff-Watcher/graphics/innate.png"
+    },
+    "uses Potion of Good Hope": {
+        "name": "Good Hope",
+        "duration": "60",
+        "caster_level": "8",
+        "type": "potion",
+        "icon": "NWN-Buff-Watcher/graphics/good_hope.png"
+    },
+    "uses Wand of Good Hope": {
+        "name": "Good Hope",
+        "duration": "60",
+        "caster_level": "8",
+        "type": "wand",
+        "icon": "NWN-Buff-Watcher/graphics/good_hope.png"
+    },
+    "uses Good Hope": {
+        "name": "Good Hope",
+        "duration": "60",
+        "caster_level": "8",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/good_hope.png"
+    },
+    "uses Lightning Shield": {
+        "name": "Lightning Shield",
+        "duration": "6",
+        "caster_level": "10",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/light_shield.png",
+        "dmg_shield": "biteback"
+    },
+    "uses Create Undead": {
+        "name": "Create Undead",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/create_undead.png"
     }
 }
