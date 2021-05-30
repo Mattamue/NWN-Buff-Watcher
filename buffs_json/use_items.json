@@ -267,7 +267,7 @@
     },
     "uses Potion of Magic Circle against Alignment": {
         "name": "Magic Circle against Alignment",
-        "duration": "360",
+        "duration": "60",
         "caster_level": "5",
         "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/magic_circle_alignment.png"
@@ -369,6 +369,27 @@
         "caster_level": "7",
         "type": "potion",
         "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
+    },
+    "uses Potion of Shadow Conjuration: Mage Armor": {
+        "name": "Mage Armor",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "potion",
+        "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
+    },
+    "uses Potion of Shadow Conjuration: Ghostly Visage": {
+        "name": "Ghostly Visage",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "potion",
+        "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
+    },
+    "uses Potion of Shadow Conjuration: Summon Shadow": {
+        "name": "Summon Shadow",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "potion",
+        "icon": "NWN-Buff-Watcher/graphics/summon_shadow.png"
     },
     "uses Potion of Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
@@ -807,7 +828,7 @@
     },
     "uses Wand of Magic Circle against Alignment": {
         "name": "Magic Circle against Alignment",
-        "duration": "360",
+        "duration": "60",
         "caster_level": "5",
         "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/magic_circle_alignment.png"
@@ -861,8 +882,8 @@
         "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/owls.png"
     },
-    "uses Wand of Polymorph": {
-        "name": "Polymorph",
+    "uses Wand of Polymorph Self": {
+        "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "wand",
@@ -930,6 +951,27 @@
         "caster_level": "7",
         "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
+    },
+    "uses Wand of Shadow Conjuration: Mage Armor": {
+        "name": "Mage Armor",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "wand",
+        "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
+    },
+    "uses Wand of Shadow Conjuration: Ghostly Visage": {
+        "name": "Ghostly Visage",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "wand",
+        "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
+    },
+    "uses Wand of Shadow Conjuration: Summon Shadow": {
+        "name": "Summon Shadow",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "wand",
+        "icon": "NWN-Buff-Watcher/graphics/summon_shadow.png"
     },
     "uses Wand of Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
@@ -1760,11 +1802,46 @@
         "icon": "NWN-Buff-Watcher/graphics/greater_resto_cd.png"
     },
     "uses Greater Shadow Conjuration": {
-        "name": "Stoneskin",
+        "name": "Shadow Evocation",
+        "duration": "360",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/shadow_evocation.png"
+    },
+    "uses Shadow Evocation: Flame Shield": {
+        "name": "Flame Shield",
+        "duration": "6",
+        "caster_level": "9",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+    },
+    "uses Shades": {
+        "name": "Greater Shadow Conjuration",
         "duration": "360",
         "caster_level": "9",
         "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/greater_shadow_conj.png"
+    },
+    "uses Greater Shadow Conjuration: Stoneskin": {
+        "name": "Stoneskin",
+        "duration": "360",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/stoneskin.png"
+    },
+    "uses Greater Shadow Conjuration: Minor Globe of Invulnerability": {
+        "name": "Minor Globe of Invulnerability",
+        "duration": "6",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/minor_globe_invuln.png"
+    },
+    "uses Greater Shadow Conjuration: Summon Shadow": {
+        "name": "Summon Shadow",
+        "duration": "6",
+        "caster_level": "11",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_shadow.png"
     },
     "uses Greater Spell Mantle": {
         "name": "Greater Spell Mantle",
@@ -1880,7 +1957,7 @@
     },
     "uses Magic Circle against Alignment": {
         "name": "Magic Circle against Alignment",
-        "duration": "360",
+        "duration": "60",
         "caster_level": "5",
         "type": "scroll",
         "icon": "NWN-Buff-Watcher/graphics/magic_circle_alignment.png"
@@ -2087,6 +2164,27 @@
         "caster_level": "7",
         "type": "wand",
         "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
+    },
+    "uses Shadow Conjuration: Mage Armor": {
+        "name": "Mage Armor",
+        "duration": "360",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
+    },
+    "uses Shadow Conjuration: Ghostly Visage": {
+        "name": "Ghostly Visage",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
+    },
+    "uses Shadow Conjuration: Summon Shadow": {
+        "name": "Summon Shadow",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "scroll",
+        "icon": "NWN-Buff-Watcher/graphics/summon_shadow.png"
     },
     "uses Shadow Shield": {
         "name": "Shadow Shield",
