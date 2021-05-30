@@ -742,6 +742,12 @@ class MainFrame(tk.Frame):
                 except:
                     print(f"song farted on: {logline}")
 
+            if self.name_stringvar.get() + " throws grenade-like weapon." in logline:
+                try:
+                    self.make_buff_labelframe(["Alchemist Fire", time.time() + 120, "NWN-Buff-Watcher/graphics/alch_fire.png"])
+                except:
+                    print(f"grenade farted on: {logline}")
+
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             # print(f"buff_timer {x.buff_name}: {x.buff_timer.get()}") # this is the remaining seconds that gets counted down
             # print(f"buff_epoch {x.buff_name}: {x.buff_epoch}") # this is the time.time when the buff is created
@@ -1394,10 +1400,13 @@ class BuffLabelFrame(tk.LabelFrame):
             self.click_menu.add_command(label='Minor Globe of Invulnerability', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Greater Shadow Conjuration: Minor Globe of Invulnerability")])
             self.click_menu.add_command(label='Summon Shadow', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Greater Shadow Conjuration: Summon Shadow")])
 
+        if self.buff_name == "Special Power":
+            self.click_menu.add_separator()
+            self.click_menu.add_command(label='Temporary Weapon Essence', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Temporary Weapon Essence", self.buff_epoch + 2160, "NWN-Buff-Watcher/graphics/temp_esssence.png"])])
+            self.click_menu.add_command(label='Weapon Poison', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Weapon Poison", self.buff_epoch + 600, "NWN-Buff-Watcher/graphics/weapon_poison.png"])])
+
         self.click_menu.add_separator()
         self.click_menu.add_command(label='Destroy', command=lambda: self.menu_destroy_buff_labelframe())
-
-
 
         # When the object is created, add the Frame to the buffs list in the main_frame
         # probably move this elsewhere
