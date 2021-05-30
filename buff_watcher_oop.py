@@ -1,7 +1,7 @@
 """
 Author: Mattamue
 Program: buff_watcher_oop.py
-Last updated: 05/29/2021
+Last updated: 05/30/2021
 
 Watches chat log of the Neverwinter Nights video game
 and extends the UI by overlaying a window with more
