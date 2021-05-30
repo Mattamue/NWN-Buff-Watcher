@@ -891,7 +891,7 @@ class MainFrame(tk.Frame):
             buff_type = self.use_items_dict[f'{buff_string}']['type']
         except:
             buff_type = 'other'
-            print(f"EXCEPTED ON TYPE: {buff_string}")
+            # print(f"EXCEPTED ON TYPE: {buff_string}")
 
         # the try handle "uses" lines that aren't defined in the json, otherwise they exception and stop the program
         try: 
@@ -1022,10 +1022,25 @@ class MainFrame(tk.Frame):
                 if self.paladin_bool.get() == True:
                     adding_buff[1] = time.time() + (360 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier)))
 
+            # handling damage shieds... this could be super slow, but it's only goes deep if it's a damage shield
+            try:
+                if self.use_items_dict[f'{buff_string}']['dmg_shield'] == "biteback":
+                    try:
+                        for buff in self.buffs_list_frames:
+                            if "(dmg shield)" in str(buff.buff_name):
+                                self.buffs_list_frames.remove(buff)
+                                buff.destroy()
+                                self.resize_set_buff_window('buff destroy')
+                    except:
+                        pass
+                    adding_buff[0] = adding_buff[0] + " (dmg shield)"
+            except:
+                pass
+
             # print(f"duration just before pass to make labelframe: {int(self.use_items_dict[f'{buff_string}']['duration'])}") # testing
             self.make_buff_labelframe(adding_buff)
         except:
-            print(f"EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later user can add to json with a buff-managing window?
+            print(f"use call EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later user can add to json with a buff-managing window?
 
 
     def casts_call(self, buff_string):
@@ -1040,7 +1055,7 @@ class MainFrame(tk.Frame):
             buff_type = self.cast_spells_dict[f'{buff_string}']['type']
         except:
             buff_type = 'other'
-            print(f"EXCEPTED ON TYPE: {buff_string}")
+            # print(f"EXCEPTED ON TYPE: {buff_string}")
 
         # the try handle "uses" lines that aren't defined in the json, otherwise they exception and stop the program
         try: 
@@ -1203,10 +1218,25 @@ class MainFrame(tk.Frame):
                 if self.specialist_type.get() == "Transmutation":
                     adding_buff[1] = adding_buff[1] + 18
 
+            # handling damage shieds... this could be super slow, but it's only goes deep if it's a damage shield
+            # same as the uses version
+            try:
+                if self.cast_spells_dict[f'{buff_string}']['dmg_shield'] == "biteback":
+                    try:
+                        for buff in self.buffs_list_frames:
+                            if "(dmg shield)" in str(buff.buff_name):
+                                self.buffs_list_frames.remove(buff)
+                                buff.destroy()
+                                self.resize_set_buff_window('buff destroy')
+                    except:
+                        pass
+                    adding_buff[0] = adding_buff[0] + " (dmg shield)"
+            except:
+                pass
 
             self.make_buff_labelframe(adding_buff)
         except:
-            print(f"EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later user can add to json with a buff-managing window?
+            print(f"cast call EXCEPTED ON WHOLE THING: {buff_string}") # for now just fart out that it was handled, maybe later user can add to json with a buff-managing window?
 
 
     def buffs_display_nicely(self):
