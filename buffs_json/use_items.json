@@ -1223,6 +1223,13 @@
         "type": "item",
         "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
     },
+    "uses Dove's Harp": {
+        "name": "CD Greater Restoration",
+        "duration": "240",
+        "caster_level": "1",
+        "type": "item",
+        "icon": "NWN-Buff-Watcher/graphics/greater_resto_cd.png"
+    },
     "uses Bardic Harp": {
         "name": "Eagle's Splendor",
         "duration": "360",
