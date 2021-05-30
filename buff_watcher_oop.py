@@ -540,7 +540,7 @@ class MainFrame(tk.Frame):
         self.freeform_uses_test = tk.StringVar()
         self.entry_test = tk.Entry(self.debugging_buttons_frame, width=30, textvariable=self.freeform_uses_test)
         self.entry_test.grid(column=2, row=14)
-        self.entry_test.insert(0, "uses Wand of Cat's Grace")
+        self.entry_test.insert(0, "uses Protection from Alignment")
         self.entry_button = ttk.Button(self.debugging_buttons_frame, text='Enter uses freeform', command=lambda: self.uses_call(self.freeform_uses_test.get()))
         self.entry_button.grid(column=2, row=15)
 
@@ -1323,7 +1323,7 @@ class BuffLabelFrame(tk.LabelFrame):
         self.buff_image_label.bind("<Button-1>", self.clicked_in_buff_frame)
 
         self.click_menu = tk.Menu(self, tearoff=0)
-        self.innate_cascade = tk.Menu(self, tearoff=0)
+        # self.innate_cascade = tk.Menu(self, tearoff=0) # uncomment to switch back to the cascade
         self.extended_bool = tk.BooleanVar()
         self.extended_bool.set(False)
 
@@ -1334,14 +1334,65 @@ class BuffLabelFrame(tk.LabelFrame):
             self.click_menu.add_checkbutton(label="Extend", variable=self.extended_bool, onvalue=True, offvalue=False, command=lambda: self.extend_organize())
 
         if self.buff_name == "Innate Ability":
-            # TODO: revisit this, cascade working good, or just move back to adding the huge list since its context specific...
+            # putting these all just in a list, commented-out ones are from testing a cascade, keeping for reference if I want to go back
+            # but I don't think I need to since all these little sub-menus only have their own stuff to add, maybe for a bigger one later...
             self.click_menu.add_separator()
             self.click_menu.add_cascade(label="Innate Abilities:", menu=self.innate_cascade)
-            self.innate_cascade.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/darkness.png"])])
-            self.innate_cascade.add_command(label='Invis (Duergar)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_duerg()]) 
-            self.innate_cascade.add_command(label='Invis (Svir/Fey/Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_most()]) 
-            self.innate_cascade.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/polymorph.png"])])
-            self.innate_cascade.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/war_cry.png"])])
+            self.click_menu.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/darkness.png"])])
+            self.click_menu.add_command(label='Invis (Duergar)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_duerg()]) 
+            self.click_menu.add_command(label='Invis (Svir/Fey/Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_most()]) 
+            self.click_menu.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/polymorph.png"])])
+            self.click_menu.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/war_cry.png"])])
+            # the cascade version
+            # self.innate_cascade.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/darkness.png"])])
+            # self.innate_cascade.add_command(label='Invis (Duergar)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_duerg()]) 
+            # self.innate_cascade.add_command(label='Invis (Svir/Fey/Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_most()]) 
+            # self.innate_cascade.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/polymorph.png"])])
+            # self.innate_cascade.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/war_cry.png"])])
+
+        # making a drop-down for all the generic potion/wand/scrolls for the next bit... cascading this one just to figure it out, rest will just be a long line...
+        if self.buff_name == "Protection from Alignment":
+            self.click_menu.add_separator()
+            self.click_menu.add_command(
+                                        label='Protection from Good',
+                                        command=lambda: [
+                                                         self.menu_destroy_buff_labelframe(),
+                                                         main_frame.make_buff_labelframe(
+                                                                                         ["Protection From Good",
+                                                                                         time.time() + self.buff_timer.get(),
+                                                                                         "NWN-Buff-Watcher/graphics/prot_good.png"])])
+            self.click_menu.add_command(label='Protection from Evil', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Protection From Good", time.time() + self.buff_timer.get(), "NWN-Buff-Watcher/graphics/prot_evil.png"])])
+
+        if self.buff_name == "Magic Circle against Alignment":
+            self.click_menu.add_separator()
+            self.click_menu.add_command(label='Magic Circle against Evil', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Magic Circle against Evil", time.time() + self.buff_timer.get(), "NWN-Buff-Watcher/graphics/magic_circle_evil.png"])])
+            self.click_menu.add_command(label='Magic Circle against Good', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Magic Circle against Good", time.time() + self.buff_timer.get(), "NWN-Buff-Watcher/graphics/magic_circle_good.png"])])
+
+        # these are all so f-ed up, I don't see an easy way to preserve the duration in the change, just making a new one for now
+        # harder than the others because the sub-options have different durations so cannot use the same duration
+        # maybe... since I know, for example, the "Shadow Conjuration" duration will have any LM mods included... I can extrapolate what the others should be?
+        # Done with this for now... can't tell here, but when you craft scrolls they use old names like "Shades" and stright up wrong names like Shadow Evocation scroll is Greater Shadow Conjuration
+        if self.buff_name == "Shadow Conjuration":
+            self.click_menu.add_separator()
+            self.click_menu.add_command(label='Mage Armor (potion)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Potion of Shadow Conjuration: Mage Armor")])
+            self.click_menu.add_command(label='Mage Armor (wand)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Wand of Shadow Conjuration: Mage Armor")])
+            self.click_menu.add_command(label='Mage Armor (scroll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Shadow Conjuration: Mage Armor")])
+            self.click_menu.add_command(label='Ghostly Visage (potion)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Potion of Shadow Conjuration: Ghostly Visage")])
+            self.click_menu.add_command(label='Ghostly Visage (wand)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Wand of Shadow Conjuration: Ghostly Visage")])
+            self.click_menu.add_command(label='Ghostly Visage (scroll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Shadow Conjuration: Ghostly Visage")])
+            self.click_menu.add_command(label='Summon Shadow (potion)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Potion of Shadow Conjuration: Summon Shadow")])
+            self.click_menu.add_command(label='Summon Shadow (wand)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Wand of Shadow Conjuration: Summon Shadow")])
+            self.click_menu.add_command(label='Summon Shadow (scroll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Shadow Conjuration: Summon Shadow")])
+
+        if self.buff_name == "Shadow Evocation":
+            self.click_menu.add_separator()
+            self.click_menu.add_command(label='Flame Shield', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Shadow Evocation: Flame Shield")])
+
+        if self.buff_name == "Greater Shadow Conjuration":
+            self.click_menu.add_separator()
+            self.click_menu.add_command(label='Stoneskin', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Greater Shadow Conjuration: Stoneskin")])
+            self.click_menu.add_command(label='Minor Globe of Invulnerability', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Greater Shadow Conjuration: Minor Globe of Invulnerability")])
+            self.click_menu.add_command(label='Summon Shadow', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.uses_call("uses Greater Shadow Conjuration: Summon Shadow")])
 
         self.click_menu.add_separator()
         self.click_menu.add_command(label='Destroy', command=lambda: self.menu_destroy_buff_labelframe())

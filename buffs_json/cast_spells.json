@@ -27,6 +27,20 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/aura_vit.png"
     },
+    "casts Unholy Aura": {
+        "name": "Unholy Aura",
+        "duration": "6",
+        "caster_level": "13",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/unholy_aura.png"
+    },
+    "casts Holy Aura": {
+        "name": "Holy Aura",
+        "duration": "6",
+        "caster_level": "13",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/holy_aura.png"
+    },
     "casts Awaken": {
         "name": "Awaken",
         "duration": "9999",
@@ -224,7 +238,7 @@
         "icon": "NWN-Buff-Watcher/graphics/eagle.png"
     },
     "casts Elemental Shield": {
-        "name": "Elemental Shield",
+        "name": "Flame Shield",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
@@ -370,13 +384,6 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/greater_sanc.png"
     },
-    "casts Greater Shadow Conjuration": {
-        "name": "Stoneskin",
-        "duration": "360",
-        "caster_level": "9",
-        "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_shadow_conj.png"
-    },
     "casts Greater Spell Mantle": {
         "name": "Greater Spell Mantle",
         "duration": "6",
@@ -496,12 +503,19 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
     },
-    "casts Magic Circle against Alignment": {
-        "name": "Magic Circle against Alignment",
-        "duration": "360",
+    "casts Magic Circle against Evil": {
+        "name": "Magic Circle against Evil",
+        "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/magic_circle_alignment.png"
+        "icon": "NWN-Buff-Watcher/graphics/magic_circle_evil.png"
+    },
+    "casts Magic Circle against Good": {
+        "name": "Magic Circle against Good",
+        "duration": "60",
+        "caster_level": "5",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/magic_circle_good.png"
     },
     "casts Magic Fang": {
         "name": "Magic Fang",
@@ -615,7 +629,35 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/planar_binding.png"
     },
-    "casts Polymorph Self": {
+    "casts Polymorph, Giant Spider": {
+        "name": "Polymorph Self",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+    },
+    "casts Polymorph, Troll": {
+        "name": "Polymorph Self",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+    },
+    "casts Polymorph, Umber Hulk": {
+        "name": "Polymorph Self",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+    },
+    "casts Polymorph, Fey": {
+        "name": "Polymorph Self",
+        "duration": "60",
+        "caster_level": "7",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+    },
+    "casts Polymorph, Zombie": {
         "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
@@ -636,12 +678,19 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/premo.png"
     },
-    "casts Protection from Alignment": {
-        "name": "Protection from Alignment",
+    "casts Protection from Evil": {
+        "name": "Protection from Evil",
         "duration": "360",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/prot_alignment.png"
+        "icon": "NWN-Buff-Watcher/graphics/prot_evil.png"
+    },
+    "casts Protection from Good": {
+        "name": "Protection from Good",
+        "duration": "360",
+        "caster_level": "5",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/prot_good.png"
     },
     "casts Protection from Elements": {
         "name": "Protection from Elements",
@@ -699,11 +748,25 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/see_invisibility.png"
     },
-    "casts Shadow Conjuration": {
-        "name": "Shadow Conjuration",
-        "duration": "360",
+    "casts Greater Shadow Conjuration, Summon Shadow": {
+        "name": "Summon Shadow",
+        "duration": "6",
         "caster_level": "7",
-        "type": "wand",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
+    },
+    "casts Greater Shadow Conjuration, Minor Globe of Invulnerability": {
+        "name": "Greater Shadow Conjuration, Minor Globe of Invulnerability",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/minor_globe_invuln.png"
+    },
+    "casts Summon Shadow": {
+        "name": "Summon Shadow",
+        "duration": "6",
+        "caster_level": "7",
+        "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
     },
     "casts Shadow Shield": {
@@ -713,7 +776,35 @@
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/shadow_shield.png"
     },
-    "casts Shapechange": {
+    "casts Shapechange, Red Dragon": {
+        "name": "Shapechange",
+        "duration": "60",
+        "caster_level": "17",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+    },
+    "casts Shapechange, Fire Giant": {
+        "name": "Shapechange",
+        "duration": "60",
+        "caster_level": "17",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+    },
+    "casts Shapechange, Balor": {
+        "name": "Shapechange",
+        "duration": "60",
+        "caster_level": "17",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+    },
+    "casts Shapechange, Death Slaad": {
+        "name": "Shapechange",
+        "duration": "60",
+        "caster_level": "17",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+    },
+    "casts Shapechange, Iron Golem": {
         "name": "Shapechange",
         "duration": "60",
         "caster_level": "17",
