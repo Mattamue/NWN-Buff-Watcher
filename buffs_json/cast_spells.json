@@ -985,5 +985,33 @@
         "caster_level": "9",
         "type": "spell",
         "icon": "NWN-Buff-Watcher/graphics/wounding_whispers.png"
+    },
+    "casts Epic Spell: Epic Mage Armor": {
+        "name": "Epic Mage Armor",
+        "duration": "360",
+        "caster_level": "2",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/epic_mage.png"
+    },
+    "casts Epic Spell: Mummy Dust": {
+        "name": "Mummy Dust",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/mummy_dust.png"
+    },
+    "casts Epic Spell: Dragon Knight": {
+        "name": "Dragon Knight",
+        "duration": "12",
+        "caster_level": "2",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/dragon_knight.png"
+    },
+    "casts Epic Spell: Planar Conduit": {
+        "name": "Planar Conduit",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "NWN-Buff-Watcher/graphics/epic_planar.png"
     }
 }
