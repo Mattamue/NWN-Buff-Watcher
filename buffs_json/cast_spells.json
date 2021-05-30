@@ -179,7 +179,8 @@
         "duration": "6",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/death_armor.png"
+        "icon": "NWN-Buff-Watcher/graphics/death_armor.png",
+        "dmg_shield": "biteback"
     },
     "casts Death Ward": {
         "name": "Death Ward",
@@ -242,21 +243,24 @@
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "casts Flame Shield": {
         "name": "Flame Shield",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "casts Frost Shield": {
         "name": "Frost Shield",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png",
+        "dmg_shield": "biteback"
     },
     "casts Bear's Endurance": {
         "name": "Endurance",
@@ -557,7 +561,8 @@
         "duration": "6",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mestil_acid_sheath.png"
+        "icon": "NWN-Buff-Watcher/graphics/mestil_acid_sheath.png",
+        "dmg_shield": "biteback"
     },
     "casts Mind Blank": {
         "name": "Mind Blank",

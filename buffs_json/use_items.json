@@ -123,7 +123,8 @@
         "duration": "6",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/death_armor.png"
+        "icon": "NWN-Buff-Watcher/graphics/death_armor.png",
+        "dmg_shield": "biteback"
     },
     "uses Potion of Displacement": {
         "name": "Displacement",
@@ -628,7 +629,8 @@
         "duration": "6",
         "caster_level": "3",
         "type": "wand",
-        "icon": "NWN-Buff-Watcher/graphics/death_armor.png"
+        "icon": "NWN-Buff-Watcher/graphics/death_armor.png",
+        "dmg_shield": "biteback"
     },
     "uses Wand of Death Ward": {
         "name": "Death Ward",
@@ -670,21 +672,24 @@
         "duration": "6",
         "caster_level": "12",
         "type": "wand",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Wand of Flame Shield": {
         "name": "Flame Shield",
         "duration": "6",
         "caster_level": "12",
         "type": "wand",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Wand of Frost Shield": {
         "name": "Frost Shield",
         "duration": "6",
         "caster_level": "7",
         "type": "wand",
-        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Wand of Bear's Endurance": {
         "name": "Endurance",
@@ -1360,7 +1365,8 @@
         "duration": "6",
         "caster_level": "12",
         "type": "item",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Displacer Beast Hide Armor": {
         "name": "Invisibility",
@@ -1637,7 +1643,8 @@
         "duration": "6",
         "caster_level": "3",
         "type": "scroll",
-        "icon": "NWN-Buff-Watcher/graphics/death_armor.png"
+        "icon": "NWN-Buff-Watcher/graphics/death_armor.png",
+        "dmg_shield": "biteback"
     },
     "uses Death Ward": {
         "name": "Death Ward",
@@ -1679,21 +1686,24 @@
         "duration": "6",
         "caster_level": "7",
         "type": "scroll",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Flame Shield": {
         "name": "Flame Shield",
         "duration": "6",
         "caster_level": "7",
         "type": "scroll",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Frost Shield": {
         "name": "Frost Shield",
         "duration": "6",
         "caster_level": "7",
         "type": "scroll",
-        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Bear's Endurance": {
         "name": "Endurance",
@@ -1826,7 +1836,8 @@
         "duration": "6",
         "caster_level": "9",
         "type": "scroll",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png"
+        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "dmg_shield": "biteback"
     },
     "uses Shades": {
         "name": "Greater Shadow Conjuration",
@@ -2015,7 +2026,8 @@
         "duration": "6",
         "caster_level": "9",
         "type": "scroll",
-        "icon": "NWN-Buff-Watcher/graphics/mestil_acid_sheath.png"
+        "icon": "NWN-Buff-Watcher/graphics/mestil_acid_sheath.png",
+        "dmg_shield": "biteback"
     },
     "uses Mind Blank": {
         "name": "Mind Blank",
