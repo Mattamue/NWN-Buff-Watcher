@@ -110,6 +110,7 @@ class MainFrame(tk.Frame):
         self.player_pots_dict = json.load(open('NWN-Buff-Watcher/buffs_json/player_pots.json','r'))
         self.vendor_pots_dict = json.load(open('NWN-Buff-Watcher/buffs_json/vendor_pots.json','r'))
         self.player_vendor_pots()
+        self.breach_dict = json.load(open('NWN-Buff-Watcher/buffs_json/breach_list.json','r'))
 
         # frame for the buttons on the right
         self.buttons_frame = tk.Frame(self)
@@ -748,6 +749,13 @@ class MainFrame(tk.Frame):
                 except:
                     print(f"grenade farted on: {logline}")
 
+
+            if " : " + self.name_stringvar.get() + " : " in logline:
+                try:
+                    self.dispel_call(logline)
+                except:
+                    print("farted out on dispel call")
+
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             # print(f"buff_timer {x.buff_name}: {x.buff_timer.get()}") # this is the remaining seconds that gets counted down
             # print(f"buff_epoch {x.buff_name}: {x.buff_epoch}") # this is the time.time when the buff is created
@@ -776,6 +784,112 @@ class MainFrame(tk.Frame):
 
         
         self.after(100, self.buffs_loop_time_passing) # 100 is 1/10th of a second, 1000 is a second
+
+    def dispel_call(self, dispel_log):
+        """ Takes logline from the main loop
+        should look like one of these:
+        [CHAT WINDOW TEXT] [Sun May 30 17:12:27] Mordenkainen's Disjunction : *character-name* : Mind Blank, Mage Armor
+        [CHAT WINDOW TEXT] [Sun May 30 17:27:17] Greater Dispelling : *character-name* : Shadow Shield, Mind Blank
+        [CHAT WINDOW TEXT] [Sun May 30 17:27:46] Dispel Magic : *character-name* : 
+        [CHAT WINDOW TEXT] [Sun May 30 17:28:11] Lesser Dispel : *character-name* : 
+        Parses that information and pops up a warning window if a spell is dispelled. Only able to capture for
+        these spells as lesser and greater breach do not have this chatlog, and just capturing anyone else
+        casting those would be too many false negatives -- you cannot tell from the chat log if its cast on
+        you or not.
+        """
+
+        """
+        Hit with mords
+        Get list of current buffs
+        Compare to breach dict
+        Get new_list of buffs on the breach dict
+        sort new_list according to breach dict values
+        tie back to the bugg objects
+        destroy top 6
+        """
+
+        dispelled_display = ""
+        list_of_buffs = []
+
+        # handling dispel
+        # moving dispel above breach because testing shows dispel happens first on mords, despite what nwn wiki says; easy enough to switch around if needed
+        dispelled_list = dispel_log.split(":")[4].split(",")
+        # print(f"Dispelled list: {dispelled_list}") # testing
+        if dispelled_list != [' \n']:
+            # print("Trying to dispel") # testing
+            for dispelled_buff in dispelled_list:
+                stripped_buff = dispelled_buff.strip()
+                # print(f"stripped_buff: '{stripped_buff}'") # testing
+                dispelled_display = dispelled_display + f"Dispelled: {stripped_buff}\n"
+                # print(f"normal list: {self.buffs_list_frames}") # testing
+                for obj_dispel in self.buffs_list_frames:
+                    # print(f"in loop name: '{obj_dispel.buff_name}'") # testing
+                    if stripped_buff in obj_dispel.buff_name:
+                        # print(f"Dispelled: '{obj_dispel.buff_name}'") # testing
+                        self.buffs_list_frames.remove(obj_dispel)
+                        obj_dispel.destroy()
+                        self.resize_set_buff_window('buff destroy')
+                    else:
+                        # print(f"not in dispel list: '{obj_dispel.buff_name}'") # testing
+                        pass
+
+        if "Mordenkainen's Disjunction" in dispel_log:
+            # print("mords caught") # testing
+            # I think I made this harder than I needed by having the breach list be a dictionary instead of like, just a list of lists, a set, or a tuple
+            for obj in self.buffs_list_frames:
+                list_of_buffs.append(obj.buff_name) # make a list of the current buffs
+            set_of_same = set(self.breach_dict).intersection(list_of_buffs) # get a set that are in both the list and the dictionary of breach spells
+            # print(f"set of same: {set_of_same}") # testing
+            delete_dict = {}
+            for set_buff in set_of_same:
+                delete_dict[f'{set_buff}'] = self.breach_dict[f'{set_buff}'] # make a dictionary of the buffs in both the current buffs and the breach dict
+            # print(f"delete dict: {delete_dict}") # testing
+            sorted_delete_tup = sorted(delete_dict.items(), key=lambda item: item[1]) # sort the delete_dict buffs (the ones to be deleted since they're on the breach dict and the current buff list) by their breach order, this returns a tuple
+            # print(f"sorted delete tup: {sorted_delete_tup}") # testing
+            sorted_list_to_delete = []
+            for sorted_buff in sorted_delete_tup: # turn the tuple into a list, also make the string that'll be displayed
+                sorted_list_to_delete.append(sorted_buff[0])
+            sorted_list_to_delete_ranged = sorted_list_to_delete[0:6] # if the sorted (by breach order) list has more than 6 we cut it down here to just the 6
+            # print(f"sorted list to delete ranged: {sorted_list_to_delete_ranged}") # testing
+            # for buff_obj in self.buffs_list_frames: # testing
+            #     print(f"printing before the delete loop: '{buff_obj.buff_name}'") #testing
+            obj_to_delete_list = []
+            for buff_obj in self.buffs_list_frames:
+                # print(f"printing in the delete loop: '{buff_obj.buff_name}'") # testing
+                if buff_obj.buff_name in sorted_list_to_delete_ranged: # deleting the buff objects from the watcher if they're in this sorted list
+                    # print(f"adding to the ob delete list: '{buff_obj.buff_name}'") # testing
+                    obj_to_delete_list.append(buff_obj)
+                    dispelled_display = dispelled_display + f"Breached: {buff_obj.buff_name}\n"
+            # print(f"ob to delete: {obj_to_delete_list}") # testing
+            # print(f"normal list: {self.buffs_list_frames}") # testing
+            for delete_obj in obj_to_delete_list:
+                # print(f"deleting: '{delete_obj.buff_name}'") # testing
+                self.buffs_list_frames.remove(delete_obj)
+                delete_obj.destroy()
+                self.resize_set_buff_window('buff destroy')
+
+        # we're only making the warning popup if there was actually something removed
+        if dispelled_display != "":
+            self.bell()
+            # setting up the details of the window about to create
+            width_warning_window = 160
+            height_warning_window = 160
+            width_screen = self.winfo_screenwidth() # width of the user's screen
+            height_screen = self.winfo_screenheight() # height of the user's screen
+            x_create_warn_window = (width_screen/1.2) - (width_warning_window/2) # sets on the right side of the screen, lower numbers in the divisor means further right
+            y_create_warn_window = (height_screen/2) - (height_warning_window/2) # sets in the middle height, lower numbers in the divisor means further down
+            # create a new window (called toplevel in tkinter) to simulate a warning window, can't use normal warning windows since can't control their location
+            self.dispel_warning = tk.Toplevel(self)
+            self.dispel_warning.title("Dispel Warning")
+            self.dispel_warning.attributes("-topmost", True)
+            # geometry takes a sting, so we have to convert back all the numbers we just made, and make them integers essentially
+            self.dispel_warning.geometry(f"{width_warning_window:.0f}x{height_warning_window:.0f}+{x_create_warn_window:.0f}+{y_create_warn_window:.0f}")
+            self.dispel_warning_text = tk.Label(self.dispel_warning, text=dispelled_display)
+            self.dispel_warning_text.pack()
+            self.dispel_warning_ok = tk.Button(self.dispel_warning, text="OK", command=lambda: self.dispel_warning.destroy())
+            self.dispel_warning_ok.pack()
+            self.dispel_warning.geometry(f"") # resize the window after move, lets underlying geometry manager resize window for its contents
+
 
     def song_call(self):
         """ Handle song buffs and cooldowns, silmilar to smite and turn.
