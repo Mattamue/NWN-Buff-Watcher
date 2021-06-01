@@ -4,48 +4,48 @@
         "duration": "360",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/bark.png"
+        "icon": "graphics/bark.png"
     },
     "uses Potion of Bull's Strength": {
         "name": "Bull's Strength",
         "duration": "360",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/bulls.png"
+        "icon": "graphics/bulls.png"
     },
     "uses Potion of Cat's Grace": {
         "name": "Cat's Grace",
         "duration": "360",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/cats.png"
+        "icon": "graphics/cats.png"
     },
     "uses Potion of Eagle's Splendor": {
         "name": "Eagle's Splendor",
         "duration": "360",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/eagle.png"
+        "icon": "graphics/eagle.png"
     },
     "uses Potion of Endurance": {
         "name": "Endurance",
         "duration": "360",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/endu.png"
+        "icon": "graphics/endu.png"
     },
     "uses Potion of Fox's Cunning": {
         "name": "Fox's Cunning",
         "duration": "360",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/foxs.png"
+        "icon": "graphics/foxs.png"
     },
     "uses Potion of Owl's Wisdom": {
         "name": "Owl's Wisdom",
         "duration": "360",
         "caster_level": "3",
         "type": "potion",
-        "icon": "NWN-Buff-Watcher/graphics/owls.png"
+        "icon": "graphics/owls.png"
     }
 }

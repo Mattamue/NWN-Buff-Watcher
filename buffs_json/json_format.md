@@ -7,19 +7,19 @@ Sample entries in a list:
         "name": "Blood Frenzy",
         "duration": "6",
         "caster_level": "7",
-        "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
+        "icon": "graphics/blood_frenzy.png"
     },
     "uses Wand of Bull's Strength": {
         "name": "Bull's Strength",
         "duration": "360",
         "caster_level": "15",
-        "icon": "NWN-Buff-Watcher/graphics/bulls.png"
+        "icon": "graphics/bulls.png"
     },
     "uses Wand of Camouflage": {
         "name": "Camouflage",
         "duration": "600",
         "caster_level": "5",
-        "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
+        "icon": "graphics/camouflage.png"
     },
 ````
 
@@ -29,7 +29,7 @@ Single entry:
         "name": "Blood Frenzy",
         "duration": "6",
         "caster_level": "7",
-        "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
+        "icon": "graphics/blood_frenzy.png"
     }
 ````
 

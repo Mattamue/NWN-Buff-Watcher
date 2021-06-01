@@ -42,7 +42,7 @@ def summons_cd_call(logline):
     except:
         ability = "Ability error"
 
-    return [ability[:-1], time.time() + ((minutes * 60) + seconds), "NWN-Buff-Watcher/graphics/summon_cd.png"]
+    return [ability[:-1], time.time() + ((minutes * 60) + seconds), "graphics/summon_cd.png"]
 
 if __name__ == "__main__":
     test = summons_cd_call("[CHAT WINDOW TEXT] [Sun May 23 15:53:07] Tribal Call will be available once more in 6 minute(s).\n")
