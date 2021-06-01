@@ -2,256 +2,256 @@
     "Assassin Improved Invisibility": {
         "name": "CD Assassin Improved Invisibility",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ass_imp_invis_cd.png"
+        "icon": "graphics/ass_imp_invis_cd.png"
     },
     "Assassin Invisibility": {
         "name": "CD Assassin Invisibility",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ass_invisibility_cd.png"
+        "icon": "graphics/ass_invisibility_cd.png"
     },
     "Assassin Darkness": {
         "name": "CD Assassin Darkness",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ass_darkness_cd.png"
+        "icon": "graphics/ass_darkness_cd.png"
     },
     "Assassin Eth Visage": {
         "name": "CD Assassin Eth Visage",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ass_ethereal_visage_cd.png"
+        "icon": "graphics/ass_ethereal_visage_cd.png"
     },
     "Barbarian Rage": {
         "name": "CD Barbarian Rage",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/barb_rage_cd.png"
+        "icon": "graphics/barb_rage_cd.png"
     },
     "Blackguard Bull's Strength": {
         "name": "CD Blackguard Bull's Strength",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/bg_bulls_cd.png"
+        "icon": "graphics/bg_bulls_cd.png"
     },
     "Spirited Charge": {
         "name": "CD Spirited Charge",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/cav_spirit_cd.png"
+        "icon": "graphics/cav_spirit_cd.png"
     },
     "Summon Warhorse": {
         "name": "CD Summon Warhorse",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/cav_mount_cd.png"
+        "icon": "graphics/cav_mount_cd.png"
     },
     "Assassin Visage": {
         "name": "CD Assassin Visage",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ass_ghostly_visage_cd.png"
+        "icon": "graphics/ass_ghostly_visage_cd.png"
     },
     "Aegis": {
         "name": "CD Aegis",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/dd_aegis_cd.png"
+        "icon": "graphics/dd_aegis_cd.png"
     },
     "Banner": {
         "name": "CD Banner",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/dd_banner_cd.png"
+        "icon": "graphics/dd_banner_cd.png"
     },
     "Debilitating Strike": {
         "name": "CD Debilitating Strike",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/dd_debil_cd.png"
+        "icon": "graphics/dd_debil_cd.png"
     },
     "Defensive Stance": {
         "name": "CD Defensive Stance",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/dd_stance_cd.png"
+        "icon": "graphics/dd_stance_cd.png"
     },
     "Deterrence": {
         "name": "CD Deterrence",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/dd_deter_cd.png"
+        "icon": "graphics/dd_deter_cd.png"
     },
     "Safeguard": {
         "name": "CD Safeguard",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/dd_safe_cd.png"
+        "icon": "graphics/dd_safe_cd.png"
     },
     "Lay on Hands": {
         "name": "CD Lay on Hands",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/lay_hands_cd.png"
+        "icon": "graphics/lay_hands_cd.png"
     },
     "Blinding Speed": {
         "name": "CD Blinding Speed",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/blind_speed_cd.png"
+        "icon": "graphics/blind_speed_cd.png"
     },
     "Warlock Haste": {
         "name": "CD Warlock Haste",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/warlock_haste_cd.png"
+        "icon": "graphics/warlock_haste_cd.png"
     },
     "Second Wind": {
         "name": "CD Second Wind",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ftr_2nd_wind_cd.png"
+        "icon": "graphics/ftr_2nd_wind_cd.png"
     },
     "Fetch Companion": {
         "name": "CD Fetch Companion",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/fetch_cd.png"
+        "icon": "graphics/fetch_cd.png"
     },
     "Lens": {
         "name": "CD Lens",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/lens_cd.png"
+        "icon": "graphics/lens_cd.png"
     },
     "Project Image": {
         "name": "CD Project Image",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/proj_image_cd.png"
+        "icon": "graphics/proj_image_cd.png"
     },
     "Curse Weapon": {
         "name": "CD Curse Weapon",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/hex_curse_cd.png"
+        "icon": "graphics/hex_curse_cd.png"
     },
     "Hex": {
         "name": "CD Hex",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/hex_hex_cd.png"
+        "icon": "graphics/hex_hex_cd.png"
     },
     "Crippling Throw": {
         "name": "CD Crippling Throw",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ib_crip_throw_cd.png"
+        "icon": "graphics/ib_crip_throw_cd.png"
     },
     "Arcane Bleed": {
         "name": "CD Arcane Bleed",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/ib_arcane_cd.png"
+        "icon": "graphics/ib_arcane_cd.png"
     },
     "Heroic Shield": {
         "name": "CD Heroic Shield",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pdk_heroic_cd.png"
+        "icon": "graphics/pdk_heroic_cd.png"
     },
     "Inspire Courage": {
         "name": "CD Inspire Courage",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pdk_inspire_cd.png"
+        "icon": "graphics/pdk_inspire_cd.png"
     },
     "Last Stand": {
         "name": "CD Last Stand",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pdk_stand_cd.png"
+        "icon": "graphics/pdk_stand_cd.png"
     },
     "Oath of Wrath": {
         "name": "CD Oath of Wrath",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pdk_oath_cd.png"
+        "icon": "graphics/pdk_oath_cd.png"
     },
     "Rallying Cry": {
         "name": "CD Rallying Cry",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pdk_rally_cd.png"
+        "icon": "graphics/pdk_rally_cd.png"
     },
     "PDK Fear": {
         "name": "CD PDK Fear",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pdk_fear_cd.png"
+        "icon": "graphics/pdk_fear_cd.png"
     },
     "Wholeness of Body": {
         "name": "CD Wholeness of Body",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/monk_whole_cd.png"
+        "icon": "graphics/monk_whole_cd.png"
     },
     "Quivering Palm": {
         "name": "CD Quivering Palm",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/monk_palm_cd.png"
+        "icon": "graphics/monk_palm_cd.png"
     },
     "Empty Body": {
         "name": "CD Empty Body",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/monk_empty_cd.png"
+        "icon": "graphics/monk_empty_cd.png"
     },
     "Remove Disease": {
         "name": "CD Remove Disease",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/rem_disease_cd.png"
+        "icon": "graphics/rem_disease_cd.png"
     },
     "Deathless Master Touch": {
         "name": "CD Deathless Master Touch",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pm_deathless_cd.png"
+        "icon": "graphics/pm_deathless_cd.png"
     },
     "Undead Graft": {
         "name": "CD Undead Graft",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/pm_graft_cd.png"
+        "icon": "graphics/pm_graft_cd.png"
     },
     "Dragon Breath": {
         "name": "CD Dragon Breath",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/rdd_breath_cd.png"
+        "icon": "graphics/rdd_breath_cd.png"
     },
     "Hide in Plain Sight": {
         "name": "CD Hide in Plain Sight",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/hips_cd.png"
+        "icon": "graphics/hips_cd.png"
     },
     "Shadow Daze": {
         "name": "CD Shadow Daze",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/sd_daze_cd.png"
+        "icon": "graphics/sd_daze_cd.png"
     },
     "Shadow Displacement": {
         "name": "CD Shadow Displacement",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/sd_displace_cd.png"
+        "icon": "graphics/sd_displace_cd.png"
     },
     "Shadow Evade": {
         "name": "CD Shadow Evade",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/sd_evade_cd.png"
+        "icon": "graphics/sd_evade_cd.png"
     },
     "Acrobatics Mastery": {
         "name": "CD Acrobatics Mastery",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/swash_acro_cd.png"
+        "icon": "graphics/swash_acro_cd.png"
     },
     "Improved Acrobatics Mastery": {
         "name": "CD Improved Acrobatics Mastery",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/swash_acro_cd.png"
+        "icon": "graphics/swash_acro_cd.png"
     },
     "Third Intention": {
         "name": "CD Third Intention",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/swash_third_cd.png"
+        "icon": "graphics/swash_third_cd.png"
     },
     "Warlock Summon Shadows": {
         "name": "CD Warlock Summon Shadows",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/warlock_shadow_cd.png"
+        "icon": "graphics/warlock_shadow_cd.png"
     },
     "Vampire Bite": {
         "name": "CD Vampire Bite",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/vamp_bite_cd.png"
+        "icon": "graphics/vamp_bite_cd.png"
     },
     "Racial Ability": {
         "name": "CD Racial Ability",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/racial_cd.png"
+        "icon": "graphics/racial_cd.png"
     },
     "Lesser Teleport": {
         "name": "CD Lesser Teleport",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/teleport.png"
+        "icon": "graphics/teleport.png"
     },
     "Signature Spell": {
         "name": "CD Signature Spell",
         "type": "ability",
-        "icon": "NWN-Buff-Watcher/graphics/signature_cd.png"
+        "icon": "graphics/signature_cd.png"
     }
 }

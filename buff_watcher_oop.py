@@ -1,7 +1,7 @@
 """
 Author: Mattamue
 Program: buff_watcher_oop.py
-Last updated: 05/30/2021
+Last updated: 05/31/2021
 
 Watches chat log of the Neverwinter Nights video game
 and extends the UI by overlaying a window with more
@@ -17,7 +17,6 @@ from tkinter import ttk, Menu
 from PIL import ImageTk, Image
 import time
 from tkinter.filedialog import askopenfile
-from get_friends_list import friends_list
 from abilities import abilities_trigger
 import json
 from summons_cooldown import summons_cd_call
@@ -104,13 +103,13 @@ class MainFrame(tk.Frame):
             print("Loaded defaults.")
 
         # loading up the "use items" json in the constructor... probably a better way to do this
-        self.use_items_dict = json.load(open('NWN-Buff-Watcher/buffs_json/use_items.json','r'))
-        self.cast_spells_dict = json.load(open('NWN-Buff-Watcher/buffs_json/cast_spells.json','r'))
-        self.ability_ref_dict = json.load(open('NWN-Buff-Watcher/buffs_json/ability_ref.json','r'))
-        self.player_pots_dict = json.load(open('NWN-Buff-Watcher/buffs_json/player_pots.json','r'))
-        self.vendor_pots_dict = json.load(open('NWN-Buff-Watcher/buffs_json/vendor_pots.json','r'))
+        self.use_items_dict = json.load(open('buffs_json/use_items.json','r'))
+        self.cast_spells_dict = json.load(open('buffs_json/cast_spells.json','r'))
+        self.ability_ref_dict = json.load(open('buffs_json/ability_ref.json','r'))
+        self.player_pots_dict = json.load(open('buffs_json/player_pots.json','r'))
+        self.vendor_pots_dict = json.load(open('buffs_json/vendor_pots.json','r'))
         self.player_vendor_pots()
-        self.breach_dict = json.load(open('NWN-Buff-Watcher/buffs_json/breach_list.json','r'))
+        self.breach_dict = json.load(open('buffs_json/breach_list.json','r'))
 
         # frame for the buttons on the right
         self.buttons_frame = tk.Frame(self)
@@ -128,7 +127,6 @@ class MainFrame(tk.Frame):
         self.menu_button["menu"] = self.menu_button.menu
         self.menu_button.menu.add_command(label='Character', command=lambda: main_frame.character_settings())
         self.menu_button.menu.add_command(label='Open log...', command=lambda: main_frame.open_file())
-        self.menu_button.menu.add_command(label='Friends', command=lambda: main_frame.friends_list_window())
         self.menu_button.menu.add_command(label='Testing', command=lambda: main_frame.testing_buttons())
         self.menu_button.menu.add_separator()
         self.menu_button.menu.add_command(label='Exit', command=lambda: app.destroy())
@@ -572,7 +570,7 @@ class MainFrame(tk.Frame):
     def make_buff_labelframe(self, added_buff):
         """ Makes a labelframe object with some special
         buff parameters passed in a list
-        :param: list, expecting this type of format ["Clarity", time.time() + 48, "NWN-Buff-Watcher/graphics/clar.png"]
+        :param: list, expecting this type of format ["Clarity", time.time() + 48, "graphics/clar.png"]
         :return: also returns the object
         """
         self.buff_labelframe = BuffLabelFrame(self.buff_holding_frame, added_buff)
@@ -626,58 +624,58 @@ class MainFrame(tk.Frame):
                 try:
                     self.make_buff_labelframe([self.ability_ref_dict[ability_list[0]]['name'], time.time() + ability_list[1], self.ability_ref_dict[ability_list[0]]['icon']])
                 except:
-                    print(f"ability farted on: {ability_list}")
+                    print(f"'has timer of' did not find match: {ability_list}")
 
             try:
                 ability_list
 
                 if self.ability_ref_dict[ability_list[0]]['name'] == "CD Spirited Charge":
-                    self.make_buff_labelframe(["Spirited Charge", time.time() + 12, "NWN-Buff-Watcher/graphics/spirit_charge.png"])
+                    self.make_buff_labelframe(["Spirited Charge", time.time() + 12, "graphics/spirit_charge.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Aegis":
-                    self.make_buff_labelframe(["Aegis", time.time() + 30, "NWN-Buff-Watcher/graphics/aegis.png"])
+                    self.make_buff_labelframe(["Aegis", time.time() + 30, "graphics/aegis.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Banner":
-                    self.make_buff_labelframe(["Banner", time.time() + 60, "NWN-Buff-Watcher/graphics/Banner.png"])
+                    self.make_buff_labelframe(["Banner", time.time() + 60, "graphics/Banner.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Deterrence":
-                    self.make_buff_labelframe(["Deterrence", time.time() + 18, "NWN-Buff-Watcher/graphics/deterrence.png"])
+                    self.make_buff_labelframe(["Deterrence", time.time() + 18, "graphics/deterrence.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Safeguard":
-                    self.make_buff_labelframe(["Safeguard", time.time() + 18, "NWN-Buff-Watcher/graphics/safeguard.png"])
+                    self.make_buff_labelframe(["Safeguard", time.time() + 18, "graphics/safeguard.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Blinding Speed":
-                    self.make_buff_labelframe(["Blinding Speed", time.time() + 180, "NWN-Buff-Watcher/graphics/blind_speed.png"])
+                    self.make_buff_labelframe(["Blinding Speed", time.time() + 180, "graphics/blind_speed.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Heroic Shield":
-                    self.make_buff_labelframe(["Heroic Shield", time.time() + 4320, "NWN-Buff-Watcher/graphics/heroic_shield.png"])
+                    self.make_buff_labelframe(["Heroic Shield", time.time() + 4320, "graphics/heroic_shield.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Inspire Courage":
-                    self.make_buff_labelframe(["Inspire Courage", time.time() + 60, "NWN-Buff-Watcher/graphics/inspire_courage.png"])
+                    self.make_buff_labelframe(["Inspire Courage", time.time() + 60, "graphics/inspire_courage.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Last Stand":
-                    self.make_buff_labelframe(["Last Stand", time.time() + 60, "NWN-Buff-Watcher/graphics/last_stand.png"])
+                    self.make_buff_labelframe(["Last Stand", time.time() + 60, "graphics/last_stand.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Oath of Wrath":
-                    self.make_buff_labelframe(["Oath of Wrath", time.time() + 60, "NWN-Buff-Watcher/graphics/oath_wrath.png"])
+                    self.make_buff_labelframe(["Oath of Wrath", time.time() + 60, "graphics/oath_wrath.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD PDK Fear":
-                    self.make_buff_labelframe(["PDK Fear", time.time() + 60, "NWN-Buff-Watcher/graphics/pdk_fear.png"])
+                    self.make_buff_labelframe(["PDK Fear", time.time() + 60, "graphics/pdk_fear.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Empty Body":
-                    self.make_buff_labelframe(["Empty Body", time.time() + (6 * self.monk_levels.get()), "NWN-Buff-Watcher/graphics/empty_body.png"])
+                    self.make_buff_labelframe(["Empty Body", time.time() + (6 * self.monk_levels.get()), "graphics/empty_body.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Shadow Evade":
-                    self.make_buff_labelframe(["Shadow Evade", time.time() + (18 * self.sd_levels.get()), "NWN-Buff-Watcher/graphics/shadow_evade.png"])
+                    self.make_buff_labelframe(["Shadow Evade", time.time() + (18 * self.sd_levels.get()), "graphics/shadow_evade.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Acrobatics Mastery":
-                    self.make_buff_labelframe(["Acrobatics Mastery", time.time() + 18, "NWN-Buff-Watcher/graphics/acrobatics.png"])
+                    self.make_buff_labelframe(["Acrobatics Mastery", time.time() + 18, "graphics/acrobatics.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Improved Acrobatics Mastery":
-                    self.make_buff_labelframe(["Improved Acrobatics Mastery", time.time() + 18, "NWN-Buff-Watcher/graphics/acrobatics.png"])
+                    self.make_buff_labelframe(["Improved Acrobatics Mastery", time.time() + 18, "graphics/acrobatics.png"])
 
                 elif self.ability_ref_dict[ability_list[0]]['name'] == "CD Third Intention":
-                    self.make_buff_labelframe(["Third Intention", time.time() + 6, "NWN-Buff-Watcher/graphics/third_intention.png"])
+                    self.make_buff_labelframe(["Third Intention", time.time() + 6, "graphics/third_intention.png"])
 
             except:
                 pass
@@ -686,75 +684,75 @@ class MainFrame(tk.Frame):
                 try:
                     self.make_buff_labelframe(summons_cd_call(logline))
                 except:
-                    print(f"summon farted on: {logline}")
+                    print(f"'will be available once more in' did not find match: {logline}")
 
             if self.name_stringvar.get() + " attempts Smite Evil " in logline or self.name_stringvar.get() + " attempts Smite Good " in logline:
                 try:
                     self.smite_call()
                 except:
-                    print(f"smite farted on: {logline}")
+                    print(f"'attempts Smite' did not find match: {logline}")
 
             if self.name_stringvar.get() + " turns undead." in logline or self.name_stringvar.get() + " casts Divine Might" in logline or self.name_stringvar.get() + " casts Divine Shield" in logline:
                 try:
                     self.turn_call()
                 except:
-                    print(f"turn/might/shield farted on: {logline}")
+                    print(f"'turn/might/shield' did not find match: {logline}")
 
             if "You will be able to use Scry again in 10 minute(s)." in logline:
                 try:
-                    self.make_buff_labelframe(["CD Scry", time.time() + 600, "NWN-Buff-Watcher/graphics/scry_cd.png"])
+                    self.make_buff_labelframe(["CD Scry", time.time() + 600, "graphics/scry_cd.png"])
                 except:
-                    print(f"Scry farted.")
+                    print(f"'Scry' did not find match.")
 
             if " grants you a greater favor." in logline:
                 try:
-                    self.make_buff_labelframe(["CD Pray", time.time() + 1200, "NWN-Buff-Watcher/graphics/pray_cd.png"])
+                    self.make_buff_labelframe(["CD Pray", time.time() + 1200, "graphics/pray_cd.png"])
                 except:
-                    print(f"Pray farted.")
+                    print(f"'greater favor' did not find match.")
 
             if " augments your skill and grants you success." in logline:
                 try:
-                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "NWN-Buff-Watcher/graphics/pray_cd.png"])
+                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "graphics/pray_cd.png"])
                 except:
-                    print(f"Dweomer Save farted.")
+                    print(f"'augments your skill' did not find match.")
 
             if " intercedes to aid your work." in logline:
                 try:
-                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "NWN-Buff-Watcher/graphics/pray_cd.png"])
+                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "graphics/pray_cd.png"])
                 except:
-                    print(f"Dweomer Save farted.")
+                    print(f"'intercedes to aid' did not find match.")
 
             if self.name_stringvar.get() + " attempts Knockdown on " in logline and "*critical hit*" in logline or self.name_stringvar.get() + " attempts Knockdown on " in logline and "*hit*" in logline:
                 try:
                     if "CD Knockdown" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Knockdown"]:
-                        self.make_buff_labelframe(["CD Knockdown", time.time() + 12, "NWN-Buff-Watcher/graphics/knockdown_cd.png"])
+                        self.make_buff_labelframe(["CD Knockdown", time.time() + 12, "graphics/knockdown_cd.png"])
                 except:
-                    print(f"KD farted.")
+                    print(f"'Knockdown' did not find match.")
 
             if self.name_stringvar.get() + " is performing the song: " in logline:
                 try:
                     self.song_call()
                 except:
-                    print(f"song farted on: {logline}")
+                    print(f"'performing the song' did not find match: {logline}")
 
             if self.name_stringvar.get() + " is performing the curse song: " in logline:
                 try:
                     self.curse_call()
                 except:
-                    print(f"song farted on: {logline}")
+                    print(f"'performing the curse song' did not find match: {logline}")
 
             if self.name_stringvar.get() + " throws grenade-like weapon." in logline:
                 try:
-                    self.make_buff_labelframe(["Alchemist Fire", time.time() + 120, "NWN-Buff-Watcher/graphics/alch_fire.png"])
+                    self.make_buff_labelframe(["Alchemist Fire", time.time() + 120, "graphics/alch_fire.png"])
                 except:
-                    print(f"grenade farted on: {logline}")
+                    print(f"'throws grenade-like' did not find match: {logline}")
 
 
             if " : " + self.name_stringvar.get() + " : " in logline:
                 try:
                     self.dispel_call(logline)
                 except:
-                    print("farted out on dispel call")
+                    print("Dispel call did not find match.")
 
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             # print(f"buff_timer {x.buff_name}: {x.buff_timer.get()}") # this is the remaining seconds that gets counted down
@@ -898,19 +896,19 @@ class MainFrame(tk.Frame):
         # set duration according to bard feats...
         # setup a dropdown for the different feat combos...
         if self.bard_song_feats.get() == "None":
-            self.make_buff_labelframe([f"Bard Song", time.time() + 60, "NWN-Buff-Watcher/graphics/bard_song.png"])
+            self.make_buff_labelframe([f"Bard Song", time.time() + 60, "graphics/bard_song.png"])
         elif self.bard_song_feats.get() == "Lasting Inspiration":
-            self.make_buff_labelframe([f"Bard Song", time.time() + 600, "NWN-Buff-Watcher/graphics/bard_song.png"])
+            self.make_buff_labelframe([f"Bard Song", time.time() + 600, "graphics/bard_song.png"])
         elif self.bard_song_feats.get() == "Lingering Song":
-            self.make_buff_labelframe([f"Bard Song", time.time() + 90, "NWN-Buff-Watcher/graphics/bard_song.png"])
+            self.make_buff_labelframe([f"Bard Song", time.time() + 90, "graphics/bard_song.png"])
         elif self.bard_song_feats.get() == "Lingering & Lasting":
-            self.make_buff_labelframe([f"Bard Song", time.time() + 900, "NWN-Buff-Watcher/graphics/bard_song.png"])
-            print("ling and last")
+            self.make_buff_labelframe([f"Bard Song", time.time() + 900, "graphics/bard_song.png"])
+            # print("ling and last") # testing
         else:
             print("Something wrong with bard song")
 
         if "CD Song" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Song" in str(obj.buff_name)]):
-            self.make_buff_labelframe(["CD Song", time.time() + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+            self.make_buff_labelframe(["CD Song", time.time() + 600, "graphics/song_cd.png"])
         else:
             self.buff_iterator = self.buff_iterator + 1
 
@@ -921,7 +919,7 @@ class MainFrame(tk.Frame):
             self.song_list.sort()
             squential_song_cd = self.song_list[-1]
 
-            self.make_buff_labelframe([f"CD Song {self.buff_iterator}", squential_song_cd + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+            self.make_buff_labelframe([f"CD Song {self.buff_iterator}", squential_song_cd + 600, "graphics/song_cd.png"])
 
             self.song_list = []
 
@@ -931,7 +929,7 @@ class MainFrame(tk.Frame):
         """
 
         if "CD Song" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Song" in str(obj.buff_name)]):
-            self.make_buff_labelframe(["CD Song", time.time() + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+            self.make_buff_labelframe(["CD Song", time.time() + 600, "graphics/song_cd.png"])
         else:
             self.buff_iterator = self.buff_iterator + 1
 
@@ -942,7 +940,7 @@ class MainFrame(tk.Frame):
             self.song_list.sort()
             squential_song_cd = self.song_list[-1]
 
-            self.make_buff_labelframe([f"CD Song {self.buff_iterator}", squential_song_cd + 600, "NWN-Buff-Watcher/graphics/song_cd.png"])
+            self.make_buff_labelframe([f"CD Song {self.buff_iterator}", squential_song_cd + 600, "graphics/song_cd.png"])
 
             self.song_list = []
 
@@ -955,7 +953,7 @@ class MainFrame(tk.Frame):
         """
 
         if "CD Smite" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]):
-            self.make_buff_labelframe(["CD Smite", time.time() + 600, "NWN-Buff-Watcher/graphics/smite_both_cd.png"])
+            self.make_buff_labelframe(["CD Smite", time.time() + 600, "graphics/smite_both_cd.png"])
             # print(f'in if: {[obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]}') # testing
         else:
             self.buff_iterator = self.buff_iterator + 1
@@ -967,7 +965,7 @@ class MainFrame(tk.Frame):
             self.smite_list.sort()
             squential_smite_cd = self.smite_list[-1]
 
-            self.make_buff_labelframe([f"CD Smite {self.buff_iterator}", squential_smite_cd + 600, "NWN-Buff-Watcher/graphics/smite_both_cd.png"])
+            self.make_buff_labelframe([f"CD Smite {self.buff_iterator}", squential_smite_cd + 600, "graphics/smite_both_cd.png"])
 
             self.smite_list = []
             # print(f'in else: {[obj.buff_name for obj in self.buffs_list_frames if "CD Smite" in str(obj.buff_name)]}') # testing
@@ -976,7 +974,7 @@ class MainFrame(tk.Frame):
         """Essetially using the same code as smite_call
         """
         if "CD Turn" not in str([obj.buff_name for obj in self.buffs_list_frames if "CD Turn" in str(obj.buff_name)]):
-            self.make_buff_labelframe(["CD Turn", time.time() + 600, "NWN-Buff-Watcher/graphics/turn_cd.png"])
+            self.make_buff_labelframe(["CD Turn", time.time() + 600, "graphics/turn_cd.png"])
         else:
             self.buff_iterator = self.buff_iterator + 1
 
@@ -987,7 +985,7 @@ class MainFrame(tk.Frame):
             self.turn_list.sort()
             squential_turn_cd = self.turn_list[-1]
 
-            self.make_buff_labelframe([f"CD Turn {self.buff_iterator}", squential_turn_cd + 600, "NWN-Buff-Watcher/graphics/turn_cd.png"])
+            self.make_buff_labelframe([f"CD Turn {self.buff_iterator}", squential_turn_cd + 600, "graphics/turn_cd.png"])
 
             self.turn_list = []
 
@@ -1038,18 +1036,18 @@ class MainFrame(tk.Frame):
             if self.use_items_dict[f'{buff_string}']['name'] == "Clarity":
                 if "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]:
                     adding_buff[1] = adding_buff[1] + 30
-                    self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+                    self.make_buff_labelframe(["CD Clarity", time.time() + 72, "graphics/clar_cooldown.png"])
                 else:
                     return
 
             # handling imp invis, the invis duration part for SF illu
             if self.use_items_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
                 if self.sf_illu_state.get() == 0:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "graphics/invisibility.png"])
                 elif self.sf_illu_state.get() == 1:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "graphics/invisibility.png"])
                 else:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier))), "graphics/invisibility.png"])
 
             # handling invisibility for SF illu & invis sphere
             # splitting invis sphere off, also handling invis for specialist illu
@@ -1083,18 +1081,18 @@ class MainFrame(tk.Frame):
                 else:
                     div_mod = 0
                 if self.sf_div_state.get() == 0:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 6 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 6 + div_mod, "graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 1:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 12 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 12 + div_mod, "graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 2:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 18 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 18 + div_mod, "graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 3:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 30 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 30 + div_mod, "graphics/true_seeing.png"])
                 else:
                     print("sf_div went wrong")
 
-                self.make_buff_labelframe(["See Invisibility", adding_buff[1], "NWN-Buff-Watcher/graphics/see_invisibility.png"])
-                self.make_buff_labelframe(["Ultravision", adding_buff[1], "NWN-Buff-Watcher/graphics/ultravision.png"])
+                self.make_buff_labelframe(["See Invisibility", adding_buff[1], "graphics/see_invisibility.png"])
+                self.make_buff_labelframe(["Ultravision", adding_buff[1], "graphics/ultravision.png"])
                 return
 
             # handling Aura of Vitality
@@ -1118,7 +1116,7 @@ class MainFrame(tk.Frame):
             # handling time stop scroll and its cooldown
             if self.use_items_dict[f"{buff_string}"]["name"] == "Time Stop":
                 if "CD Time Stop" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Time Stop"]:
-                    self.make_buff_labelframe(["CD Time Stop", time.time() + 240, "NWN-Buff-Watcher/graphics/time_stop_cd.png"])
+                    self.make_buff_labelframe(["CD Time Stop", time.time() + 240, "graphics/time_stop_cd.png"])
                 else:
                     return
 
@@ -1192,18 +1190,18 @@ class MainFrame(tk.Frame):
             if self.cast_spells_dict[f'{buff_string}']['name'] == "Clarity":
                 if "CD Clarity" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Clarity"]:
                     adding_buff[1] = adding_buff[1] + 30
-                    self.make_buff_labelframe(["CD Clarity", time.time() + 72, "NWN-Buff-Watcher/graphics/clar_cooldown.png"])
+                    self.make_buff_labelframe(["CD Clarity", time.time() + 72, "graphics/clar_cooldown.png"])
                 else:
                     return
 
             # handling imp invis duration if character as SF illu
             if self.cast_spells_dict[f'{buff_string}']['name'] == "Improved Invisibility": # edge case for imp invis tracking invis and concealment seperate -- on just wands of imp invis*** -- need something to juice invis on GSF/ESF and different invis lengths for different items and LM levels...
                 if self.sf_illu_state.get() == 0:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * int(self.cl_modifier.get())), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (6 * int(self.cl_modifier.get())), "graphics/invisibility.png"])
                 elif self.sf_illu_state.get() == 1:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * int(self.cl_modifier.get())), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (18 * int(self.cl_modifier.get())), "graphics/invisibility.png"])
                 elif self.sf_illu_state.get() == 2:
-                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * int(self.cl_modifier.get())), "NWN-Buff-Watcher/graphics/invisibility.png"])
+                    self.make_buff_labelframe(["Invisibility", time.time() + (30 * int(self.cl_modifier.get())), "graphics/invisibility.png"])
                 else:
                     print("Something wrong with imp invis.")
 
@@ -1244,7 +1242,7 @@ class MainFrame(tk.Frame):
             if self.cast_spells_dict[f'{buff_string}']['name'] == "Divine Wrath":
                 if "CD Wrath" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Wrath"]:
                     adding_buff[1] = time.time() + ((3 + (self.cot_modifier.get() // 2) + self.cha_modifier.get()) * 6)
-                    self.make_buff_labelframe(["CD Wrath", time.time() + 480, "NWN-Buff-Watcher/graphics/divine_wrath_cd.png"])
+                    self.make_buff_labelframe(["CD Wrath", time.time() + 480, "graphics/divine_wrath_cd.png"])
                     self.make_buff_labelframe(adding_buff)
                 else:
                     return
@@ -1258,18 +1256,18 @@ class MainFrame(tk.Frame):
                     div_mod = 0
             if self.cast_spells_dict[f'{buff_string}']['name'] == "True Seeing":
                 if self.sf_div_state.get() == 0:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 6 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 6 + div_mod, "graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 1:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 12 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 12 + div_mod, "graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 2:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 18 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 18 + div_mod, "graphics/true_seeing.png"])
                 elif self.sf_div_state.get() == 3:
-                    self.make_buff_labelframe(["True Seeing", time.time() + 30 + div_mod, "NWN-Buff-Watcher/graphics/true_seeing.png"])
+                    self.make_buff_labelframe(["True Seeing", time.time() + 30 + div_mod, "graphics/true_seeing.png"])
                 else:
                     print("sf_div went wrong")
 
-                self.make_buff_labelframe(["See Invisibility", adding_buff[1], "NWN-Buff-Watcher/graphics/see_invisibility.png"])
-                self.make_buff_labelframe(["Ultravision", adding_buff[1], "NWN-Buff-Watcher/graphics/ultravision.png"])
+                self.make_buff_labelframe(["See Invisibility", adding_buff[1], "graphics/see_invisibility.png"])
+                self.make_buff_labelframe(["Ultravision", adding_buff[1], "graphics/ultravision.png"])
                 return
 
             # handling aura of vitality
@@ -1293,14 +1291,14 @@ class MainFrame(tk.Frame):
             # handling greater sanctuary and its cooldown on cast
             if self.cast_spells_dict[f'{buff_string}']['name'] == "Greater Sanctuary":
                 if "CD Greater Sanctuary" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Greater Sanctuary"]:
-                    self.make_buff_labelframe(["CD Greater Sanctuary", time.time() + 240, "NWN-Buff-Watcher/graphics/greater_sanc_cd.png"])
+                    self.make_buff_labelframe(["CD Greater Sanctuary", time.time() + 240, "graphics/greater_sanc_cd.png"])
                 else:
                     return
 
             # handling time stop and its cooldown on cast
             if self.cast_spells_dict[f"{buff_string}"]["name"] == "Time Stop":
                 if "CD Time Stop" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Time Stop"]:
-                    self.make_buff_labelframe(["CD Time Stop", time.time() + 240, "NWN-Buff-Watcher/graphics/time_stop_cd.png"])
+                    self.make_buff_labelframe(["CD Time Stop", time.time() + 240, "graphics/time_stop_cd.png"])
                 else:
                     return
 
@@ -1316,10 +1314,10 @@ class MainFrame(tk.Frame):
             # handling BG's special bull's strength and its duration
             if self.cast_spells_dict[f"{buff_string}"]["name"] == "Bull's Strength":
                 if self.bg_levels.get() > 0 and self.bg_levels.get() < 10:
-                    self.make_buff_labelframe(["BG Bulls", time.time() + (60 * self.bg_levels.get()), "NWN-Buff-Watcher/graphics/bg_bulls.png"])
+                    self.make_buff_labelframe(["BG Bulls", time.time() + (60 * self.bg_levels.get()), "graphics/bg_bulls.png"])
                     return
                 elif self.bg_levels.get() >= 10:
-                    self.make_buff_labelframe(["BG Bulls", time.time() + (360 * self.bg_levels.get()), "NWN-Buff-Watcher/graphics/bg_bulls.png"])
+                    self.make_buff_labelframe(["BG Bulls", time.time() + (360 * self.bg_levels.get()), "graphics/bg_bulls.png"])
                     return
 
             # handling aura of glory duration for paladins with majority levels
@@ -1425,24 +1423,6 @@ class MainFrame(tk.Frame):
 
         self.buff_holding_frame['width'] = "1"
 
-    def friends_list_window(self):
-
-        self.friends_window = tk.Toplevel(self)
-        self.friends_window.title("Friends")
-        self.friends_stringvar = tk.StringVar()
-        self.directions_label = ttk.Label(self.friends_window, text="Enter friends in the friends.csv")
-        self.directions_label.pack()
-        self.refresh_button = ttk.Button(self.friends_window, text="Refresh", command=lambda: self.button_friends())
-        self.refresh_button.pack()
-        self.friends_printout = tk.Label(self.friends_window, textvariable=self.friends_stringvar, font=("Courier", 8), justify='left')
-        self.friends_printout.pack()
-        self.friends_window.attributes("-topmost", True)
-
-    def button_friends(self):
-        self.friends_stringvar.set(friends_list.scrape_portal())
-
-
-
 class BuffLabelFrame(tk.LabelFrame):
     def __init__(self, container, buff_added):
         super().__init__(container)
@@ -1488,17 +1468,17 @@ class BuffLabelFrame(tk.LabelFrame):
             # but I don't think I need to since all these little sub-menus only have their own stuff to add, maybe for a bigger one later...
             self.click_menu.add_separator()
             self.click_menu.add_cascade(label="Innate Abilities:", menu=self.innate_cascade)
-            self.click_menu.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/darkness.png"])])
+            self.click_menu.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "graphics/darkness.png"])])
             self.click_menu.add_command(label='Invis (Duergar)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_duerg()]) 
             self.click_menu.add_command(label='Invis (Svir/Fey/Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_most()]) 
-            self.click_menu.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/polymorph.png"])])
-            self.click_menu.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/war_cry.png"])])
+            self.click_menu.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "graphics/polymorph.png"])])
+            self.click_menu.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "graphics/war_cry.png"])])
             # the cascade version
-            # self.innate_cascade.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/darkness.png"])])
+            # self.innate_cascade.add_command(label='Darkness (Drow/Derro)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Darkness", self.buff_epoch + (6 * main_frame.character_level.get()), "graphics/darkness.png"])])
             # self.innate_cascade.add_command(label='Invis (Duergar)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_duerg()]) 
             # self.innate_cascade.add_command(label='Invis (Svir/Fey/Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), self.innate_invis_most()]) 
-            # self.innate_cascade.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/polymorph.png"])])
-            # self.innate_cascade.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/war_cry.png"])])
+            # self.innate_cascade.add_command(label='Polymorph Self (Imp)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Polymorph Self", self.buff_epoch + (60 * main_frame.character_level.get()), "graphics/polymorph.png"])])
+            # self.innate_cascade.add_command(label='Warcry (Gnoll)', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Warcry", self.buff_epoch + (6 * main_frame.character_level.get()), "graphics/war_cry.png"])])
 
         # making a drop-down for all the generic potion/wand/scrolls for the next bit... cascading this one just to figure it out, rest will just be a long line...
         if self.buff_name == "Protection from Alignment":
@@ -1510,13 +1490,13 @@ class BuffLabelFrame(tk.LabelFrame):
                                                          main_frame.make_buff_labelframe(
                                                                                          ["Protection From Good",
                                                                                          time.time() + self.buff_timer.get(),
-                                                                                         "NWN-Buff-Watcher/graphics/prot_good.png"])])
-            self.click_menu.add_command(label='Protection from Evil', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Protection From Good", time.time() + self.buff_timer.get(), "NWN-Buff-Watcher/graphics/prot_evil.png"])])
+                                                                                         "graphics/prot_good.png"])])
+            self.click_menu.add_command(label='Protection from Evil', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Protection From Good", time.time() + self.buff_timer.get(), "graphics/prot_evil.png"])])
 
         if self.buff_name == "Magic Circle against Alignment":
             self.click_menu.add_separator()
-            self.click_menu.add_command(label='Magic Circle against Evil', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Magic Circle against Evil", time.time() + self.buff_timer.get(), "NWN-Buff-Watcher/graphics/magic_circle_evil.png"])])
-            self.click_menu.add_command(label='Magic Circle against Good', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Magic Circle against Good", time.time() + self.buff_timer.get(), "NWN-Buff-Watcher/graphics/magic_circle_good.png"])])
+            self.click_menu.add_command(label='Magic Circle against Evil', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Magic Circle against Evil", time.time() + self.buff_timer.get(), "graphics/magic_circle_evil.png"])])
+            self.click_menu.add_command(label='Magic Circle against Good', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Magic Circle against Good", time.time() + self.buff_timer.get(), "graphics/magic_circle_good.png"])])
 
         # these are all so f-ed up, I don't see an easy way to preserve the duration in the change, just making a new one for now
         # harder than the others because the sub-options have different durations so cannot use the same duration
@@ -1546,8 +1526,8 @@ class BuffLabelFrame(tk.LabelFrame):
 
         if self.buff_name == "Special Power":
             self.click_menu.add_separator()
-            self.click_menu.add_command(label='Temporary Weapon Essence', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Temporary Weapon Essence", self.buff_epoch + 2160, "NWN-Buff-Watcher/graphics/temp_esssence.png"])])
-            self.click_menu.add_command(label='Weapon Poison', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Weapon Poison", self.buff_epoch + 600, "NWN-Buff-Watcher/graphics/weapon_poison.png"])])
+            self.click_menu.add_command(label='Temporary Weapon Essence', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Temporary Weapon Essence", self.buff_epoch + 2160, "graphics/temp_esssence.png"])])
+            self.click_menu.add_command(label='Weapon Poison', command=lambda: [self.menu_destroy_buff_labelframe(), main_frame.make_buff_labelframe(["Weapon Poison", self.buff_epoch + 600, "graphics/weapon_poison.png"])])
 
         self.click_menu.add_separator()
         self.click_menu.add_command(label='Destroy', command=lambda: self.menu_destroy_buff_labelframe())
@@ -1569,27 +1549,27 @@ class BuffLabelFrame(tk.LabelFrame):
         main_frame.resize_set_buff_window('buff destroy')
 
     def innate_invis_duerg(self):
-        print("Innate invis fired")
+        # print("Innate invis fired") # testing
         # handling invisibility for innate and SF illu
         # for whatever undocumented reason in Arelith, duergar get 2x character level to their invis
         if main_frame.sf_illu_state.get() == 0:
-            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (6 * (main_frame.character_level.get() * 2)), "NWN-Buff-Watcher/graphics/invisibility.png"])
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (6 * (main_frame.character_level.get() * 2)), "graphics/invisibility.png"])
         elif main_frame.sf_illu_state.get() == 1:
-            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (18 * (main_frame.character_level.get() * 2)), "NWN-Buff-Watcher/graphics/invisibility.png"])
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (18 * (main_frame.character_level.get() * 2)), "graphics/invisibility.png"])
         elif main_frame.sf_illu_state.get() == 2:
-            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (30 * (main_frame.character_level.get() * 2)), "NWN-Buff-Watcher/graphics/invisibility.png"])
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (30 * (main_frame.character_level.get() * 2)), "graphics/invisibility.png"])
         else:
             print("Something wrong with duerg innate invis.")
 
     def innate_invis_most(self):
-        print("Innate invis fired")
+        # print("Innate invis fired") # testing
         # handling invisibility for innate and SF illu
         if main_frame.sf_illu_state.get() == 0:
-            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (6 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/invisibility.png"])
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (6 * main_frame.character_level.get()), "graphics/invisibility.png"])
         elif main_frame.sf_illu_state.get() == 1:
-            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (18 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/invisibility.png"])
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (18 * main_frame.character_level.get()), "graphics/invisibility.png"])
         elif main_frame.sf_illu_state.get() == 2:
-            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (30 * main_frame.character_level.get()), "NWN-Buff-Watcher/graphics/invisibility.png"])
+            main_frame.make_buff_labelframe(["Invisibility", self.buff_epoch + (30 * main_frame.character_level.get()), "graphics/invisibility.png"])
         else:
             print("Something wrong with innate invis.")
 

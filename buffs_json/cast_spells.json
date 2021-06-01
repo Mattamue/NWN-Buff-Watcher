@@ -4,182 +4,182 @@
         "duration": "60",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/aid.png"
+        "icon": "graphics/aid.png"
     },
     "casts Animate Dead": {
         "name": "Animate Dead",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/animate_dead.png"
+        "icon": "graphics/animate_dead.png"
     },
     "casts Aura of Glory": {
         "name": "Aura of Glory",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/aura_glory.png"
+        "icon": "graphics/aura_glory.png"
     },
     "casts Aura of Vitality": {
         "name": "Aura of Vitality",
         "duration": "6",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/aura_vit.png"
+        "icon": "graphics/aura_vit.png"
     },
     "casts Unholy Aura": {
         "name": "Unholy Aura",
         "duration": "6",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/unholy_aura.png"
+        "icon": "graphics/unholy_aura.png"
     },
     "casts Holy Aura": {
         "name": "Holy Aura",
         "duration": "6",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/holy_aura.png"
+        "icon": "graphics/holy_aura.png"
     },
     "casts Awaken": {
         "name": "Awaken",
         "duration": "9999",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/awaken.png"
+        "icon": "graphics/awaken.png"
     },
     "casts Balagarn's Iron Horn": {
         "name": "CD Balgarn's",
         "duration": "12",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/cd_balagarn.png"
+        "icon": "graphics/cd_balagarn.png"
     },
     "casts Banishment": {
         "name": "Summon Ward",
         "duration": "60",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/banishment.png"
+        "icon": "graphics/banishment.png"
     },
     "casts Barkskin": {
         "name": "Barkskin",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/bark.png"
+        "icon": "graphics/bark.png"
     },
     "casts Battletide": {
         "name": "Battletide",
         "duration": "6",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/battletide.png"
+        "icon": "graphics/battletide.png"
     },
     "casts Black Blade of Disaster": {
         "name": "Black Blade of Disaster",
         "duration": "6",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/black_blade.png"
+        "icon": "graphics/black_blade.png"
     },
     "casts Blackstaff": {
         "name": "Blackstaff",
         "duration": "60",
         "caster_level": "15",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/blackstaff.png"
+        "icon": "graphics/blackstaff.png"
     },
     "casts Bless": {
         "name": "Bless",
         "duration": "60",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/bless.png"
+        "icon": "graphics/bless.png"
     },
     "casts Bless Weapon": {
         "name": "Bless Weapon",
         "duration": "120",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/bless_weapon.png"
+        "icon": "graphics/bless_weapon.png"
     },
     "casts Blood Frenzy": {
         "name": "Blood Frenzy",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/blood_frenzy.png"
+        "icon": "graphics/blood_frenzy.png"
     },
     "casts Bull's Strength": {
         "name": "Bull's Strength",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/bulls.png"
+        "icon": "graphics/bulls.png"
     },
     "casts Camouflage": {
         "name": "Camouflage",
         "duration": "600",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/camouflage.png"
+        "icon": "graphics/camouflage.png"
     },
     "casts Cat's Grace": {
         "name": "Cat's Grace",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/cats.png"
+        "icon": "graphics/cats.png"
     },
     "casts Clairaudience/Clairvoyance": {
         "name": "Clairaudience/Clairvoyance",
         "duration": "6",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/clairaud_clairvoyance.png"
+        "icon": "graphics/clairaud_clairvoyance.png"
     },
     "casts Clarity": {
         "name": "Clarity",
         "duration": "6",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/clar.png"
+        "icon": "graphics/clar.png"
     },
     "casts Continual Flame": {
         "name": "Continual Flame",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/continual_flame.png"
+        "icon": "graphics/continual_flame.png"
     },
     "casts Darkfire": {
         "name": "Darkfire",
         "duration": "360",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/darkfire.png"
+        "icon": "graphics/darkfire.png"
     },
     "casts Darkness": {
         "name": "Darkness",
         "duration": "6",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/darkness.png"
+        "icon": "graphics/darkness.png"
     },
     "casts Deafening Clang": {
         "name": "Deafening Clang",
         "duration": "6",
         "caster_level": "6",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/deaf_clang.png"
+        "icon": "graphics/deaf_clang.png"
     },
     "casts Death Armor": {
         "name": "Death Armor",
         "duration": "6",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/death_armor.png",
+        "icon": "graphics/death_armor.png",
         "dmg_shield": "biteback"
     },
     "casts Death Ward": {
@@ -187,63 +187,63 @@
         "duration": "360",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/death_ward.png"
+        "icon": "graphics/death_ward.png"
     },
     "casts Dismissal": {
         "name": "Summon Ward",
         "duration": "30",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/dismissal_ward.png"
+        "icon": "graphics/dismissal_ward.png"
     },
     "casts Displacement": {
         "name": "Displacement",
         "duration": "6",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/displacement.png"
+        "icon": "graphics/displacement.png"
     },
     "casts Divine Favor": {
         "name": "Divine Favor",
         "duration": "60",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/divine_favor.png"
+        "icon": "graphics/divine_favor.png"
     },
     "casts Divine Might": {
         "name": "Divine Might",
         "duration": "6",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/divine_might.png"
+        "icon": "graphics/divine_might.png"
     },
     "casts Divine Shield": {
         "name": "Divine Shield",
         "duration": "6",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/divine_shield.png"
+        "icon": "graphics/divine_shield.png"
     },
     "casts Divine Wrath": {
         "name": "Divine Wrath",
         "duration": "6",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/divine_wrath.png"
+        "icon": "graphics/divine_wrath.png"
     },
     "casts Eagle's Splendor": {
         "name": "Eagle's Splendor",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/eagle.png"
+        "icon": "graphics/eagle.png"
     },
     "casts Elemental Shield": {
         "name": "Flame Shield",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "icon": "graphics/elemental_shield.png",
         "dmg_shield": "biteback"
     },
     "casts Flame Shield": {
@@ -251,7 +251,7 @@
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/elemental_shield.png",
+        "icon": "graphics/elemental_shield.png",
         "dmg_shield": "biteback"
     },
     "casts Frost Shield": {
@@ -259,7 +259,7 @@
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/frost_shield.png",
+        "icon": "graphics/frost_shield.png",
         "dmg_shield": "biteback"
     },
     "casts Bear's Endurance": {
@@ -267,301 +267,301 @@
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/endu.png"
+        "icon": "graphics/endu.png"
     },
     "casts Endurance": {
         "name": "Endurance",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/endu.png"
+        "icon": "graphics/endu.png"
     },
     "casts Endure Elements": {
         "name": "Endure Elements",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/endure_elements.png"
+        "icon": "graphics/endure_elements.png"
     },
     "casts Energy Buffer": {
         "name": "Energy Buffer",
         "duration": "60",
         "caster_level": "11",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/energy_buffer.png"
+        "icon": "graphics/energy_buffer.png"
     },
     "casts Entropic Shield": {
         "name": "Entropic Shield",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/entrop_shield.png"
+        "icon": "graphics/entrop_shield.png"
     },
     "casts Ethereal Visage": {
         "name": "Ethereal Visage",
         "duration": "6",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/ethereal_visage.png"
+        "icon": "graphics/ethereal_visage.png"
     },
     "casts Expeditious Retreat": {
         "name": "Expeditious Retreat",
         "duration": "6",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/exped_retreat.png"
+        "icon": "graphics/exped_retreat.png"
     },
     "casts Flame Weapon": {
         "name": "Flame Weapon",
         "duration": "60",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/flame_weap.png"
+        "icon": "graphics/flame_weap.png"
     },
     "casts Fox's Cunning": {
         "name": "Fox's Cunning",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/foxs.png"
+        "icon": "graphics/foxs.png"
     },
     "casts Freedom of Movement": {
         "name": "Freedom",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/freedom.png"
+        "icon": "graphics/freedom.png"
     },
     "casts Gate": {
         "name": "Gate",
         "duration": "6",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/gate.png"
+        "icon": "graphics/gate.png"
     },
     "casts Ghostly Visage": {
         "name": "Ghostly Visage",
         "duration": "60",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/ghostly_visage.png"
+        "icon": "graphics/ghostly_visage.png"
     },
     "casts Globe of Invulnerability": {
         "name": "Globe of Invulnerability",
         "duration": "6",
         "caster_level": "11",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/globe_invuln.png"
+        "icon": "graphics/globe_invuln.png"
     },
     "casts Greater Magic Fang": {
         "name": "Greater Magic Fang",
         "duration": "60",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_magic_fang.png"
+        "icon": "graphics/greater_magic_fang.png"
     },
     "casts Greater Magic Weapon": {
         "name": "Greater Magic Weapon",
         "duration": "120",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_magic_weapon.png"
+        "icon": "graphics/greater_magic_weapon.png"
     },
     "casts Greater Planar Binding": {
         "name": "Greater Planar Binding",
         "duration": "60",
         "caster_level": "15",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_planar.png"
+        "icon": "graphics/greater_planar.png"
     },
     "casts Greater Restoration": {
         "name": "CD Greater Restoration",
         "duration": "240",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_resto_cd.png"
+        "icon": "graphics/greater_resto_cd.png"
     },
     "casts Greater Sanctuary": {
         "name": "Greater Sanctuary",
         "duration": "1.5",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_sanc.png"
+        "icon": "graphics/greater_sanc.png"
     },
     "casts Greater Spell Mantle": {
         "name": "Greater Spell Mantle",
         "duration": "6",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_spell_mantle.png"
+        "icon": "graphics/greater_spell_mantle.png"
     },
     "casts Greater Stoneskin": {
         "name": "Greater Stoneskin",
         "duration": "360",
         "caster_level": "11",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/greater_stoneskin.png"
+        "icon": "graphics/greater_stoneskin.png"
     },
     "casts Haste": {
         "name": "Haste",
         "duration": "6",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/haste.png"
+        "icon": "graphics/haste.png"
     },
     "casts Holy Sword": {
         "name": "Holy Sword",
         "duration": "6",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/holy_sword.png"
+        "icon": "graphics/holy_sword.png"
     },
     "casts Identify": {
         "name": "Identify",
         "duration": "12",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/identify.png"
+        "icon": "graphics/identify.png"
     },
     "casts Improved Invisibility": {
         "name": "Improved Invisibility",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/improved_invis_conceal.png"
+        "icon": "graphics/improved_invis_conceal.png"
     },
     "casts Invisibility": {
         "name": "Invisibility",
         "duration": "6",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/invisibility.png"
+        "icon": "graphics/invisibility.png"
     },
     "casts Invisibility Sphere": {
         "name": "Invisibility Sphere",
         "duration": "6",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/invisibility_sphere.png"
+        "icon": "graphics/invisibility_sphere.png"
     },
     "casts Invisibility Purge": {
         "name": "Invisibility Purge",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/invis_purge.png"
+        "icon": "graphics/invis_purge.png"
     },
     "casts Ironguts": {
         "name": "Ironguts",
         "duration": "600",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/ironguts.png"
+        "icon": "graphics/ironguts.png"
     },
     "casts Keen Edge": {
         "name": "Keen Edge",
         "duration": "120",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/keen_edge.png"
+        "icon": "graphics/keen_edge.png"
     },
     "casts Legend Lore": {
         "name": "Legend Lore",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/legend_lore.png"
+        "icon": "graphics/legend_lore.png"
     },
     "casts Lesser Mind Blank": {
         "name": "Lesser Mind Blank",
         "duration": "60",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/lesser_mind.png"
+        "icon": "graphics/lesser_mind.png"
     },
     "casts Lesser Planar Binding": {
         "name": "Lesser Planar Binding",
         "duration": "360",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/lesser_planar.png"
+        "icon": "graphics/lesser_planar.png"
     },
     "casts Lesser Spell Mantle": {
         "name": "Lesser Spell Mantle",
         "duration": "6",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/lesser_spell_mantle.png"
+        "icon": "graphics/lesser_spell_mantle.png"
     },
     "casts Light": {
         "name": "Light",
         "duration": "360",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/light.png"
+        "icon": "graphics/light.png"
     },
     "casts Mage Armor": {
         "name": "Mage Armor",
         "duration": "360",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mage_armor.png"
+        "icon": "graphics/mage_armor.png"
     },
     "casts Magic Circle against Evil": {
         "name": "Magic Circle against Evil",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/magic_circle_evil.png"
+        "icon": "graphics/magic_circle_evil.png"
     },
     "casts Magic Circle against Good": {
         "name": "Magic Circle against Good",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/magic_circle_good.png"
+        "icon": "graphics/magic_circle_good.png"
     },
     "casts Magic Fang": {
         "name": "Magic Fang",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/magic_fang.png"
+        "icon": "graphics/magic_fang.png"
     },
     "casts Magic Vestment": {
         "name": "Magic Vestment",
         "duration": "360",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/magic_vestment.png"
+        "icon": "graphics/magic_vestment.png"
     },
     "casts Magic Weapon": {
         "name": "Magic Weapon",
         "duration": "360",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/magic_weapon.png"
+        "icon": "graphics/magic_weapon.png"
     },
     "casts Mass Camouflage": {
         "name": "Mass Camouflage",
         "duration": "600",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mass_camo.png"
+        "icon": "graphics/mass_camo.png"
     },
     "casts Mass Haste": {
         "name": "Haste",
         "duration": "6",
         "caster_level": "11",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/haste.png"
+        "icon": "graphics/haste.png"
     },
     "casts Mestil's Acid Sheath": {
         "name": "Mestil's Acid Sheath",
         "duration": "6",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mestil_acid_sheath.png",
+        "icon": "graphics/mestil_acid_sheath.png",
         "dmg_shield": "biteback"
     },
     "casts Mind Blank": {
@@ -569,455 +569,455 @@
         "duration": "60",
         "caster_level": "15",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mind_blank.png"
+        "icon": "graphics/mind_blank.png"
     },
     "casts Minor Globe of Invulnerability": {
         "name": "Minor Globe of Invulnerability",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/minor_globe_invuln.png"
+        "icon": "graphics/minor_globe_invuln.png"
     },
     "casts Monstrous Regeneration": {
         "name": "Monstrous Regeneration",
         "duration": "3",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/monst_regen.png"
+        "icon": "graphics/monst_regen.png"
     },
     "casts Mordenkainen's Sword": {
         "name": "Mordenkainen's Sword",
         "duration": "60",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mord_sword.png"
+        "icon": "graphics/mord_sword.png"
     },
     "casts Negative Energy Protection": {
         "name": "Negative Energy Protection",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/neg_protection.png"
+        "icon": "graphics/neg_protection.png"
     },
     "casts One With The Land": {
         "name": "One With The Land",
         "duration": "360",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/one_with_land.png"
+        "icon": "graphics/one_with_land.png"
     },
     "casts Owl's Insight": {
         "name": "Owl's Insight",
         "duration": "360",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/owl_insight.png"
+        "icon": "graphics/owl_insight.png"
     },
     "casts Owl's Wisdom": {
         "name": "Owl's Wisdom",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/owls.png"
+        "icon": "graphics/owls.png"
     },
     "casts Planar Ally": {
         "name": "Planar Ally",
         "duration": "360",
         "caster_level": "15",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/planar_ally.png"
+        "icon": "graphics/planar_ally.png"
     },
     "casts Planar Binding": {
         "name": "Planar Binding",
         "duration": "360",
         "caster_level": "11",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/planar_binding.png"
+        "icon": "graphics/planar_binding.png"
     },
     "casts Polymorph, Giant Spider": {
         "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+        "icon": "graphics/polymorph.png"
     },
     "casts Polymorph, Troll": {
         "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+        "icon": "graphics/polymorph.png"
     },
     "casts Polymorph, Umber Hulk": {
         "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+        "icon": "graphics/polymorph.png"
     },
     "casts Polymorph, Fey": {
         "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+        "icon": "graphics/polymorph.png"
     },
     "casts Polymorph, Zombie": {
         "name": "Polymorph Self",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/polymorph.png"
+        "icon": "graphics/polymorph.png"
     },
     "casts Prayer": {
         "name": "Prayer",
         "duration": "6",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/prayer.png"
+        "icon": "graphics/prayer.png"
     },
     "casts Premonition": {
         "name": "Premonition",
         "duration": "360",
         "caster_level": "15",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/premo.png"
+        "icon": "graphics/premo.png"
     },
     "casts Protection from Evil": {
         "name": "Protection from Evil",
         "duration": "360",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/prot_evil.png"
+        "icon": "graphics/prot_evil.png"
     },
     "casts Protection from Good": {
         "name": "Protection from Good",
         "duration": "360",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/prot_good.png"
+        "icon": "graphics/prot_good.png"
     },
     "casts Protection from Elements": {
         "name": "Protection from Elements",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/prot_elements.png"
+        "icon": "graphics/prot_elements.png"
     },
     "casts Protection from Spells": {
         "name": "Protection from Spells",
         "duration": "60",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/prot_spells.png"
+        "icon": "graphics/prot_spells.png"
     },
     "casts Regenerate": {
         "name": "Regenerate",
         "duration": "6",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/regenerate.png"
+        "icon": "graphics/regenerate.png"
     },
     "casts Remove Fear": {
         "name": "Remove Fear",
         "duration": "600",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/remove_fear.png"
+        "icon": "graphics/remove_fear.png"
     },
     "casts Resist Elements": {
         "name": "Resist Elements",
         "duration": "60",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/resist_elements.png"
+        "icon": "graphics/resist_elements.png"
     },
     "casts Resistance": {
         "name": "Resistance",
         "duration": "120",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/resistance.png"
+        "icon": "graphics/resistance.png"
     },
     "casts Sanctuary": {
         "name": "Sanctuary",
         "duration": "6",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/sanctuary.png"
+        "icon": "graphics/sanctuary.png"
     },
     "casts See Invisibility": {
         "name": "See Invisibility",
         "duration": "60",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/see_invisibility.png"
+        "icon": "graphics/see_invisibility.png"
     },
     "casts Greater Shadow Conjuration, Summon Shadow": {
         "name": "Summon Shadow",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
+        "icon": "graphics/shadow_conj.png"
     },
     "casts Greater Shadow Conjuration, Minor Globe of Invulnerability": {
         "name": "Greater Shadow Conjuration, Minor Globe of Invulnerability",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/minor_globe_invuln.png"
+        "icon": "graphics/minor_globe_invuln.png"
     },
     "casts Summon Shadow": {
         "name": "Summon Shadow",
         "duration": "6",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shadow_conj.png"
+        "icon": "graphics/shadow_conj.png"
     },
     "casts Shadow Shield": {
         "name": "Shadow Shield",
         "duration": "60",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shadow_shield.png"
+        "icon": "graphics/shadow_shield.png"
     },
     "casts Shapechange, Red Dragon": {
         "name": "Shapechange",
         "duration": "60",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+        "icon": "graphics/shapechange.png"
     },
     "casts Shapechange, Fire Giant": {
         "name": "Shapechange",
         "duration": "60",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+        "icon": "graphics/shapechange.png"
     },
     "casts Shapechange, Balor": {
         "name": "Shapechange",
         "duration": "60",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+        "icon": "graphics/shapechange.png"
     },
     "casts Shapechange, Death Slaad": {
         "name": "Shapechange",
         "duration": "60",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+        "icon": "graphics/shapechange.png"
     },
     "casts Shapechange, Iron Golem": {
         "name": "Shapechange",
         "duration": "60",
         "caster_level": "17",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shapechange.png"
+        "icon": "graphics/shapechange.png"
     },
     "casts Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shelg_blade.png"
+        "icon": "graphics/shelg_blade.png"
     },
     "casts Shield": {
         "name": "Shield",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shield.png"
+        "icon": "graphics/shield.png"
     },
     "casts Shield of Faith": {
         "name": "Shield of Faith",
         "duration": "60",
         "caster_level": "5",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/shield_of_faith.png"
+        "icon": "graphics/shield_of_faith.png"
     },
     "casts Silence": {
         "name": "Silence",
         "duration": "6",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/silence.png"
+        "icon": "graphics/silence.png"
     },
     "casts Spell Mantle": {
         "name": "Spell Mantle",
         "duration": "6",
         "caster_level": "13",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/spell_mantle.png"
+        "icon": "graphics/spell_mantle.png"
     },
     "casts Spell Resistance": {
         "name": "Spell Resistance",
         "duration": "60",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/spell_resistance.png"
+        "icon": "graphics/spell_resistance.png"
     },
     "casts Stone Bones": {
         "name": "Stone Bones",
         "duration": "600",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/stone_bones.png"
+        "icon": "graphics/stone_bones.png"
     },
     "casts Stoneskin": {
         "name": "Stoneskin",
         "duration": "360",
         "caster_level": "7",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/stoneskin.png"
+        "icon": "graphics/stoneskin.png"
     },
     "casts Summon Creature I": {
         "name": "Summon Creature I",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_1.png"
+        "icon": "graphics/summon_creat_1.png"
     },
     "casts Summon Creature II": {
         "name": "Summon Creature II",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_2.png"
+        "icon": "graphics/summon_creat_2.png"
     },
     "casts Summon Creature III": {
         "name": "Summon Creature III",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_3.png"
+        "icon": "graphics/summon_creat_3.png"
     },
     "casts Summon Creature IV": {
         "name": "Summon Creature IV",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_4.png"
+        "icon": "graphics/summon_creat_4.png"
     },
     "casts Summon Creature V": {
         "name": "Summon Creature V",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_5.png"
+        "icon": "graphics/summon_creat_5.png"
     },
     "casts Summon Creature VI": {
         "name": "Summon Creature VI",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_6.png"
+        "icon": "graphics/summon_creat_6.png"
     },
     "casts Summon Creature VII": {
         "name": "Summon Creature VII",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_7.png"
+        "icon": "graphics/summon_creat_7.png"
     },
     "casts Summon Creature VIII": {
         "name": "Summon Creature VIII",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_8.png"
+        "icon": "graphics/summon_creat_8.png"
     },
     "casts Summon Creature IX": {
         "name": "Summon Creature IX",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/summon_creat_9.png"
+        "icon": "graphics/summon_creat_9.png"
     },
     "casts Tenser's Transformation": {
         "name": "Tenser's Transformation",
         "duration": "6",
         "caster_level": "11",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/tense_trans.png"
+        "icon": "graphics/tense_trans.png"
     },
     "casts Time Stop": {
         "name": "Time Stop",
         "duration": "9",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/time_stop.png"
+        "icon": "graphics/time_stop.png"
     },
     "casts True Seeing": {
         "name": "True Seeing",
         "duration": "60",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/true_seeing.png"
+        "icon": "graphics/true_seeing.png"
     },
     "casts True Strike": {
         "name": "True Strike",
         "duration": "9",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/true.png"
+        "icon": "graphics/true.png"
     },
     "casts Ultravision": {
         "name": "Ultravision",
         "duration": "360",
         "caster_level": "3",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/ultravision.png"
+        "icon": "graphics/ultravision.png"
     },
     "casts Undeath's Eternal Foe": {
         "name": "Undeath's Eternal Foe",
         "duration": "6",
         "caster_level": "20",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/undeath_eternal.png"
+        "icon": "graphics/undeath_eternal.png"
     },
     "casts Virtue": {
         "name": "Virtue",
         "duration": "60",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/virtue.png"
+        "icon": "graphics/virtue.png"
     },
     "casts Wounding Whispers": {
         "name": "Wounding Whispers",
         "duration": "6",
         "caster_level": "9",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/wounding_whispers.png"
+        "icon": "graphics/wounding_whispers.png"
     },
     "casts Epic Spell: Epic Mage Armor": {
         "name": "Epic Mage Armor",
         "duration": "360",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/epic_mage.png"
+        "icon": "graphics/epic_mage.png"
     },
     "casts Epic Spell: Mummy Dust": {
         "name": "Mummy Dust",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/mummy_dust.png"
+        "icon": "graphics/mummy_dust.png"
     },
     "casts Epic Spell: Dragon Knight": {
         "name": "Dragon Knight",
         "duration": "12",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/dragon_knight.png"
+        "icon": "graphics/dragon_knight.png"
     },
     "casts Epic Spell: Planar Conduit": {
         "name": "Planar Conduit",
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/epic_planar.png"
+        "icon": "graphics/epic_planar.png"
     },
 
 
@@ -1026,21 +1026,21 @@
         "duration": "60",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/good_hope.png"
+        "icon": "graphics/good_hope.png"
     },
     "casts Improved Chaos Shield": {
         "name": "Improved Chaos Shield",
         "duration": "6",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/imp_chaos.png"
+        "icon": "graphics/imp_chaos.png"
     },
     "casts Lightning Shield": {
         "name": "Lightning Shield",
         "duration": "6",
         "caster_level": "2",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/light_shield.png",
+        "icon": "graphics/light_shield.png",
         "dmg_shield": "biteback"
     },
     "casts Create Undead": {
@@ -1048,6 +1048,6 @@
         "duration": "8640",
         "caster_level": "1",
         "type": "spell",
-        "icon": "NWN-Buff-Watcher/graphics/create_undead.png"
+        "icon": "graphics/create_undead.png"
     }
 }
