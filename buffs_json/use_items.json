@@ -169,7 +169,7 @@
         "icon": "graphics/flame_weap.png"
     },
     "uses Potion of Freedom": {
-        "name": "Freedom",
+        "name": "Freedom of Movement",
         "duration": "60",
         "caster_level": "7",
         "type": "potion",
@@ -733,8 +733,8 @@
         "type": "wand",
         "icon": "graphics/foxs.png"
     },
-    "uses Wand of Freedom": {
-        "name": "Freedom",
+    "uses Wand of Freedom of Movement": {
+        "name": "Freedom of Movement",
         "duration": "60",
         "caster_level": "7",
         "type": "wand",
@@ -1769,7 +1769,7 @@
         "icon": "graphics/foxs.png"
     },
     "uses Freedom of Movement": {
-        "name": "Freedom",
+        "name": "Freedom of Movement",
         "duration": "60",
         "caster_level": "7",
         "type": "scroll",

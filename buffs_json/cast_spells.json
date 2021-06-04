@@ -326,7 +326,7 @@
         "icon": "graphics/foxs.png"
     },
     "casts Freedom of Movement": {
-        "name": "Freedom",
+        "name": "Freedom of Movement",
         "duration": "60",
         "caster_level": "7",
         "type": "spell",
