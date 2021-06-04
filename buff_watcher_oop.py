@@ -748,7 +748,13 @@ class MainFrame(tk.Frame):
                     print(f"'throws grenade-like' did not find match: {logline}")
 
 
-            if " : " + self.name_stringvar.get() + " : " in logline:
+            # tried to get tricky with a list comp here, but couldn't get it figured out -- just went with a bunch of or statements
+            # self.logline_dispel_list = ["Mordenkainen's Disjunction", "Greater Dispelling", "Dispel Magic", "Lesser Dispel"]
+            # if str([dispel_trigger for dispel_trigger in self.logline_dispel_list]) + " : " + self.name_stringvar.get() + " : " in logline:
+            if "Mordenkainen's Disjunction : " + self.name_stringvar.get() + " : " in logline or \
+                    "Greater Dispelling : " + self.name_stringvar.get() + " : " in logline or \
+                    "Dispel Magic : " + self.name_stringvar.get() + " : " in logline or \
+                    "Lesser Dispel : " + self.name_stringvar.get() + " : " in logline:
                 try:
                     self.dispel_call(logline)
                 except:

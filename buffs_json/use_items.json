@@ -301,8 +301,8 @@
         "type": "potion",
         "icon": "graphics/neg_protection.png"
     },
-    "uses Potion of One With The Land": {
-        "name": "One With The Land",
+    "uses Potion of One with the Land": {
+        "name": "One with the Land",
         "duration": "360",
         "caster_level": "7",
         "type": "potion",
@@ -873,8 +873,8 @@
         "type": "wand",
         "icon": "graphics/neg_protection.png"
     },
-    "uses Wand of One With The Land": {
-        "name": "One With The Land",
+    "uses Wand of One with the Land": {
+        "name": "One with the Land",
         "duration": "360",
         "caster_level": "7",
         "type": "wand",
@@ -2064,8 +2064,8 @@
         "type": "scroll",
         "icon": "graphics/neg_protection.png"
     },
-    "uses One With The Land": {
-        "name": "One With The Land",
+    "uses One with the Land": {
+        "name": "One with the Land",
         "duration": "360",
         "caster_level": "7",
         "type": "scroll",
