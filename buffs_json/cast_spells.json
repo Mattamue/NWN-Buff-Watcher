@@ -599,8 +599,8 @@
         "type": "spell",
         "icon": "graphics/neg_protection.png"
     },
-    "casts One With The Land": {
-        "name": "One With The Land",
+    "casts One with the Land": {
+        "name": "One with the Land",
         "duration": "360",
         "caster_level": "7",
         "type": "spell",
