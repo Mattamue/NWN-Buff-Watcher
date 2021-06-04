@@ -1049,5 +1049,12 @@
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/create_undead.png"
+    },
+    "casts Intimidate": {
+        "name": "Intimidate",
+        "duration": "30",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "graphics/intimidate.png"
     }
 }

@@ -760,6 +760,12 @@ class MainFrame(tk.Frame):
                 except:
                     print("Dispel call did not find match.")
 
+            if self.name_stringvar.get() + " : Taunt : *success* " in logline:
+                try:
+                    self.make_buff_labelframe(["Taunt", time.time() + 30, "graphics/taunt.png"])
+                except:
+                    print(f"'taunt' did not find match: {logline}")
+
         for x in self.buffs_list_frames: # removes any buffs that reach 0, makes them red if they're below 6 s
             # print(f"buff_timer {x.buff_name}: {x.buff_timer.get()}") # this is the remaining seconds that gets counted down
             # print(f"buff_epoch {x.buff_name}: {x.buff_epoch}") # this is the time.time when the buff is created

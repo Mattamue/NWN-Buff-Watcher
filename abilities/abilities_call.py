@@ -35,16 +35,27 @@ def abilities_trigger(logline):
     except:
         seconds = 0
 
-    try:
-        ability = ""
-        # hacky, but starting at range 7 bypasses the "chat window text"... might not work on all log setups...
-        for x in range(7, logline_split.index("has")):
-            ability = ability + logline_split[x] + " "
+    # try:
+    ability = ""
+    print(f"ability blank: {ability}")
+    # hacky, but starting at range 7 bypasses the "chat window text"... might not work on all log setups...
+    # for x in range(7, logline_split.index("has")):
+    #     ability = ability + logline_split[x] + " "
+    # ^^^ this errors out because loglines have more spaces for dates less than 2 digits, IE
+    # 
+    # [CHAT WINDOW TEXT] [Thu Jun  3 23:11:18] Hex has a timer of 30 second(s). You may not use Hex again for this period of time.'
+    # [CHAT WINDOW TEXT] [Sun May 30 17:02:55] Arcane Bleed has a timer of 3 minute(s). You may not use Arcane Bleed again for this period of time.
+    # So we're doing this a different way
+    for x in range((logline.find("]", 18) + 2), (logline.find("has") - 1)):
+        ability = ability + logline[x]
+        print(f"ability in the loop: {ability}")
+    
+    print(f"ability done: {ability}")
 
-    except:
-        ability = "Ability error"
+    # except:
+    #     ability = "Ability error"
 
-    return [ability[:-1], (minutes * 60) + seconds]
+    return [ability, (minutes * 60) + seconds]
 
 
 if __name__ == "__main__":
@@ -69,5 +80,5 @@ if __name__ == "__main__":
     test7 = abilities_trigger("[CHAT WINDOW TEXT] [Sun May 23 15:53:07] Barbarian Rage has a timer of 2 minute(s) and 48 second(s). You may not use Barbarian Rage again for this period of time.\n")
     print(test7)
 
-    test8 = abilities_trigger("[CHAT WINDOW TEXT] [Sun May 23 15:53:07] Warlock Summon Shadows has a timer of 3 minute(s). You may not use Warlock Summon Shadows again for this period of time.\n")
+    test8 = abilities_trigger("[CHAT WINDOW TEXT] [Thu Jun  3 23:11:18] Hex has a timer of 30 second(s). You may not use Hex again for this period of time.\n")
     print(f"test 8: {test8}")
