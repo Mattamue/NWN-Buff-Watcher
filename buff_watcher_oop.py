@@ -1307,6 +1307,20 @@ class MainFrame(tk.Frame):
                 else:
                     return
 
+            # handling cleric protection domain and its cooldown shared with greater sanctuary on cast
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Protection Domain, Divine Protection":
+                if "CD Greater Sanctuary" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Greater Sanctuary"]:
+                    self.make_buff_labelframe(["CD Greater Sanctuary", time.time() + 240, "graphics/greater_sanc_cd.png"])
+                    adding_buff[1] = time.time() + (30 + (6 * self.cha_modifier.get()))
+                else:
+                    return
+
+            # handling Strength Domain, Divine Strength; Trickery Domain, Divine Trickery
+            if self.cast_spells_dict[f'{buff_string}']['name'] == "Strength Domain, Divine Strength" or \
+                    self.cast_spells_dict[f'{buff_string}']['name'] == "Trickery Domain, Divine Trickery" or \
+                    self.cast_spells_dict[f'{buff_string}']['name'] == "War Domain, Battle Mastery":
+                adding_buff[1] = time.time() + (30 + (6 * self.cha_modifier.get()))
+
             # handling time stop and its cooldown on cast
             if self.cast_spells_dict[f"{buff_string}"]["name"] == "Time Stop":
                 if "CD Time Stop" not in [(obj.buff_name) for obj in self.buffs_list_frames if obj.buff_name == "CD Time Stop"]:
