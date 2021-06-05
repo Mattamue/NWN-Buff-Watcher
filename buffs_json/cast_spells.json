@@ -580,7 +580,7 @@
     },
     "casts Monstrous Regeneration": {
         "name": "Monstrous Regeneration",
-        "duration": "3",
+        "duration": "60",
         "caster_level": "9",
         "type": "spell",
         "icon": "graphics/monst_regen.png"
@@ -713,7 +713,7 @@
     },
     "casts Regenerate": {
         "name": "Regenerate",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "13",
         "type": "spell",
         "icon": "graphics/regenerate.png"
@@ -1056,5 +1056,47 @@
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/intimidate.png"
+    },
+    "casts Protection Domain, Divine Protection": {
+        "name": "Protection Domain, Divine Protection",
+        "duration": "6",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "graphics/prot_sanc.png"
+    },
+    "casts Death Domain, Negative Plane Avatar": {
+        "name": "Death Domain, Negative Plane Avatar",
+        "duration": "8640",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "graphics/death_avatar.png"
+    },
+    "casts Strength Domain, Divine Strength": {
+        "name": "Strength Domain, Divine Strength",
+        "duration": "6",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "graphics/str_domain.png"
+    },
+    "casts Trickery Domain, Divine Trickery": {
+        "name": "Trickery Domain, Divine Trickery",
+        "duration": "6",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "graphics/trick_domain.png"
+    },
+    "casts War Domain, Battle Mastery": {
+        "name": "War Domain, Battle Mastery",
+        "duration": "6",
+        "caster_level": "1",
+        "type": "spell",
+        "icon": "graphics/war_domain.png"
+    },
+    "casts Divine Power": {
+        "name": "Divine Power",
+        "duration": "6",
+        "caster_level": "2",
+        "type": "spell",
+        "icon": "graphics/divine_power.png"
     }
 }

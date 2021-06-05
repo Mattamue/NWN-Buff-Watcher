@@ -1201,7 +1201,7 @@
     },
     "uses Staff of Life": {
         "name": "Regenerate",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "13",
         "type": "item",
         "icon": "graphics/regenerate.png"
@@ -1391,7 +1391,7 @@
     },
     "uses Battlemedic Armor": {
         "name": "Monstrous Regeneration",
-        "duration": "3",
+        "duration": "60",
         "caster_level": "9",
         "type": "item",
         "icon": "graphics/monst_regen.png"
@@ -2045,7 +2045,7 @@
     },
     "uses Monstrous Regeneration": {
         "name": "Monstrous Regeneration",
-        "duration": "3",
+        "duration": "60",
         "caster_level": "9",
         "type": "scroll",
         "icon": "graphics/monst_regen.png"
@@ -2143,7 +2143,7 @@
     },
     "uses Regenerate": {
         "name": "Regenerate",
-        "duration": "6",
+        "duration": "60",
         "caster_level": "13",
         "type": "scroll",
         "icon": "graphics/regenerate.png"
