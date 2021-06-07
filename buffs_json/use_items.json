@@ -15,7 +15,7 @@
     },
     "uses Potion of Animate Dead": {
         "name": "Animate Dead",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/animate_dead.png"
@@ -36,7 +36,7 @@
     },
     "uses Potion of Black Warding": {
         "name": "Death Ward",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "potion",
         "icon": "graphics/death_ward.png"
@@ -92,14 +92,14 @@
     },
     "uses Potion of Continual Flame": {
         "name": "Continual Flame",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/continual_flame.png"
     },
     "uses Potion of Darkfire": {
         "name": "Darkfire",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "potion",
         "icon": "graphics/darkfire.png"
@@ -142,7 +142,7 @@
     },
     "uses Potion of Endure Elements": {
         "name": "Endure Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/endure_elements.png"
@@ -184,7 +184,7 @@
     },
     "uses Potion of Giant Strength": {
         "name": "Bull's Strength",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "potion",
         "icon": "graphics/bulls.png"
@@ -254,14 +254,14 @@
     },
     "uses Potion of Light": {
         "name": "Light",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "potion",
         "icon": "graphics/light.png"
     },
     "uses Potion of Mage Armor": {
         "name": "Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "potion",
         "icon": "graphics/mage_armor.png"
@@ -282,14 +282,14 @@
     },
     "uses Potion of Magic Vestment": {
         "name": "Magic Vestment",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "potion",
         "icon": "graphics/magic_vestment.png"
     },
     "uses Potion of Magic Weapon": {
         "name": "Magic Weapon",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "potion",
         "icon": "graphics/magic_weapon.png"
@@ -303,7 +303,7 @@
     },
     "uses Potion of One with the Land": {
         "name": "One with the Land",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "potion",
         "icon": "graphics/one_with_land.png"
@@ -317,14 +317,14 @@
     },
     "uses Potion of Protection from Alignment": {
         "name": "Protection from Alignment",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "potion",
         "icon": "graphics/prot_alignment.png"
     },
     "uses Potion of Protection from Elements": {
         "name": "Protection from Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/prot_elements.png"
@@ -366,14 +366,14 @@
     },
     "uses Potion of Shadow Conjuration": {
         "name": "Shadow Conjuration",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "potion",
         "icon": "graphics/shadow_conj.png"
     },
     "uses Potion of Shadow Conjuration: Mage Armor": {
         "name": "Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "potion",
         "icon": "graphics/mage_armor.png"
@@ -394,7 +394,7 @@
     },
     "uses Potion of Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/shelg_blade.png"
@@ -429,21 +429,21 @@
     },
     "uses Potion of Summon Creature I": {
         "name": "Summon Creature I",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/summon_creat_1.png"
     },
     "uses Potion of Summon Creature II": {
         "name": "Summon Creature II",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/summon_creat_2.png"
     },
     "uses Potion of Summon Creature III": {
         "name": "Summon Creature III",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "potion",
         "icon": "graphics/summon_creat_3.png"
@@ -457,7 +457,7 @@
     },
     "uses Potion of Ultravision": {
         "name": "Ultravision",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "6",
         "type": "potion",
         "icon": "graphics/ultravision.png"
@@ -507,7 +507,7 @@
     },
     "uses Wand of Animate Dead": {
         "name": "Animate Dead",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/animate_dead.png"
@@ -528,7 +528,7 @@
     },
     "uses Wand of Barkskin": {
         "name": "Barkskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "12",
         "type": "wand",
         "icon": "graphics/bark.png"
@@ -563,7 +563,7 @@
     },
     "uses Wand of Bull's Strength": {
         "name": "Bull's Strength",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "wand",
         "icon": "graphics/bulls.png"
@@ -577,7 +577,7 @@
     },
     "uses Wand of Cat's Grace": {
         "name": "Cat's Grace",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "wand",
         "icon": "graphics/cats.png"
@@ -598,14 +598,14 @@
     },
     "uses Wand of Continual Flame": {
         "name": "Continual Flame",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/continual_flame.png"
     },
     "uses Wand of Darkfire": {
         "name": "Darkfire",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "wand",
         "icon": "graphics/darkfire.png"
@@ -634,7 +634,7 @@
     },
     "uses Wand of Death Ward": {
         "name": "Death Ward",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "wand",
         "icon": "graphics/death_ward.png"
@@ -662,7 +662,7 @@
     },
     "uses Wand of Eagle's Splendor": {
         "name": "Eagle's Splendor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "wand",
         "icon": "graphics/eagle.png"
@@ -693,14 +693,14 @@
     },
     "uses Wand of Bear's Endurance": {
         "name": "Endurance",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "wand",
         "icon": "graphics/endu.png"
     },
     "uses Wand of Endure Elements": {
         "name": "Endure Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/endure_elements.png"
@@ -728,7 +728,7 @@
     },
     "uses Wand of Fox's Cunning": {
         "name": "Fox's Cunning",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "wand",
         "icon": "graphics/foxs.png"
@@ -819,14 +819,14 @@
     },
     "uses Wand of Light": {
         "name": "Light",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "wand",
         "icon": "graphics/light.png"
     },
     "uses Wand of Mage Armor": {
         "name": "Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "wand",
         "icon": "graphics/mage_armor.png"
@@ -847,14 +847,14 @@
     },
     "uses Wand of Magic Vestment": {
         "name": "Magic Vestment",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "wand",
         "icon": "graphics/magic_vestment.png"
     },
     "uses Wand of Magic Weapon": {
         "name": "Magic Weapon",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "wand",
         "icon": "graphics/magic_weapon.png"
@@ -875,14 +875,14 @@
     },
     "uses Wand of One with the Land": {
         "name": "One with the Land",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "wand",
         "icon": "graphics/one_with_land.png"
     },
     "uses Wand of Owl's Wisdom": {
         "name": "Owl's Wisdom",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "wand",
         "icon": "graphics/owls.png"
@@ -903,14 +903,14 @@
     },
     "uses Wand of Protection from Alignment": {
         "name": "Protection from Alignment",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "wand",
         "icon": "graphics/prot_alignment.png"
     },
     "uses Wand of Protection from Elements": {
         "name": "Protection from Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/prot_elements.png"
@@ -952,14 +952,14 @@
     },
     "uses Wand of Shadow Conjuration": {
         "name": "Shadow Conjuration",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "wand",
         "icon": "graphics/shadow_conj.png"
     },
     "uses Wand of Shadow Conjuration: Mage Armor": {
         "name": "Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "wand",
         "icon": "graphics/mage_armor.png"
@@ -980,7 +980,7 @@
     },
     "uses Wand of Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/shelg_blade.png"
@@ -1015,35 +1015,35 @@
     },
     "uses Wand of Stoneskin": {
         "name": "Stoneskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "wand",
         "icon": "graphics/stoneskin.png"
     },
     "uses Wand of Summon Creature I": {
         "name": "Summon Creature I",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/summon_creat_1.png"
     },
     "uses Wand of Summon Creature II": {
         "name": "Summon Creature II",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/summon_creat_2.png"
     },
     "uses Wand of Summon Creature III": {
         "name": "Summon Creature III",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/summon_creat_3.png"
     },
     "uses Wand of Summon Creature IV": {
         "name": "Summon Creature IV",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "wand",
         "icon": "graphics/summon_creat_4.png"
@@ -1057,7 +1057,7 @@
     },
     "uses Wand of Ultravision": {
         "name": "Ultravision",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "6",
         "type": "wand",
         "icon": "graphics/ultravision.png"
@@ -1103,98 +1103,98 @@
     },
     "uses Skleen (Blue)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Skleen (Deep Red)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Skleen (Dusty Rose)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Skleen (Pale Blue)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Skleen (Pink-Green)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Skleen (Scarlet Blue)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Skleen (Pink)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Ioun Stone (Blue)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Ioun Stone (Deep Red)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Ioun (Dusty Rose)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Ioun Stone (Pale Blue)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Ioun Stone (Pink and Green)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Ioun Stone (Pink)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
     },
     "uses Ioun Stone (Scarlet and Blue)": {
         "name": "Ioun Stone",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "item",
         "icon": "graphics/ioun_stone.png"
@@ -1243,7 +1243,7 @@
     },
     "uses Bardic Harp": {
         "name": "Eagle's Splendor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "10",
         "type": "item",
         "icon": "graphics/eagle.png"
@@ -1334,14 +1334,14 @@
     },
     "uses Barbarian Helmet": {
         "name": "Bull's Strength",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "10",
         "type": "item",
         "icon": "graphics/bulls.png"
     },
     "uses Ranger's Runic Vestment": {
         "name": "Barkskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "12",
         "type": "item",
         "icon": "graphics/bark.png"
@@ -1355,7 +1355,7 @@
     },
     "uses Desperado's Raiment": {
         "name": "Fox's Cunning",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "10",
         "type": "item",
         "icon": "graphics/foxs.png"
@@ -1384,7 +1384,7 @@
     },
     "uses Ranger's Runic Studded Leather": {
         "name": "Barkskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "12",
         "type": "item",
         "icon": "graphics/bark.png"
@@ -1433,7 +1433,7 @@
     },
     "uses Elder Dream": {
         "name": "Barkskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "12",
         "type": "item",
         "icon": "graphics/bark.png"
@@ -1486,7 +1486,7 @@
     },
     "uses Animate Dead": {
         "name": "Animate Dead",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/animate_dead.png"
@@ -1528,7 +1528,7 @@
     },
     "uses Barkskin": {
         "name": "Barkskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/bark.png"
@@ -1577,7 +1577,7 @@
     },
     "uses Bull's Strength": {
         "name": "Bull's Strength",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/bulls.png"
@@ -1591,7 +1591,7 @@
     },
     "uses Cat's Grace": {
         "name": "Cat's Grace",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/cats.png"
@@ -1612,14 +1612,14 @@
     },
     "uses Continual Flame": {
         "name": "Continual Flame",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/continual_flame.png"
     },
     "uses Darkfire": {
         "name": "Darkfire",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "scroll",
         "icon": "graphics/darkfire.png"
@@ -1648,7 +1648,7 @@
     },
     "uses Death Ward": {
         "name": "Death Ward",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "scroll",
         "icon": "graphics/death_ward.png"
@@ -1676,7 +1676,7 @@
     },
     "uses Eagle's Splendor": {
         "name": "Eagle's Splendor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/eagle.png"
@@ -1707,21 +1707,21 @@
     },
     "uses Bear's Endurance": {
         "name": "Endurance",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/endu.png"
     },
     "uses Endurance": {
         "name": "Endurance",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/endu.png"
     },
     "uses Endure Elements": {
         "name": "Endure Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/endure_elements.png"
@@ -1763,7 +1763,7 @@
     },
     "uses Fox's Cunning": {
         "name": "Fox's Cunning",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/foxs.png"
@@ -1826,7 +1826,7 @@
     },
     "uses Greater Shadow Conjuration": {
         "name": "Shadow Evocation",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "9",
         "type": "scroll",
         "icon": "graphics/shadow_evocation.png"
@@ -1841,14 +1841,14 @@
     },
     "uses Shades": {
         "name": "Greater Shadow Conjuration",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "9",
         "type": "scroll",
         "icon": "graphics/greater_shadow_conj.png"
     },
     "uses Greater Shadow Conjuration: Stoneskin": {
         "name": "Stoneskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "11",
         "type": "scroll",
         "icon": "graphics/stoneskin.png"
@@ -1876,7 +1876,7 @@
     },
     "uses Greater Stoneskin": {
         "name": "Greater Stoneskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "11",
         "type": "scroll",
         "icon": "graphics/greater_stoneskin.png"
@@ -1953,7 +1953,7 @@
     },
     "uses Lesser Planar Binding": {
         "name": "Lesser Planar Binding",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "9",
         "type": "scroll",
         "icon": "graphics/lesser_planar.png"
@@ -1967,14 +1967,14 @@
     },
     "uses Light": {
         "name": "Light",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/light.png"
     },
     "uses Mage Armor": {
         "name": "Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "scroll",
         "icon": "graphics/mage_armor.png"
@@ -1995,14 +1995,14 @@
     },
     "uses Magic Vestment": {
         "name": "Magic Vestment",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "scroll",
         "icon": "graphics/magic_vestment.png"
     },
     "uses Magic Weapon": {
         "name": "Magic Weapon",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "scroll",
         "icon": "graphics/magic_weapon.png"
@@ -2066,35 +2066,35 @@
     },
     "uses One with the Land": {
         "name": "One with the Land",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "scroll",
         "icon": "graphics/one_with_land.png"
     },
     "uses Owl's Insight": {
         "name": "Owl's Insight",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "scroll",
         "icon": "graphics/owl_insight.png"
     },
     "uses Owl's Wisdom": {
         "name": "Owl's Wisdom",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/owls.png"
     },
     "uses Planar Ally": {
         "name": "Planar Ally",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "scroll",
         "icon": "graphics/planar_ally.png"
     },
     "uses Planar Binding": {
         "name": "Planar Binding",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "11",
         "type": "scroll",
         "icon": "graphics/planar_binding.png"
@@ -2115,21 +2115,21 @@
     },
     "uses Premonition": {
         "name": "Premonition",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "scroll",
         "icon": "graphics/premo.png"
     },
     "uses Protection from Alignment": {
         "name": "Protection from Alignment",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "scroll",
         "icon": "graphics/prot_alignment.png"
     },
     "uses Protection from Elements": {
         "name": "Protection from Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/prot_elements.png"
@@ -2185,14 +2185,14 @@
     },
     "uses Shadow Conjuration": {
         "name": "Shadow Conjuration",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "wand",
         "icon": "graphics/shadow_conj.png"
     },
     "uses Shadow Conjuration: Mage Armor": {
         "name": "Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "scroll",
         "icon": "graphics/mage_armor.png"
@@ -2227,7 +2227,7 @@
     },
     "uses Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/shelg_blade.png"
@@ -2276,70 +2276,70 @@
     },
     "uses Stoneskin": {
         "name": "Stoneskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "scroll",
         "icon": "graphics/stoneskin.png"
     },
     "uses Summon Creature I": {
         "name": "Summon Creature I",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_1.png"
     },
     "uses Summon Creature II": {
         "name": "Summon Creature II",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_2.png"
     },
     "uses Summon Creature III": {
         "name": "Summon Creature III",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_3.png"
     },
     "uses Summon Creature IV": {
         "name": "Summon Creature IV",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_4.png"
     },
     "uses Summon Creature V": {
         "name": "Summon Creature V",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_5.png"
     },
     "uses Summon Creature VI": {
         "name": "Summon Creature VI",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_6.png"
     },
     "uses Summon Creature VII": {
         "name": "Summon Creature VII",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_7.png"
     },
     "uses Summon Creature VIII": {
         "name": "Summon Creature VIII",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_8.png"
     },
     "uses Summon Creature IX": {
         "name": "Summon Creature IX",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/summon_creat_9.png"
@@ -2374,7 +2374,7 @@
     },
     "uses Ultravision": {
         "name": "Ultravision",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "scroll",
         "icon": "graphics/ultravision.png"
@@ -2438,7 +2438,7 @@
     },
     "uses Create Undead": {
         "name": "Create Undead",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "scroll",
         "icon": "graphics/create_undead.png"

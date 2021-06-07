@@ -8,7 +8,7 @@
     },
     "casts Animate Dead": {
         "name": "Animate Dead",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/animate_dead.png"
@@ -64,7 +64,7 @@
     },
     "casts Barkskin": {
         "name": "Barkskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/bark.png"
@@ -113,7 +113,7 @@
     },
     "casts Bull's Strength": {
         "name": "Bull's Strength",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/bulls.png"
@@ -127,7 +127,7 @@
     },
     "casts Cat's Grace": {
         "name": "Cat's Grace",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/cats.png"
@@ -148,14 +148,14 @@
     },
     "casts Continual Flame": {
         "name": "Continual Flame",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/continual_flame.png"
     },
     "casts Darkfire": {
         "name": "Darkfire",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "spell",
         "icon": "graphics/darkfire.png"
@@ -184,7 +184,7 @@
     },
     "casts Death Ward": {
         "name": "Death Ward",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "spell",
         "icon": "graphics/death_ward.png"
@@ -233,7 +233,7 @@
     },
     "casts Eagle's Splendor": {
         "name": "Eagle's Splendor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/eagle.png"
@@ -264,21 +264,21 @@
     },
     "casts Bear's Endurance": {
         "name": "Endurance",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/endu.png"
     },
     "casts Endurance": {
         "name": "Endurance",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/endu.png"
     },
     "casts Endure Elements": {
         "name": "Endure Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/endure_elements.png"
@@ -320,7 +320,7 @@
     },
     "casts Fox's Cunning": {
         "name": "Fox's Cunning",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/foxs.png"
@@ -397,7 +397,7 @@
     },
     "casts Greater Stoneskin": {
         "name": "Greater Stoneskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "11",
         "type": "spell",
         "icon": "graphics/greater_stoneskin.png"
@@ -481,7 +481,7 @@
     },
     "casts Lesser Planar Binding": {
         "name": "Lesser Planar Binding",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "9",
         "type": "spell",
         "icon": "graphics/lesser_planar.png"
@@ -495,14 +495,14 @@
     },
     "casts Light": {
         "name": "Light",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/light.png"
     },
     "casts Mage Armor": {
         "name": "Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "spell",
         "icon": "graphics/mage_armor.png"
@@ -530,14 +530,14 @@
     },
     "casts Magic Vestment": {
         "name": "Magic Vestment",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "spell",
         "icon": "graphics/magic_vestment.png"
     },
     "casts Magic Weapon": {
         "name": "Magic Weapon",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "spell",
         "icon": "graphics/magic_weapon.png"
@@ -601,35 +601,35 @@
     },
     "casts One with the Land": {
         "name": "One with the Land",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "spell",
         "icon": "graphics/one_with_land.png"
     },
     "casts Owl's Insight": {
         "name": "Owl's Insight",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "spell",
         "icon": "graphics/owl_insight.png"
     },
     "casts Owl's Wisdom": {
         "name": "Owl's Wisdom",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/owls.png"
     },
     "casts Planar Ally": {
         "name": "Planar Ally",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "spell",
         "icon": "graphics/planar_ally.png"
     },
     "casts Planar Binding": {
         "name": "Planar Binding",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "11",
         "type": "spell",
         "icon": "graphics/planar_binding.png"
@@ -678,28 +678,28 @@
     },
     "casts Premonition": {
         "name": "Premonition",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "15",
         "type": "spell",
         "icon": "graphics/premo.png"
     },
     "casts Protection from Evil": {
         "name": "Protection from Evil",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "spell",
         "icon": "graphics/prot_evil.png"
     },
     "casts Protection from Good": {
         "name": "Protection from Good",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "5",
         "type": "spell",
         "icon": "graphics/prot_good.png"
     },
     "casts Protection from Elements": {
         "name": "Protection from Elements",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/prot_elements.png"
@@ -818,7 +818,7 @@
     },
     "casts Shelgarn's Persistent Blade": {
         "name": "Shelgarn's Persistent Blade",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/shelg_blade.png"
@@ -867,70 +867,70 @@
     },
     "casts Stoneskin": {
         "name": "Stoneskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "7",
         "type": "spell",
         "icon": "graphics/stoneskin.png"
     },
     "casts Summon Creature I": {
         "name": "Summon Creature I",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_1.png"
     },
     "casts Summon Creature II": {
         "name": "Summon Creature II",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_2.png"
     },
     "casts Summon Creature III": {
         "name": "Summon Creature III",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_3.png"
     },
     "casts Summon Creature IV": {
         "name": "Summon Creature IV",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_4.png"
     },
     "casts Summon Creature V": {
         "name": "Summon Creature V",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_5.png"
     },
     "casts Summon Creature VI": {
         "name": "Summon Creature VI",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_6.png"
     },
     "casts Summon Creature VII": {
         "name": "Summon Creature VII",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_7.png"
     },
     "casts Summon Creature VIII": {
         "name": "Summon Creature VIII",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_8.png"
     },
     "casts Summon Creature IX": {
         "name": "Summon Creature IX",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/summon_creat_9.png"
@@ -965,7 +965,7 @@
     },
     "casts Ultravision": {
         "name": "Ultravision",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "spell",
         "icon": "graphics/ultravision.png"
@@ -993,14 +993,14 @@
     },
     "casts Epic Spell: Epic Mage Armor": {
         "name": "Epic Mage Armor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "2",
         "type": "spell",
         "icon": "graphics/epic_mage.png"
     },
     "casts Epic Spell: Mummy Dust": {
         "name": "Mummy Dust",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/mummy_dust.png"
@@ -1014,7 +1014,7 @@
     },
     "casts Epic Spell: Planar Conduit": {
         "name": "Planar Conduit",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/epic_planar.png"
@@ -1045,7 +1045,7 @@
     },
     "casts Create Undead": {
         "name": "Create Undead",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/create_undead.png"
@@ -1066,7 +1066,7 @@
     },
     "casts Death Domain, Negative Plane Avatar": {
         "name": "Death Domain, Negative Plane Avatar",
-        "duration": "8640",
+        "duration": "28800",
         "caster_level": "1",
         "type": "spell",
         "icon": "graphics/death_avatar.png"

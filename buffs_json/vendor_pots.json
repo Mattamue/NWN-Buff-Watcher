@@ -1,49 +1,49 @@
 {
     "uses Potion of Barkskin": {
         "name": "Barkskin",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "potion",
         "icon": "graphics/bark.png"
     },
     "uses Potion of Bull's Strength": {
         "name": "Bull's Strength",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "potion",
         "icon": "graphics/bulls.png"
     },
     "uses Potion of Cat's Grace": {
         "name": "Cat's Grace",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "potion",
         "icon": "graphics/cats.png"
     },
     "uses Potion of Eagle's Splendor": {
         "name": "Eagle's Splendor",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "potion",
         "icon": "graphics/eagle.png"
     },
     "uses Potion of Endurance": {
         "name": "Endurance",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "potion",
         "icon": "graphics/endu.png"
     },
     "uses Potion of Fox's Cunning": {
         "name": "Fox's Cunning",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "potion",
         "icon": "graphics/foxs.png"
     },
     "uses Potion of Owl's Wisdom": {
         "name": "Owl's Wisdom",
-        "duration": "360",
+        "duration": "1200",
         "caster_level": "3",
         "type": "potion",
         "icon": "graphics/owls.png"

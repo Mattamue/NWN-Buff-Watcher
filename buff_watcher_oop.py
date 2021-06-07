@@ -712,13 +712,13 @@ class MainFrame(tk.Frame):
 
             if " augments your skill and grants you success." in logline:
                 try:
-                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "graphics/pray_cd.png"])
+                    self.make_buff_labelframe(["CD Godsave", time.time() + 7200, "graphics/pray_cd.png"])
                 except:
                     print(f"'augments your skill' did not find match.")
 
             if " intercedes to aid your work." in logline:
                 try:
-                    self.make_buff_labelframe(["CD Godsave", time.time() + 8640, "graphics/pray_cd.png"])
+                    self.make_buff_labelframe(["CD Godsave", time.time() + 7200, "graphics/pray_cd.png"])
                 except:
                     print(f"'intercedes to aid' did not find match.")
 
@@ -1144,7 +1144,7 @@ class MainFrame(tk.Frame):
             # handling majority paladin levels for potions, wands, scrolls
             if self.use_items_dict[f"{buff_string}"]["name"] == "Aura of Glory":
                 if self.paladin_bool.get() == True:
-                    adding_buff[1] = time.time() + (360 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier)))
+                    adding_buff[1] = time.time() + (1200 * (int(self.use_items_dict[f'{buff_string}']['caster_level']) + int(lm_modifier)))
 
             # handling damage shieds... this could be super slow, but it's only goes deep if it's a damage shield
             try:
@@ -1343,7 +1343,7 @@ class MainFrame(tk.Frame):
                     self.make_buff_labelframe(["BG Bulls", time.time() + (60 * self.bg_levels.get()), "graphics/bg_bulls.png"])
                     return
                 elif self.bg_levels.get() >= 10:
-                    self.make_buff_labelframe(["BG Bulls", time.time() + (360 * self.bg_levels.get()), "graphics/bg_bulls.png"])
+                    self.make_buff_labelframe(["BG Bulls", time.time() + (1200 * self.bg_levels.get()), "graphics/bg_bulls.png"])
                     return
 
             # handling aura of glory duration for paladins with majority levels
