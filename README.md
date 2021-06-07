@@ -43,19 +43,22 @@ Features:
 
 Setting up the Watcher:
 
-Get the Watcher (or the source code) from https://github.com/Mattamue/NWN-Buff-Watcher
-Unzip the exe and its JSON and graphics sub-folders anywhere
-Have your chat logging turned on
+* Get the Watcher (or the source code) from https://github.com/Mattamue/NWN-Buff-Watcher
+* Unzip the exe and its JSON and graphics sub-folders anywhere
+* Have your chat logging turned on:
+
 ![chat logging options](https://i.imgur.com/C1m5g34.png)
 * Setup the watcher and open the "nwclientLog1" (the location of the log for you is probably in the same directory as mine in this screen shot): 
+
 ![settings, open chat log](https://i.imgur.com/ZoWMOjn.png)
 
 FAQ/Other:
+
 I'm sure I will expand the with edits as questions come up. Please let me know of any bugs or issues. I'm open to the idea of people helping with the code if you want to add a feature or fix a bug. That can all be handled on the GitHub. Python is a pretty easy language to learn. I know because I've learned it these past few months and I've added lots of comments to the source code about how it works.
 
-How do I extend spells?
-You've keyed in into a limitation of using the chatlog. There's not way to tell from "User casts Bull's Strength" it it's maximized, extended, empowered, still, or silent. To address this, click on the buff in the Watcher and choose if its extended:
+* How do I extend spells?
+You've keyed in into a limitation of using the chatlog. There's not way to tell from "User casts Bull's Strength" it it's maximized, extended, empowered, still, or silent. To address this, click on the buff in the Watcher and choose if its extended. 
+
+  * So, after you cast an extended spell you have to go into the Watcher and set if its extended. If you mis-click you can un-check or re-check as needed. The Watcher will remember the duration either way.
 
 ![extend](https://i.imgur.com/XW5u0Re.png)
-
-So after you cast an extended spell you have to go into the Watcher and set if its extended. If you mis-click you can un-check or re-check as needed. The Watcher will remember the duration either way.
