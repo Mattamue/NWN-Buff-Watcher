@@ -1,9 +1,9 @@
 **/testing
 **/build
 **/dist
-**/__pycache__
-**/abilities/__pycache__
-**/summons_cooldown/__pycache__
+**/__pycache__/
+**/abilities/__pycache__/
+**/summons_cooldown/__pycache__/
 buff_watcher_oop.spec
 dummy.tmp
 settings.json
