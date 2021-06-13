@@ -1073,7 +1073,7 @@
 
 
 
-    "uses item's special power": {
+    "uses item's special power.": {
         "name": "Special Power",
         "duration": "300",
         "caster_level": "5",
