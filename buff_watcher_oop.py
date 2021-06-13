@@ -585,7 +585,7 @@ class MainFrame(tk.Frame):
         # when first runs, moves the pointer (where it reads from) to the end so it doesn't scan potentially 1000s of lines, only want most recent
         self.logfile = askopenfile(mode ='r', filetypes =[('Logs', '*.txt'), ('Any', '*.*')]) 
         self.logfile_name = self.logfile.name
-        open(self.logfile_name, 'r')
+        open(self.logfile_name, 'r', encoding="utf8")
         self.logfile.seek(0, 2)
         self.after(100, self.buffs_loop_time_passing)
 
