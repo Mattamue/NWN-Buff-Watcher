@@ -48,9 +48,9 @@ def abilities_trigger(logline):
     # So we're doing this a different way
     for x in range((logline.find("]", 18) + 2), (logline.find("has") - 1)):
         ability = ability + logline[x]
-        print(f"ability in the loop: {ability}")
+        # print(f"ability in the loop: {ability}") # testing
     
-    print(f"ability done: {ability}")
+    # print(f"ability done: {ability}") # testing
 
     # except:
     #     ability = "Ability error"
