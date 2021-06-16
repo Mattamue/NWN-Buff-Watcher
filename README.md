@@ -3,6 +3,15 @@ Watches chat log output from the 2002 game Neverwinter Nights and creates a topm
 
 ![NWN Buff Watcher](https://i.imgur.com/JDOha8n.png)
 
+Buff tracking and features (YouTube):
+
+[![Buffing and features](https://img.youtube.com/vi/gzraF5GTFmc/0.jpg)](https://www.youtube.com/watch?v=gzraF5GTFmc)
+
+Cooldowns as well (YouTube):
+
+[![Cooldown examples](https://img.youtube.com/vi/X5qfFZX_p9g/0.jpg)](https://www.youtube.com/watch?v=X5qfFZX_p9g)
+
+
 Updates:
 v1.1 time update, a few features, and bugfixes.
 
