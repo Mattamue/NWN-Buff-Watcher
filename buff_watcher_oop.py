@@ -343,6 +343,19 @@ class MainFrame(tk.Frame):
         self.button_enter = tk.Button(self.character_settings_window, text="Save", command=lambda: self.close_character_settings_window("saved"))
         self.button_enter.grid(column=0, row=7, columnspan=3)
 
+    def speech_to_text(self):
+
+        self.speech_to_text_window = tk.Toplevel(self) # creates a "toplevel" window which just means another pop-out window when called
+        self.speech_to_text_window.title("Character Settings") # name for the window, duh
+        self.speech_to_text_window.attributes("-topmost", True) # allows window to appear above the main "topmost" window so it isn't hidden behind
+
+        # all the name stuff in a frame
+        self.speech_to_text_window_frame = tk.Frame(self.speech_to_text_window, bd=1, relief='solid')
+        self.speech_to_text_window_frame.grid(column=0, row=0, sticky='nsew')
+        self.stt_label = ttk.Label(self.speech_to_text_window_frame, text="Speech to text")
+        self.stt_label.grid(column=0, row=0, columnspan=2)
+
+
     # changes the dictionary so that "uses potion" gets different durations for vendor or player potions... maybe a better way to approach this whole thing overall... rather than having all the if/else in the function? Not sure yet
     def player_vendor_pots(self):
         if self.vendor_bool.get() == True:

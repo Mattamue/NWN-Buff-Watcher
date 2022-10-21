@@ -1,0 +1,43 @@
+  main                                 [m 0a54b53 [[34morigin/main[m] Update README.md
+* [32mspeech-to-text                       [m 0a54b53 Update README.md
+  [31mremotes/origin/HEAD                  [m -> origin/main
+  [31mremotes/origin/abilities_staging     [m e1a5538 feat: a lot...
+  [31mremotes/origin/ability_durations     [m 6ba7121 feat: ability durations, monk, sd, bard, dd, pdk, cav, swash, bs
+  [31mremotes/origin/adding_casting        [m 28855ee feat: added spell dict, just copied from scrolls a nd changed to "casts" and "spell" type feat: added state for SH illision for invisit, inv is sphere, and invis for items and casting feat: handles "cl 1" spells just pulls the duration as that signifies they aren't affected by cl; no LM or casting mod`
+  [31mremotes/origin/bg_bulls              [m 04ab3dd feat: added bg bulls and paladin AoG durations
+  [31mremotes/origin/buff_labelframe_font  [m eb0226e feat: changed to mmm:s.s for duration, backend changed to DoubleVar, made extend correctly sort and organize
+  [31mremotes/origin/buff_pass             [m 0e1b011 feat: last pass, added arelith and stragglers
+  [31mremotes/origin/bug_freedom           [m e5d21d2 bug: freedom of movement wands
+  [31mremotes/origin/character_info        [m aa452d5 feat: added character settings, settings saved, validation of settings input
+  [31mremotes/origin/damage_shields        [m eed796f feat: damage shields don't stack
+  [31mremotes/origin/debug_clean           [m 5597b3b bug: removed some debug print statements
+  [31mremotes/origin/dispelling            [m fdfb5d8 feat: dispel warning and handling
+  [31mremotes/origin/divine_suff           [m 4c6fb21 added shield, might, wrath; cd check clarty/wrath, tests not working but live is
+  [31mremotes/origin/dove_harp             [m 5a676b9 feat: added dove's harp
+  [31mremotes/origin/encoding_test         [m 0563e60 bug: duh have to commit
+  [31mremotes/origin/epic_spells           [m 9fca48d feat: added epic spells
+  [31mremotes/origin/even_more_cooldowns   [m f757523 feat: lots of misc cooldowns, some cleanup
+  [31mremotes/origin/extend_dropdown       [m 5fb01fc feat: extend drop-down added
+  [31mremotes/origin/fix_cooldown          [m 5145928 wasn't test issue, fixed cd logic for clarity and wrath
+  [31mremotes/origin/main                  [m 0a54b53 Update README.md
+  [31mremotes/origin/mass_haste_cleanup    [m 3ee8e90 feat: small one, mass haste to haste so no stacking
+  [31mremotes/origin/more_ability_cooldowns[m 15b13bb feat: summon cooldowns handled
+  [31mremotes/origin/more_bugs             [m eeaf9a3 bugs: dispel and one with land
+  [31mremotes/origin/more_bugs2            [m 3ab8f0e bugs: regen, mon regen; divine power, domain buffs
+  [31mremotes/origin/more_rest             [m 6653597 feat: pray and godsaves part of rest non-clear, added some notes to testing window
+  [31mremotes/origin/more_triggers         [m d6af284 feat: scroll triggers added, can handle loremaster wand and scroll cl bonuses
+  [31mremotes/origin/paladin_cooldowns     [m 8bf631e feat: smite evil and good sequential CDs
+  [31mremotes/origin/release_maybe         [m 4bb0fbd feat: release version, removed friends list, cleaned up some error code
+  [31mremotes/origin/sf_div                [m 1faa2dd feat: sf div duration for true seeing and handle seeinv-ulra edge case
+  [31mremotes/origin/sf_trans              [m f3c45ad feat: sf trans duration for aura vit added, refactored lm duration
+  [31mremotes/origin/special_durations     [m 08b9e96 feat: durations for spec div and illu
+  [31mremotes/origin/specialist_cd         [m e458832 feat: added ability cooldown for specialist wiz
+  [31mremotes/origin/sub_buffs             [m 8569b21 feat: handling all the shadow conj bs
+  [31mremotes/origin/taunt_intim           [m 395ee2e feat: taunt and intimidate, bug: single-digit day
+  [31mremotes/origin/test_update           [m 43c0b8d feat: added freeform use and cast testing, bigfix: icon for undeath eternal
+  [31mremotes/origin/time_change           [m 9d4c7e9 feat: Arelith time update
+  [31mremotes/origin/todo_cleanup          [m d6867b8 chore: moved all the TODOs to issues, removing TODOs from code
+  [31mremotes/origin/turn_undead_cd        [m 7d30e06 feat: turn, might, shield cooldowns....
+  [31mremotes/origin/use_fix               [m f2a3e56 bug: use item fix
+  [31mremotes/origin/use_items_special     [m 715bbb2 feat: uses item's special was just essene and poison seems like...
+  [31mremotes/origin/vend_player           [m 434ec84 feat: player vs vendor zoo and bark durations
